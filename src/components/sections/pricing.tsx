@@ -150,7 +150,7 @@ export function PricingSection() {
               <ul className="mt-10 flex-1 space-y-4">
                 {i > 0 && (
                   <li className="mb-2 pb-2 text-sm font-bold text-foreground border-b border-border/50">
-                    Semua fitur di paket {i === 1 ? "Essential" : "Professional"}, ditambah:
+                    Semua fitur di paket {i === 1 ? "Essential" : "Essential & Professional"}, ditambah:
                   </li>
                 )}
                 {plan.features.map((feature, idx) => (
