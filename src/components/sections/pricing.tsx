@@ -148,6 +148,11 @@ export function PricingSection() {
               </a>
               
               <ul className="mt-10 flex-1 space-y-4">
+                {i > 0 && (
+                  <li className="mb-2 pb-2 text-sm font-bold text-foreground border-b border-border/50">
+                    Semua fitur di paket {i === 1 ? "Essential" : "Professional"}, ditambah:
+                  </li>
+                )}
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex gap-4">
                     <div className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${plan.popular ? 'bg-primary/20' : 'bg-primary/10'} text-primary`}>
