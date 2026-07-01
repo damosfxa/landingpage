@@ -93,3 +93,15 @@ Jika klien setuju: *"Oke Mas, saya ambil paket yang 3 Juta. Harus siapkan apa sa
 > Sembari Bapak mengumpulkan materinya, berikut saya lampirkan **Invoice Rekening** untuk DP 50% (Rp 1.500.000) agar *server* dan *domain*-nya bisa langsung saya amankan hari ini juga ya Pak.
 > 
 > (Kirim Foto/PDF Invoice)"
+
+---
+
+## 7. Fase Menolak Halus Permintaan Aneh-Aneh (Handling Scope Creep)
+Jika klien membeli paket murah tapi minta fitur tambahan aneh-aneh (misal: "Bisa tambahin kalkulator harga tiket gak Mas?"):
+
+**Template Balasan Anda:**
+> "Mohon maaf sebelumnya Pak [Nama], untuk Paket Professional (3 Juta) fiturnya memang sudah **baku (fixed)** seperti menu paket di restoran. Itulah alasan kenapa harganya bisa sangat terjangkau dengan kualitas setinggi ini. 
+> 
+> Jika Bapak membutuhkan fitur khusus (*custom*) seperti [sebutkan fitur yang diminta], itu masuknya ke ranah **Paket Enterprise (Kustom 100%)** yang dikerjakan dari nol ibarat koki pribadi. Harganya mulai dari 7.5 Juta menyesuaikan tingkat kerumitan fitur tambahan Bapak.
+> 
+> Namun saran saya, jika untuk tahap awal, fitur yang ada di paket 3 Juta sudah lebih dari cukup untuk menarik pembeli. Bagaimana Pak, apakah kita lanjut dengan paket 3 Juta dulu?"
