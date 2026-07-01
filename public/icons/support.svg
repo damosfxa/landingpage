@@ -1,0 +1,14 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="supportGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A855F7" />
+      <stop offset="100%" stop-color="#7E22CE" />
+    </linearGradient>
+    <filter id="glowSupport" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <circle cx="32" cy="32" r="32" fill="#FAF5FF" />
+  <path d="M46 32v6a4 4 0 0 1-4 4h-2V28h2a4 4 0 0 1 4 4zM24 28v14h-2a4 4 0 0 1-4-4v-6a4 4 0 0 1 4-4h2zm8-14a16 16 0 0 0-16 16v2h32v-2a16 16 0 0 0-16-16z" fill="url(#supportGrad)" filter="url(#glowSupport)"/>
+</svg>

@@ -1,0 +1,105 @@
+"use client"
+import { motion } from "framer-motion"
+import { ArrowRight, MessageCircle, MapPin } from "lucide-react"
+import Image from "next/image"
+
+export function HeroSection() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" as const },
+    },
+  }
+
+  return (
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-28 overflow-hidden bg-background">
+      {/* Decorative gradients */}
+      <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-primary/20 blur-[120px] rounded-full z-0" />
+      <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-primary/10 blur-[160px] rounded-full z-0" />
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 text-center max-w-3xl space-y-8"
+      >
+        <motion.div variants={itemVariants}>
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-5 py-2 text-sm font-medium text-primary">
+            <MapPin className="h-4 w-4" />
+            Spesialis Bisnis Travel & Tour
+          </span>
+        </motion.div>
+
+        <motion.h1
+          variants={itemVariants}
+          className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-foreground"
+        >
+          Kesan Pertama yang Membuat Tamu Anda <br />
+          <span className="text-primary italic">Yakin Sejak Detik Pertama.</span>
+        </motion.h1>
+
+        <motion.p
+          variants={itemVariants}
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+        >
+          Bisnis travel Anda menjual pengalaman berharga. Jangan biarkan desain website yang kurang matang merusak kredibilitas Anda. Saya membangun website travel yang elegan, cepat, dan dirancang khusus untuk memandu pengunjung menjadi klien Anda.
+        </motion.p>
+
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+          <a
+            href="https://wa.me/628211396629?text=Halo%2C%20saya%20melihat%20iklan%20di%20FB%2FIG.%20Saya%20ingin%20konsultasi%20pembuatan%20website%20travel%20premium."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-foreground px-8 py-4 text-base font-semibold text-background transition-colors hover:bg-foreground/90"
+          >
+            <MessageCircle className="h-5 w-5" />
+            Konsultasi Kebutuhan Anda
+          </a>
+          <a
+            href="#harga"
+            className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-background px-8 py-4 text-base font-semibold text-foreground transition-colors hover:bg-secondary"
+          >
+            Lihat Pilihan Paket
+            <ArrowRight className="h-5 w-5" />
+          </a>
+        </motion.div>
+      </motion.div>
+
+      {/* Feature Highlights underneath */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.8, ease: "easeOut" as const }}
+        className="relative z-10 grid grid-cols-1 md:grid-cols-3 mt-20 w-full max-w-4xl gap-6"
+      >
+        {[
+          { iconSrc: "/icons/globe.svg", title: "Desain Mewah & Responsif" },
+          { iconSrc: "/icons/check-circle.svg", title: "Kelola Konten Super Mudah" },
+          { iconSrc: "/icons/sparkles.svg", title: "Ramah Google & Menawan" },
+        ].map((feat, i) => (
+          <div key={i} className="group flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md hover:border-primary/20">
+            <div className="flex items-center justify-center h-14 w-14 mb-4 rounded-xl bg-transparent transition-transform group-hover:scale-110">
+              <Image src={feat.iconSrc} alt={feat.title} width={56} height={56} className="h-full w-full object-contain" />
+            </div>
+            <h3 className="font-serif text-base font-semibold text-foreground text-center">
+              {feat.title}
+            </h3>
+          </div>
+        ))}
+      </motion.div>
+    </section>
+  )
+}
