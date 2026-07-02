@@ -8,8 +8,8 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   const lenisRef = useRef<any>(null)
 
   useEffect(() => {
-    function update(time: any) {
-      lenisRef.current?.lenis?.raf(time?.timestamp || time)
+    function update(time: number | { timestamp: number }) {
+      lenisRef.current?.lenis?.raf(typeof time === 'number' ? time : time?.timestamp)
     }
 
     // Unify Framer Motion and Lenis rAF

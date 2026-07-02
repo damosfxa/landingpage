@@ -44,23 +44,23 @@ export function FeaturesSection() {
           {[
             {
               iconSrc: "/icons/zap.svg",
-              title: "Infrastruktur Cepat & Stabil",
-              desc: "Kecepatan muat kilat memastikan calon tamu Anda merasa nyaman bereksplorasi tanpa kendala teknis.",
+              title: "Skor SEO & Performa 100/100",
+              desc: "Website dioptimalkan penuh untuk Google. Kecepatan muat kilat memastikan calon jamaah tidak kabur ke kompetitor.",
             },
             {
               iconSrc: "/icons/shield.svg",
-              title: "Keamanan Data Terjamin",
-              desc: "Seluruh data website dan pelanggan terlindungi dengan enkripsi keamanan SSL tertinggi yang otomatis aktif.",
+              title: "Legalitas & Integrasi Siskopatuh",
+              desc: "Tampilkan izin resmi Kemenag, sertifikat, dan integrasi Siskopatuh untuk membangun tingkat kepercayaan (Trust) jamaah hingga 100%.",
             },
             {
               iconSrc: "/icons/rocket.svg",
-              title: "Struktur Ramah SEO",
-              desc: "Website dibangun agar bersahabat dengan mesin pencari, mendukung pertumbuhan trafik secara natural.",
+              title: "Mesin Sales 24/7 (WA & CRM)",
+              desc: "Setiap pengunjung langsung diarahkan ke WhatsApp Admin Anda. Website ini bukan brosur, tapi mesin closing otomatis.",
             },
             {
               iconSrc: "/icons/support.svg",
               title: "Dukungan Teknis Penuh",
-              desc: "Fokuslah melayani tamu Anda. Urusan pemeliharaan dan update sistem biarkan saya yang menangani.",
+              desc: "Fokuslah melayani calon jamaah. Urusan pemeliharaan server, keamanan, dan update sistem biarkan Voxy yang menangani.",
             },
           ].map((item, i) => (
             <motion.div
