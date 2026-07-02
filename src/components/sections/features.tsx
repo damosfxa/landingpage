@@ -79,9 +79,13 @@ export function FeaturesSection() {
               className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 hover:border-primary/30"
             >
               <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-primary transition-transform duration-500 ease-out group-hover:scale-x-100" />
-              <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-xl ${item.bg} transition-transform group-hover:scale-110`}>
+              <motion.div 
+                className={`mb-6 flex h-16 w-16 items-center justify-center rounded-xl ${item.bg} transition-colors`}
+                whileHover={{ scale: 1.15, rotate: i % 2 === 0 ? 5 : -5 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              >
                 <Icon className={`h-8 w-8 ${item.color}`} strokeWidth={1.5} />
-              </div>
+              </motion.div>
               <h3 className="font-serif text-xl font-bold text-foreground">{item.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
             </motion.div>
