@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Voxy Web Studio"
   },
   description: "Tingkatkan kredibilitas dan omzet bisnis travel umrah/wisata Anda dengan desain website eksklusif, cepat, dan siap mendominasi pencarian Google.",
-  keywords: ["jasa website travel", "pembuatan web umroh", "developer web wisata", "website tour and travel", "jasa landing page travel", "desain web premium", "voxy web studio", "jasa website haji plus", "bikin web biro travel", "web developer bekasi", "jasa buat website profesional", "pembuatan company profile perusahaan", "jasa seo website travel"],
+  keywords: ["jasa website travel", "pembuatan web umroh", "developer web wisata", "website tour and travel", "jasa landing page travel", "desain web premium", "voxy web studio", "jasa website haji plus", "bikin web biro travel", "web developer bekasi", "jasa website travel jakarta", "pembuatan web umroh jawa barat", "jasa web travel bandung", "jasa website travel makassar", "developer web umroh surabaya", "jasa website travel jabodetabek", "pembuatan company profile perusahaan", "jasa seo website travel"],
   authors: [{ name: "Voxy Web Studio" }],
   creator: "Voxy Web Studio",
   openGraph: {
