@@ -5,20 +5,20 @@ import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: {
-    default: "Jasa Pembuatan Website Travel Premium & Profesional | Solusi Web Travel",
-    template: "%s | Solusi Web Travel Premium"
+    default: "Voxy Web Studio | Jasa Pembuatan Website Travel Premium & Profesional",
+    template: "%s | Voxy Web Studio"
   },
   description: "Tingkatkan kredibilitas dan omzet bisnis travel umrah/wisata Anda dengan desain website eksklusif, cepat, dan siap mendominasi pencarian Google.",
-  keywords: ["jasa website travel", "pembuatan web umroh", "developer web wisata", "website tour and travel", "jasa landing page travel", "desain web premium"],
-  authors: [{ name: "Solusi Web Travel Premium" }],
-  creator: "Solusi Web Travel Premium",
+  keywords: ["jasa website travel", "pembuatan web umroh", "developer web wisata", "website tour and travel", "jasa landing page travel", "desain web premium", "voxy web studio"],
+  authors: [{ name: "Voxy Web Studio" }],
+  creator: "Voxy Web Studio",
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://voxy-travel-premium.com", // Ganti dengan domain asli nanti
-    title: "Jasa Pembuatan Website Travel Premium",
+    url: "https://byvoxy.com",
+    title: "Voxy Web Studio | Jasa Pembuatan Website Travel Premium",
     description: "Tingkatkan kredibilitas bisnis travel Anda dengan website eksklusif, cepat, dan 100% responsif.",
-    siteName: "Solusi Web Travel Premium",
+    siteName: "Voxy Web Studio",
     images: [
       {
         url: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1200&auto=format&fit=crop", // Placeholder OG Image
