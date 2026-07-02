@@ -55,7 +55,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
         >
-          Bisnis travel Anda menjual pengalaman berharga. Jangan biarkan desain website yang kurang matang merusak kredibilitas Anda. Saya membangun website travel yang elegan, cepat, dan dirancang khusus untuk memandu pengunjung menjadi klien Anda.
+          Website bukan sekadar brosur digital, melainkan <strong>Mesin Sales 24 Jam</strong> untuk Biro Umroh Anda. Berhenti membuang uang untuk Google Ads hanya karena website Anda tidak muncul secara organik. Kami membangun website travel dengan <strong>Skor SEO 100/100</strong>, elegan, dan siap mengubah pengunjung menjadi jamaah.
         </motion.p>
 
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
@@ -88,7 +88,7 @@ export function HeroSection() {
         {[
           { iconSrc: "/icons/globe.svg", title: "Desain Mewah & Responsif" },
           { iconSrc: "/icons/check-circle.svg", title: "Kelola Konten Super Mudah" },
-          { iconSrc: "/icons/sparkles.svg", title: "Ramah Google & Menawan" },
+          { iconSrc: "/icons/sparkles.svg", title: "Skor SEO 100/100 (Gacor)" },
         ].map((feat, i) => (
           <div key={i} className="group flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md hover:border-primary/20">
             <div className="flex items-center justify-center h-14 w-14 mb-4 rounded-xl bg-transparent transition-transform group-hover:scale-110">
