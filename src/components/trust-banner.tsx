@@ -7,7 +7,7 @@ export function TrustBanner() {
         Dibangun Menggunakan Teknologi Modern & Andal
       </p>
       <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 opacity-70 grayscale max-w-5xl px-4">
-        {["Next.js", "React", "Laravel", "Tailwind CSS", "TypeScript", "Node.js", "PostgreSQL", "Figma"].map((brand, i) => (
+        {["Next.js 14", "React", "Tailwind CSS", "TypeScript", "Node.js", "Python", "PostgreSQL", "GraphQL", "SEO Optimized"].map((brand, i) => (
           <div key={i} className="text-xl md:text-2xl font-bold font-serif tracking-tight">
             {brand}
           </div>
