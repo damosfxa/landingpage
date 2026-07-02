@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import Image from "next/image"
+import { Zap, ShieldCheck, Rocket, Headset } from "lucide-react"
 
 export function FeaturesSection() {
   const containerVariants = {
@@ -43,39 +43,50 @@ export function FeaturesSection() {
         >
           {[
             {
-              iconSrc: "/icons/zap.svg",
+              icon: Zap,
               title: "Skor SEO & Performa 100/100",
               desc: "Website dioptimalkan penuh untuk Google. Kecepatan muat kilat memastikan calon jamaah tidak kabur ke kompetitor.",
+              color: "text-blue-600",
+              bg: "bg-blue-100",
             },
             {
-              iconSrc: "/icons/shield.svg",
+              icon: ShieldCheck,
               title: "Legalitas & Integrasi Siskopatuh",
               desc: "Tampilkan izin resmi Kemenag, sertifikat, dan integrasi Siskopatuh untuk membangun tingkat kepercayaan (Trust) jamaah hingga 100%.",
+              color: "text-emerald-600",
+              bg: "bg-emerald-100",
             },
             {
-              iconSrc: "/icons/rocket.svg",
+              icon: Rocket,
               title: "Mesin Sales 24/7 (WA & CRM)",
               desc: "Setiap pengunjung langsung diarahkan ke WhatsApp Admin Anda. Website ini bukan brosur, tapi mesin closing otomatis.",
+              color: "text-rose-600",
+              bg: "bg-rose-100",
             },
             {
-              iconSrc: "/icons/support.svg",
+              icon: Headset,
               title: "Dukungan Teknis Penuh",
               desc: "Fokuslah melayani calon jamaah. Urusan pemeliharaan server, keamanan, dan update sistem biarkan Voxy yang menangani.",
+              color: "text-purple-600",
+              bg: "bg-purple-100",
             },
-          ].map((item, i) => (
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
             <motion.div
               key={i}
               variants={itemVariants}
               className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 hover:border-primary/30"
             >
               <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-primary transition-transform duration-500 ease-out group-hover:scale-x-100" />
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-transparent transition-transform group-hover:scale-110">
-                <Image src={item.iconSrc} alt={item.title} width={64} height={64} className="h-full w-full object-contain" />
+              <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-xl ${item.bg} transition-transform group-hover:scale-110`}>
+                <Icon className={`h-8 w-8 ${item.color}`} strokeWidth={1.5} />
               </div>
               <h3 className="font-serif text-xl font-bold text-foreground">{item.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
             </motion.div>
-          ))}
+            )
+          })}
         </motion.div>
       </div>
     </section>
