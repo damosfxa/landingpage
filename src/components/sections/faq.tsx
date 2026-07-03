@@ -59,14 +59,14 @@ export function FAQSection() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="flex w-full items-center justify-between p-6 text-left focus:outline-none"
+                className="flex w-full items-start justify-between p-6 text-left focus:outline-none"
               >
-                <span className="font-serif text-lg font-bold text-foreground">{faq.q}</span>
-                <ChevronDown className={`h-5 w-5 text-primary transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} />
+                <span className="font-serif text-lg font-bold text-foreground pr-4">{faq.q}</span>
+                <ChevronDown className={`h-5 w-5 mt-1 flex-shrink-0 text-primary transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} />
               </button>
               <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openIndex === i ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+                  openIndex === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
                 <p className="px-6 pb-6 text-muted-foreground leading-relaxed">
