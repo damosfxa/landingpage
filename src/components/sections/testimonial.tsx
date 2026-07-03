@@ -11,7 +11,7 @@ const testimonials = [
       name: "H. Ahmad Fauzan",
       handle: "Direktur Utama",
       company: "Al-Hidayah Tour & Travel",
-      imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      imageUrl: "/testimonials/ahmad.jpg",
     },
   },
   {
@@ -20,7 +20,7 @@ const testimonials = [
       name: "Siti Rahmawati",
       handle: "VP of Marketing",
       company: "Nurani Wisata Hati",
-      imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      imageUrl: "/testimonials/siti.jpg",
     },
   },
   {
@@ -29,7 +29,7 @@ const testimonials = [
       name: "Budi Santoso",
       handle: "Founder",
       company: "Berkah Umrah Mandiri",
-      imageUrl: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      imageUrl: "/testimonials/budi.jpg",
     },
   },
 ]
