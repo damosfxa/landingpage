@@ -66,10 +66,6 @@ export function AboutSection() {
                <p className="text-muted-foreground leading-relaxed italic">
                  "Website adalah etalase digital terbesar Anda. Kami memastikannya tidak hanya tampil mewah untuk dilihat, tetapi juga berfungsi sebagai mesin sales 24 jam yang mendatangkan profit nyata."
                </p>
-               <div className="pt-2">
-                 <div className="font-bold text-foreground">Rizky Rhamadani</div>
-                 <div className="text-sm text-primary font-medium">Founder Voxy.dev</div>
-               </div>
             </div>
           </motion.div>
         </motion.div>
