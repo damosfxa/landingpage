@@ -1,20 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { Toaster } from "sonner";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-plus-jakarta-sans",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -69,14 +56,28 @@ export const metadata: Metadata = {
   },
 };
 
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+
+const inter = Inter({ 
+  subsets: ["latin"], 
+  variable: "--font-inter", 
+  display: "swap" 
+});
+
+const playfair = Plus_Jakarta_Sans({ 
+  subsets: ["latin"], 
+  variable: "--font-playfair", 
+  display: "swap" 
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`h-full antialiased ${inter.variable} ${plusJakartaSans.variable}`}>
-      <body className="min-h-full flex flex-col font-sans">
+    <html lang="id" className="h-full antialiased">
+      <body className={`min-h-full flex flex-col font-sans ${inter.variable} ${playfair.variable}`}>
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>
