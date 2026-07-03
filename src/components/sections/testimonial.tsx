@@ -78,18 +78,9 @@ export function TestimonialSection() {
                 <blockquote className="text-foreground">
                   <p className="text-base leading-7">"{testimonial.body}"</p>
                 </blockquote>
-                <figcaption className="mt-6 flex items-center gap-x-4">
-                  <Image
-                    className="h-12 w-12 rounded-full bg-secondary object-cover"
-                    src={testimonial.author.imageUrl}
-                    alt={testimonial.author.name}
-                    width={48}
-                    height={48}
-                  />
-                  <div>
-                    <div className="font-semibold text-foreground">{testimonial.author.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.author.handle} @ {testimonial.author.company}</div>
-                  </div>
+                <figcaption className="mt-6 flex flex-col gap-y-1">
+                  <div className="font-semibold text-foreground">{testimonial.author.name}</div>
+                  <div className="text-sm text-muted-foreground">{testimonial.author.handle} @ {testimonial.author.company}</div>
                 </figcaption>
               </motion.div>
             ))}
