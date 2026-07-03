@@ -24,7 +24,7 @@ export function Navbar() {
     { name: "Paket Promo", href: "#harga" },
   ]
 
-  const waLink = "https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20tertarik%20konsultasi%20untuk%20pembuatan%20website%20travel%20premium.%20Bisa%20dibantu%3F"
+  const waLink = "https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20ingin%20mengamankan%20promo%20spesial%20untuk%20pembuatan%20website%20travel.%20Boleh%20dibantu%3F"
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {

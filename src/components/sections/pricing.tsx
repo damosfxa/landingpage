@@ -135,7 +135,7 @@ export function PricingSection() {
               </div>
               
               <a
-                href="https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20tertarik%20konsultasi%20untuk%20pembuatan%20website%20travel%20premium.%20Bisa%20dibantu%3F"
+                href={`https://wa.me/6285111601910?text=${encodeURIComponent(`Halo Voxy, saya tertarik dengan ${plan.name} untuk pembuatan website travel. Boleh minta info lebih lanjut?`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-8 flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold transition-all ${
@@ -144,7 +144,7 @@ export function PricingSection() {
                     : "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground"
                 }`}
               >
-                {plan.popular ? "Pilih Paket Premium" : "Mulai Sekarang"} <ArrowRight className="h-4 w-4" />
+                Ambil {plan.name} <ArrowRight className="h-4 w-4" />
               </a>
               
               <ul className="mt-10 flex-1 space-y-4">
