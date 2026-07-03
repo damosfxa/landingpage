@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Montserrat } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { Toaster } from "sonner";
 
-const cormorant = Cormorant_Garamond({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-cormorant",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const montserrat = Montserrat({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-montserrat",
+  variable: "--font-plus-jakarta-sans",
   display: "swap",
 });
 
@@ -77,7 +75,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`h-full antialiased ${cormorant.variable} ${montserrat.variable}`}>
+    <html lang="id" className={`h-full antialiased ${inter.variable} ${plusJakartaSans.variable}`}>
       <body className="min-h-full flex flex-col font-sans">
         <SmoothScrollProvider>
           {children}
