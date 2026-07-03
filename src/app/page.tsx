@@ -2,8 +2,9 @@ import { SplashScreen } from "@/components/splash-screen"
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/sections/hero"
 import { TrustBanner } from "@/components/trust-banner"
-import { AboutSection } from "@/components/sections/about"
+import { ProblemSection } from "@/components/sections/problem"
 import { FeaturesSection } from "@/components/sections/features"
+import { TestimonialSection } from "@/components/sections/testimonial"
 import { GuaranteeSection } from "@/components/sections/guarantee"
 import { PricingSection } from "@/components/sections/pricing"
 import { FAQSection } from "@/components/sections/faq"
@@ -18,8 +19,12 @@ export default function Home() {
       <main className="flex min-h-screen flex-col">
         <HeroSection />
         <TrustBanner />
-        <AboutSection />
+        
+        {/* The "BAGUS" Framework: Headline -> Problem -> Solusi -> Testimoni -> Penawaran */}
+        <ProblemSection />
         <FeaturesSection />
+        <TestimonialSection />
+        
         <GuaranteeSection />
         <PricingSection />
         <FAQSection />
