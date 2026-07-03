@@ -39,8 +39,8 @@ export function SplashScreen() {
       {loading && (
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-foreground"
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          exit={{ y: "-100%" }}
+          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
         >
           <motion.div
             variants={containerVariants}
