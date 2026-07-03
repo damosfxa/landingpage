@@ -6,8 +6,8 @@ export function SplashScreen() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Durasi ditambah jadi 2 detik agar animasi huruf per huruf selesai sebelum layar fade out
-    const timer = setTimeout(() => setLoading(false), 2000)
+    // Durasi dipercepat jadi 1.2 detik (1200ms) agar LCP dan Speed Index PageSpeed hijau 100%
+    const timer = setTimeout(() => setLoading(false), 1200)
     return () => clearTimeout(timer)
   }, [])
 
@@ -16,8 +16,8 @@ export function SplashScreen() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.12, // Jeda kemunculan tiap huruf
-        delayChildren: 0.2,
+        staggerChildren: 0.05, // Jeda kemunculan tiap huruf dipercepat
+        delayChildren: 0.1,
       },
     },
   }
@@ -40,7 +40,7 @@ export function SplashScreen() {
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-foreground"
           exit={{ y: "-100%" }}
-          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
         >
           <motion.div
             variants={containerVariants}
