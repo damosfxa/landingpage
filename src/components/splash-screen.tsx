@@ -1,5 +1,5 @@
 "use client"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, Variants } from "framer-motion"
 import { useState, useEffect } from "react"
 
 export function SplashScreen() {
@@ -11,7 +11,7 @@ export function SplashScreen() {
     return () => clearTimeout(timer)
   }, [])
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -22,7 +22,7 @@ export function SplashScreen() {
     },
   }
 
-  const letterVariants = {
+  const letterVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: { 
       opacity: 1, 
