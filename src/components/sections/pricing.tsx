@@ -135,7 +135,7 @@ export function PricingSection() {
               </div>
               
               <a
-                href="https://wa.me/628211396629?text=Halo%20saya%20tertarik%20dengan%20paket%20website%20ini"
+                href="https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20tertarik%20konsultasi%20untuk%20pembuatan%20website%20travel%20premium.%20Bisa%20dibantu%3F"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-8 flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold transition-all ${

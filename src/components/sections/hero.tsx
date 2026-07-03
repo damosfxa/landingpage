@@ -60,7 +60,7 @@ export function HeroSection() {
 
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
           <a
-            href="https://wa.me/628211396629?text=Halo%2C%20saya%20melihat%20iklan%20di%20FB%2FIG.%20Saya%20ingin%20konsultasi%20pembuatan%20website%20travel%20premium."
+            href="https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20tertarik%20konsultasi%20untuk%20pembuatan%20website%20travel%20premium.%20Bisa%20dibantu%3F"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-md bg-foreground px-8 py-4 text-base font-semibold text-background transition-colors hover:bg-foreground/90"

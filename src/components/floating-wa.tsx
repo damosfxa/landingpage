@@ -2,7 +2,7 @@
 import { MessageCircle } from "lucide-react"
 
 export function FloatingWA() {
-  const waLink = "https://wa.me/628211396629?text=Halo%2C%20saya%20melihat%20iklan%20di%20FB%2FIG.%20Saya%20ingin%20konsultasi%20pembuatan%20website%20travel%20premium."
+  const waLink = "https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20tertarik%20konsultasi%20untuk%20pembuatan%20website%20travel%20premium.%20Bisa%20dibantu%3F"
   
   return (
     <a
