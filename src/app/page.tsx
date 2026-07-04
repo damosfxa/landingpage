@@ -8,6 +8,7 @@ import { GuaranteeSection } from "@/components/sections/guarantee"
 import { PricingSection } from "@/components/sections/pricing"
 import { FAQSection } from "@/components/sections/faq"
 import { FloatingWA } from "@/components/floating-wa"
+import { TechAdvantageSection } from "@/components/sections/tech-advantage"
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
           <AboutSection />
         </section>
         <FeaturesSection />
+        <TechAdvantageSection />
         <GuaranteeSection />
         <PricingSection />
         <FAQSection />
