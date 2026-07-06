@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import { TrendingUp, BadgeCheck, MessageSquareText, Handshake } from "lucide-react"
+import { Zap, ShieldCheck, Rocket, Headset } from "lucide-react"
 
 export function FeaturesSection() {
   const containerVariants = {
@@ -43,29 +43,29 @@ export function FeaturesSection() {
         >
           {[
             {
-              icon: TrendingUp,
-              title: "Trafik & Visibilitas Maksimal",
-              desc: "Website dioptimalkan penuh untuk pencarian Google. Pastikan jamaah menemukan biro Anda, bukan kompetitor.",
+              icon: Zap,
+              title: "Skor SEO & Performa 100/100",
+              desc: "Website dioptimalkan penuh untuk Google. Kecepatan muat kilat memastikan calon jamaah tidak kabur ke kompetitor.",
               color: "text-blue-600",
               bg: "bg-blue-100",
             },
             {
-              icon: BadgeCheck,
+              icon: ShieldCheck,
               title: "Legalitas & Integrasi Siskopatuh",
               desc: "Tampilkan izin resmi Kemenag, sertifikat, dan integrasi Siskopatuh untuk membangun tingkat kepercayaan (Trust) jamaah hingga 100%.",
               color: "text-emerald-600",
               bg: "bg-emerald-100",
             },
             {
-              icon: MessageSquareText,
+              icon: Rocket,
               title: "Mesin Sales 24/7 (WA & CRM)",
               desc: "Setiap pengunjung langsung diarahkan ke WhatsApp Admin Anda. Website ini bukan brosur, tapi mesin closing otomatis.",
               color: "text-rose-600",
               bg: "bg-rose-100",
             },
             {
-              icon: Handshake,
-              title: "Kemitraan & Dukungan Penuh",
+              icon: Headset,
+              title: "Dukungan Teknis Penuh",
               desc: "Fokuslah melayani calon jamaah. Urusan pemeliharaan server, keamanan, dan update sistem biarkan Voxy yang menangani.",
               color: "text-purple-600",
               bg: "bg-purple-100",

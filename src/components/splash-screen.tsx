@@ -6,8 +6,8 @@ export function SplashScreen() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Durasi dipercepat jadi 1.2 detik (1200ms) agar LCP dan Speed Index PageSpeed hijau 100%
-    const timer = setTimeout(() => setLoading(false), 1200)
+    // Durasi dipercepat jadi 800ms agar LCP dan Speed Index PageSpeed hijau 100%
+    const timer = setTimeout(() => setLoading(false), 800)
     return () => clearTimeout(timer)
   }, [])
 
@@ -48,18 +48,12 @@ export function SplashScreen() {
             animate="show"
             className="flex text-4xl md:text-6xl font-bold font-serif tracking-[0.2em] text-background"
           >
-            {voxy.map((char, index) => (
-              <motion.span key={`v-${index}`} variants={letterVariants}>
-                {char}
-              </motion.span>
-            ))}
-            <div className="text-primary flex">
-              {dev.map((char, index) => (
-                <motion.span key={`d-${index}`} variants={letterVariants}>
-                  {char}
-                </motion.span>
-              ))}
-            </div>
+            <motion.div variants={letterVariants} className="flex">
+              {voxy.join("")}
+            </motion.div>
+            <motion.div variants={letterVariants} className="text-primary flex">
+              {dev.join("")}
+            </motion.div>
           </motion.div>
         </motion.div>
       )}

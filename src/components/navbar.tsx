@@ -45,7 +45,7 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          <a href="#" onClick={(e) => handleNavClick(e, "#top")} className="font-serif text-2xl font-bold tracking-tight text-foreground">
+          <a href="#" aria-label="Beranda" onClick={(e) => handleNavClick(e, "#top")} className="font-serif text-2xl font-bold tracking-tight text-foreground">
             Voxy<span className="text-primary">.dev</span>
           </a>
           

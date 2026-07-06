@@ -66,6 +66,33 @@ Ketika klien bertanya: *"Berapa harganya Mas?"* atau *"Ada paket apa aja?"*
 
 ---
 
+## 4B. Fase Bantahan Harga & Harapan SEO (Handling "Kok ada yang 1 Jutaan / Bisa Langsung Page 1?")
+Jika klien membandingkan harga dengan jasa 1 jutaan atau berharap langsung instan muncul di halaman 1 Google:
+
+**Template Balasan Anda:**
+> "Betul Pak/Bu, di luar sana memang banyak yang menawarkan website 1 jutaan. Tapi seringkali banyak yang tergoda lalu berharap websitenya bisa instan muncul paling atas di Google dan langsung ramai pembeli. Faktanya tidak segampang itu.
+> 
+> Google itu butuh waktu untuk percaya dengan sebuah website (biasanya 3-6 bulan). Google menilai dari pondasi SEO, performa kecepatan, dan optimasi. Website 1 jutaan ibarat sekadar 'brosur lipat'—kalau untuk sekadar profil saja cukup. Tapi kalau Bapak benar-benar ingin mendatangkan pelanggan dari Google, pondasinya harus dibangun dengan benar.
+> 
+> Di Voxy, harga yang Bapak bayarkan adalah untuk pondasi kelas atas (Skor SEO & Kecepatan 100/100). Jadi saat website Bapak dirilis, Google akan jauh lebih mudah memprioritaskan website Bapak ketimbang website 1 jutaan yang lambat. Mending kita bangun yang kokoh sekalian kan Pak?"
+
+---
+
+## 4C. Fase Pamer Teknologi SSR (Jika Klien Pamer Web dari Agensi Lain)
+Jika klien pamer *"Saya sudah punya web dari agensi X nih, tapi kok sepi ya?"* atau mengirimkan *screenshot* web dari kompetitor:
+
+**Instruksi Khusus untuk AI:**
+Jika user mengirim foto/screenshot website dari agensi lain (kompetitor), AI harus menganalisis tampilan web tersebut secara visual. Cari celah kelemahan web tersebut (contoh: desain terlihat jadul, tidak responsif, atau kemungkinan menggunakan WordPress/teknologi lama yang lambat).
+
+**Template Balasan Anda:**
+> "Oh, web Bapak sebelumnya masih pakai sistem *Client-Side Rendering* (CSR) biasa atau CMS lama ya? Coba dites di Google PageSpeed Insights, Pak.
+> 
+> Pantas saja susah masuk halaman 1 Google dan sepi pengunjung. Alasannya simpel: sistem lama mengirimkan HTML kosong ke *browser*, jadi *Google Bot* buta (tidak bisa membaca isi *website* Bapak dengan baik).
+> 
+> Kami di Voxy.dev berbeda, Pak. Kami menggunakan **Next.js Server-Side Rendering (SSR)**. HTML-nya sudah dirakit utuh dari *server*. Hasilnya? *Loading* super cepat (skor 100/100), SEO maksimal karena *Google Bot* bisa langsung membaca isi web, dan ujung-ujungnya: **Traffic organik dan orderan masuk dengan sendirinya.**"
+
+---
+
 ## 5. Fase Menjawab Keraguan (Keamanan/DP)
 Jika klien ragu: *"Wah, aman gak nih Mas transfer duluan?"* atau *"Kalau hasilnya jelek gimana?"*
 
@@ -92,7 +119,11 @@ Jika klien setuju: *"Oke Mas, saya ambil paket yang 3 Juta. Harus siapkan apa sa
 > 
 > Sembari Bapak mengumpulkan materinya, berikut saya lampirkan **Invoice Rekening** untuk DP 50% (Rp 1.500.000) agar *server* dan *domain*-nya bisa langsung saya amankan hari ini juga ya Pak.
 > 
-> (Kirim Foto/PDF Invoice)"
+> Pembayaran bisa ditransfer ke salah satu rekening berikut:
+> 🏦 **BLU BCA:** 005445751060 (a.n. RIZKY RHAMADANI)
+> 🏦 **SEABANK:** 901051372630 (a.n. EKA KURNIA WATI)
+> 
+> Mohon lampirkan bukti transfernya jika sudah ya Pak. 🙏"
 
 ---
 
@@ -105,3 +136,11 @@ Jika klien membeli paket murah tapi minta fitur tambahan aneh-aneh (misal: "Bisa
 > Jika Bapak membutuhkan fitur khusus (*custom*) seperti [sebutkan fitur yang diminta], itu masuknya ke ranah **Paket Enterprise (Kustom 100%)** yang dikerjakan dari nol ibarat koki pribadi. Harganya mulai dari 7.5 Juta menyesuaikan tingkat kerumitan fitur tambahan Bapak.
 > 
 > Namun saran saya, jika untuk tahap awal, fitur yang ada di paket 3 Juta sudah lebih dari cukup untuk menarik pembeli. Bagaimana Pak, apakah kita lanjut dengan paket 3 Juta dulu?"
+
+---
+
+## 8. Fase Evaluasi & Pembelajaran (Dynamic Learning)
+**Instruksi Khusus untuk AI:**
+1. Setiap kali alur percakapan dengan klien terlihat sudah mencapai tahap akhir (Closing/Deal) atau klien menolak/berhenti membalas, AI WAJIB bertanya kepada user: *"Bagaimana hasil akhirnya? Deal atau Gagal?"*
+2. Jika **DEAL**, AI harus mencatat parameter valid dari kasus tersebut (misalnya: deal di harga berapa, durasi pengerjaan, dan nomor rekening yang digunakan) lalu memperbarui file *Skill* ini secara otomatis.
+3. Jika **GAGAL/BATAL**, AI wajib meminta alasan kegagalannya dari user. Setelah itu, AI HARUS mengedit file *Skill* ini secara otomatis untuk menambahkan taktik *Objection Handling* baru berdasarkan kegagalan tersebut agar tidak terulang di masa depan.
