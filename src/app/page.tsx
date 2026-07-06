@@ -32,7 +32,7 @@ export default function Home() {
             <h2 className="font-serif text-3xl font-bold md:text-5xl">Siap Meningkatkan Standar Brand Travel Anda?</h2>
             <p className="mt-6 text-lg text-muted">Diskusikan visi bisnis Anda langsung dengan saya. Tanpa perantara, tanpa birokrasi agensi yang rumit.</p>
             <a
-              href="https://wa.me/628211396629?text=Halo%2C%20saya%20melihat%20iklan%20di%20FB%2FIG.%20Saya%20ingin%20konsultasi%20pembuatan%20website%20travel%20premium."
+              href="https://wa.me/6285111601910?text=Halo%2C%20saya%20melihat%20iklan%20di%20FB%2FIG.%20Saya%20ingin%20konsultasi%20pembuatan%20website%20travel%20premium."
               target="_blank"
               rel="noopener noreferrer"
               className="mt-10 inline-flex items-center justify-center rounded-xl bg-primary px-8 py-4 text-base font-bold text-primary-foreground transition-all hover:bg-primary/90 hover:scale-[1.02]"
