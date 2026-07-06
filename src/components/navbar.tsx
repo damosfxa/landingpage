@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+
 import { Menu, X } from "lucide-react"
 import { useLenis } from "@studio-freight/react-lenis"
 
@@ -35,10 +35,10 @@ export function Navbar() {
   }
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" as const }}
+    <nav
+      }
+      }
+      }
       className={`fixed top-0 left-0 right-0 z-40 transition-colors duration-300 ${
         isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"
       }`}
@@ -81,9 +81,9 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <motion.div
-        initial={false}
-        animate={{ height: isMobileMenuOpen ? "auto" : 0, opacity: isMobileMenuOpen ? 1 : 0 }}
+      <div
+        
+        }
         className="overflow-hidden bg-background md:hidden border-b border-border"
       >
         <div className="px-6 py-4 space-y-4">
@@ -107,7 +107,7 @@ export function Navbar() {
             Amankan Promo
           </a>
         </div>
-      </motion.div>
-    </motion.nav>
+      </div>
+    </nav>
   )
 }

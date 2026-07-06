@@ -1,5 +1,5 @@
 "use client"
-import { motion } from "framer-motion"
+
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
 
@@ -49,11 +49,11 @@ export function FAQSection() {
 
         <div className="space-y-4">
           {faqs.map((faq, i) => (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+            <div
+              }
+              }
+              }
+              }
               key={i}
               className="border border-border rounded-2xl bg-card overflow-hidden"
             >
@@ -73,7 +73,7 @@ export function FAQSection() {
                   {faq.a}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

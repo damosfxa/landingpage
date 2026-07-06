@@ -17,7 +17,7 @@
   --muted-foreground: #3F3F46; /* Even darker gray (Zinc-700) for strict WCAG AA/AAA contrast ratio */
   --accent: #EFF6FF; /* Very light blue for hover states */
   --accent-foreground: #0055FF;
-  --destructive: #EF4444;
+  --destructive: #B91C1C; /* Dark red for strict WCAG AA/AAA contrast ratio */
   --destructive-foreground: #FAFAFA;
   --border: #E4E4E7;
   --input: #E4E4E7;
