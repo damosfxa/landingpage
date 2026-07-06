@@ -1,6 +1,6 @@
 "use client"
 
-
+import { motion } from "framer-motion"
 import { CheckCircle2, XCircle, Zap, Search, Globe, TrendingUp } from "lucide-react"
 
 export function TechAdvantageSection() {
@@ -11,33 +11,33 @@ export function TechAdvantageSection() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 
-            }
-            }
-            }
-            }
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6"
           >
             Bukan Sekadar Desain Cantik,<br className="hidden md:block" /> Tapi <span className="text-primary italic">Mesin Pencetak Omzet.</span>
-          </h2>
-          <p 
-            }
-            }
-            }
-            }
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="text-lg text-muted-foreground"
           >
             Pengusaha tidak peduli bahasa pemrograman, mereka peduli Traffic dan Order. Inilah alasan teknis mengapa website murahan gagal mendatangkan klien, dan bagaimana Voxy mengatasinya.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Card: Web Biasa */}
-          <div 
-            }
-            }
-            }
-            }
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="rounded-3xl border border-destructive/20 bg-destructive/5 p-8 flex flex-col h-full"
           >
             <div className="flex items-center gap-3 mb-6">
@@ -64,14 +64,14 @@ export function TechAdvantageSection() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Card: Voxy */}
-          <div 
-            }
-            }
-            }
-            }
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="rounded-3xl border border-primary/20 bg-primary/5 p-8 flex flex-col h-full relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-[100px] -z-10" />
@@ -100,7 +100,7 @@ export function TechAdvantageSection() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

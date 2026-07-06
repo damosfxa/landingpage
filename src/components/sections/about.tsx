@@ -1,5 +1,5 @@
 "use client"
-
+import { motion } from "framer-motion"
 import { CheckCircle2 } from "lucide-react"
 
 export function AboutSection() {
@@ -24,26 +24,26 @@ export function AboutSection() {
   return (
     <section className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div
-          
-          
-          
-          }
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-16 lg:items-center"
         >
           {/* Text Content */}
           <div>
-            <p  className="text-sm font-semibold uppercase tracking-widest text-primary">
+            <motion.p variants={itemVariants} className="text-sm font-semibold uppercase tracking-widest text-primary">
               Tentang Kami
-            </p>
-            <h2  className="mt-4 font-serif text-3xl font-bold leading-tight text-foreground md:text-5xl">
+            </motion.p>
+            <motion.h2 variants={itemVariants} className="mt-4 font-serif text-3xl font-bold leading-tight text-foreground md:text-5xl">
               Lebih Dekat dengan <span className="italic text-primary">Voxy.dev</span>
-            </h2>
-            <p  className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            </motion.h2>
+            <motion.p variants={itemVariants} className="mt-6 text-lg leading-relaxed text-muted-foreground">
               Voxy.dev hadir dengan satu misi sederhana: Membantu biro travel dan bisnis wisata religi di Indonesia beralih dari sekadar promosi konvensional ke ekosistem digital yang elegan, terpercaya, dan berkonversi tinggi.
-            </p>
+            </motion.p>
             
-            <ul  className="mt-8 space-y-4">
+            <motion.ul variants={itemVariants} className="mt-8 space-y-4">
               {[
                 "Berpengalaman khusus di niche Travel B2B",
                 "Desain kustom eksklusif, bukan sekadar template pasaran",
@@ -55,11 +55,11 @@ export function AboutSection() {
                   <span>{item}</span>
                 </li>
               ))}
-            </ul>
+            </motion.ul>
           </div>
 
           {/* Image/Visual Card */}
-          <div  className="relative rounded-3xl bg-secondary p-8 md:p-12 border border-border overflow-hidden">
+          <motion.div variants={itemVariants} className="relative rounded-3xl bg-secondary p-8 md:p-12 border border-border overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent z-0" />
             <div className="relative z-10 flex flex-col items-center justify-center text-center space-y-6">
                <h3 className="text-2xl font-serif font-bold text-foreground">Berkomitmen pada Kualitas</h3>
@@ -67,8 +67,8 @@ export function AboutSection() {
                  "Website adalah etalase digital terbesar Anda. Kami memastikannya tidak hanya tampil mewah untuk dilihat, tetapi juga berfungsi sebagai mesin sales 24 jam yang mendatangkan profit nyata."
                </p>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

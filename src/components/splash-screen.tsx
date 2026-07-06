@@ -1,5 +1,5 @@
 "use client"
-
+import { motion, AnimatePresence, Variants } from "framer-motion"
 import { useState, useEffect } from "react"
 
 export function SplashScreen() {
@@ -37,25 +37,25 @@ export function SplashScreen() {
   return (
     <AnimatePresence>
       {loading && (
-        <div
+        <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-foreground"
           exit={{ y: "-100%" }}
-          }
+          transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
         >
-          <div
-            
-            
-            
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
             className="flex text-4xl md:text-6xl font-bold font-serif tracking-[0.2em] text-background"
           >
-            <div  className="flex">
+            <motion.div variants={letterVariants} className="flex">
               {voxy.join("")}
-            </div>
-            <div  className="text-primary flex">
+            </motion.div>
+            <motion.div variants={letterVariants} className="text-primary flex">
               {dev.join("")}
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       )}
     </AnimatePresence>
   )

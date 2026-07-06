@@ -1,5 +1,5 @@
 "use client"
-
+import { motion } from "framer-motion"
 import { ShieldCheck, RefreshCw, HeartHandshake } from "lucide-react"
 
 export function GuaranteeSection() {
@@ -11,10 +11,10 @@ export function GuaranteeSection() {
   return (
     <section className="bg-background py-24 lg:py-32 overflow-hidden border-t border-b border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div 
-          
-          
-          }
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           className="rounded-3xl bg-primary text-primary-foreground p-8 md:p-16 text-center shadow-2xl relative overflow-hidden"
         >
           {/* Background decoration */}
@@ -43,7 +43,7 @@ export function GuaranteeSection() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

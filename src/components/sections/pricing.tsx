@@ -1,5 +1,5 @@
 "use client"
-
+import { motion } from "framer-motion"
 import { Check, Star, ArrowRight } from "lucide-react"
 
 export function PricingSection() {
@@ -91,10 +91,10 @@ export function PricingSection() {
             Tidak ada biaya tersembunyi. Semua paket dirancang secara personal oleh saya untuk memberikan standar kualitas terbaik bagi brand Anda.
           </p>
           
-          <div 
-            }
-            }
-            }
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             className="mt-8 inline-flex items-center gap-2 bg-destructive/10 text-destructive border border-destructive/20 rounded-full px-4 py-1.5 text-sm font-medium"
           >
             <span className="relative flex h-2.5 w-2.5">
@@ -102,20 +102,20 @@ export function PricingSection() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-destructive"></span>
             </span>
             Promo Harga Spesial Berakhir Bulan Ini
-          </div>
+          </motion.div>
         </div>
 
-        <div
-          
-          
-          
-          }
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3"
         >
           {plans.map((plan, i) => (
-            <div 
+            <motion.div 
               key={i} 
-               
+              variants={itemVariants} 
               className={`relative flex flex-col rounded-3xl border ${plan.popular ? 'border-2 border-primary bg-card shadow-xl shadow-primary/10' : 'border-border bg-card shadow-sm'} p-8`}
             >
               {plan.popular && (
@@ -162,9 +162,9 @@ export function PricingSection() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
