@@ -94,9 +94,9 @@ export function HeroSection() {
             <div className="flex items-center justify-center h-14 w-14 mb-4 rounded-xl bg-transparent transition-transform group-hover:scale-110">
               <Image src={feat.iconSrc} alt={feat.title} width={56} height={56} className="h-full w-full object-contain" />
             </div>
-            <h3 className="font-serif text-base font-semibold text-foreground text-center">
+            <h2 className="font-serif text-base font-semibold text-foreground text-center">
               {feat.title}
-            </h3>
+            </h2>
           </div>
         ))}
       </motion.div>

@@ -14,7 +14,7 @@
   --secondary: #F4F4F5; /* Crisp light gray for alternating sections */
   --secondary-foreground: #09090B;
   --muted: #F4F4F5;
-  --muted-foreground: #52525B; /* Darker gray for WCAG AA contrast ratio */
+  --muted-foreground: #3F3F46; /* Even darker gray (Zinc-700) for strict WCAG AA/AAA contrast ratio */
   --accent: #EFF6FF; /* Very light blue for hover states */
   --accent-foreground: #0055FF;
   --destructive: #EF4444;

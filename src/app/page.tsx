@@ -1,4 +1,3 @@
-import { SplashScreen } from "@/components/splash-screen"
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/sections/hero"
 import { TrustBanner } from "@/components/trust-banner"
@@ -13,7 +12,6 @@ import { TechAdvantageSection } from "@/components/sections/tech-advantage"
 export default function Home() {
   return (
     <>
-      <SplashScreen />
       <Navbar />
       <FloatingWA />
       <main className="flex min-h-screen flex-col">
