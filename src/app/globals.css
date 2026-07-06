@@ -9,7 +9,7 @@
   --card-foreground: #09090B;
   --popover: #FFFFFF;
   --popover-foreground: #09090B;
-  --primary: #0055FF; /* Vibrant, modern tech blue (High Conversion) */
+  --primary: #0044CC; /* Darker modern tech blue for strict WCAG AA/AAA contrast ratio */
   --primary-foreground: #FFFFFF;
   --secondary: #F4F4F5; /* Crisp light gray for alternating sections */
   --secondary-foreground: #09090B;

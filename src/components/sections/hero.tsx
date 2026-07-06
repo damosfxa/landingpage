@@ -1,5 +1,5 @@
 "use client"
-import { motion } from "framer-motion"
+
 import { ArrowRight, MessageCircle, MapPin } from "lucide-react"
 import Image from "next/image"
 
@@ -30,35 +30,30 @@ export function HeroSection() {
       <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-primary/20 blur-[120px] rounded-full z-0" />
       <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-primary/10 blur-[160px] rounded-full z-0" />
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 text-center max-w-3xl space-y-8"
+      <div
+        className="relative z-10 text-center max-w-3xl space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000"
       >
-        <motion.div variants={itemVariants}>
+        <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-5 py-2 text-sm font-medium text-primary">
             <MapPin className="h-4 w-4" />
             Spesialis Bisnis Travel & Tour
           </span>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          variants={itemVariants}
+        <h1
           className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-foreground"
         >
           Kesan Pertama yang Membuat Tamu Anda <br />
           <span className="text-primary italic">Yakin Sejak Detik Pertama.</span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          variants={itemVariants}
+        <p
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
         >
           Website bukan sekadar brosur digital, melainkan <strong>Mesin Sales 24 Jam</strong> untuk Biro Umroh Anda. Berhenti membuang uang untuk Google Ads hanya karena website Anda tidak muncul secara organik. Kami membangun website travel dengan <strong>Skor SEO 100/100</strong>, elegan, dan siap mengubah pengunjung menjadi jamaah.
-        </motion.p>
+        </p>
 
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
           <a
             href="https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20tertarik%20konsultasi%20untuk%20pembuatan%20website%20travel%20premium.%20Bisa%20dibantu%3F"
             target="_blank"
@@ -75,15 +70,11 @@ export function HeroSection() {
             Lihat Pilihan Paket
             <ArrowRight className="h-5 w-5" />
           </a>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
-      {/* Feature Highlights underneath */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.8, ease: "easeOut" as const }}
-        className="relative z-10 grid grid-cols-1 md:grid-cols-3 mt-20 w-full max-w-4xl gap-6"
+      <div
+        className="relative z-10 grid grid-cols-1 md:grid-cols-3 mt-20 w-full max-w-4xl gap-6 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500 fill-mode-both"
       >
         {[
           { iconSrc: "/icons/globe.svg", title: "Desain Mewah & Responsif" },
@@ -99,7 +90,7 @@ export function HeroSection() {
             </h2>
           </div>
         ))}
-      </motion.div>
+      </div>
     </section>
   )
 }
