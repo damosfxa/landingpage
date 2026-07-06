@@ -26,7 +26,7 @@ export function GuaranteeSection() {
             <h2 className="font-serif text-3xl md:text-5xl font-bold mb-6">
               Garansi Kepuasan 100%
             </h2>
-            <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 leading-relaxed">
+            <p className="text-lg md:text-xl text-primary-foreground/90 mb-10 leading-relaxed">
               Sebagai spesialis yang berdedikasi secara personal untuk Anda, saya mempertaruhkan reputasi saya di setiap baris kode. Jika Anda tidak puas dengan hasil desainnya, saya akan melakukan revisi sampai Anda benar-benar jatuh cinta, atau uang Anda kembali.
             </p>
             
@@ -34,12 +34,12 @@ export function GuaranteeSection() {
               <div className="bg-primary-foreground/10 rounded-2xl p-6 backdrop-blur-sm border border-primary-foreground/20">
                 <RefreshCw className="w-8 h-8 mb-4 text-primary-foreground" />
                 <h3 className="font-bold text-xl mb-2">Revisi Tanpa Batas</h3>
-                <p className="text-primary-foreground/70 text-sm">Sampai desain benar-benar mencerminkan standar kemewahan brand travel Anda.</p>
+                <p className="text-primary-foreground/90 text-sm">Sampai desain benar-benar mencerminkan standar kemewahan brand travel Anda.</p>
               </div>
               <div className="bg-primary-foreground/10 rounded-2xl p-6 backdrop-blur-sm border border-primary-foreground/20">
                 <HeartHandshake className="w-8 h-8 mb-4 text-primary-foreground" />
                 <h3 className="font-bold text-xl mb-2">Bebas Risiko</h3>
-                <p className="text-primary-foreground/70 text-sm">Tidak ada biaya tersembunyi. Dedikasi penuh dari saya, langsung tanpa perantara.</p>
+                <p className="text-primary-foreground/90 text-sm">Tidak ada biaya tersembunyi. Dedikasi penuh dari saya, langsung tanpa perantara.</p>
               </div>
             </div>
           </div>
