@@ -54,6 +54,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: "SZeNGmYwWO5A6K9vKlWSAXwKT3rLXgg1VXj8tGWdLEY",
+  },
 };
 
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
