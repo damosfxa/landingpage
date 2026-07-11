@@ -73,9 +73,25 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-foreground border-t border-white/10 py-12 text-center text-muted">
-           <p className="text-sm">© {new Date().getFullYear()} Voxy.dev | Premium Web Solutions. All rights reserved.</p>
-           <p className="text-sm mt-2">Dibuat dengan dedikasi penuh di Indonesia</p>
+        <footer className="bg-foreground border-t border-white/10 py-12 px-6 text-muted">
+           <div className="max-w-5xl mx-auto mb-10">
+             <h4 className="font-serif font-semibold text-white mb-4 text-center">Area Layanan Web Travel Unggulan Kami</h4>
+             <div className="flex flex-wrap justify-center gap-3">
+               {["Jakarta", "Surabaya", "Bandung", "Medan", "Makassar", "Semarang", "Balikpapan", "Palembang", "Denpasar", "Yogyakarta"].map((kota) => (
+                 <a 
+                   key={kota} 
+                   href={`/jasa-pembuatan-website-travel-umroh-di-${kota.toLowerCase()}`}
+                   className="text-xs hover:text-primary transition-colors bg-white/5 px-3 py-1.5 rounded-full"
+                 >
+                   {kota}
+                 </a>
+               ))}
+             </div>
+           </div>
+           <div className="text-center">
+             <p className="text-sm">© {new Date().getFullYear()} Voxy.dev | Premium Web Solutions. All rights reserved.</p>
+             <p className="text-sm mt-2">Dibuat dengan dedikasi penuh di Indonesia</p>
+           </div>
         </footer>
       </main>
     </>
