@@ -1,79 +1,59 @@
 ---
 name: voxy-travel-features
-description: Skill berisi panduan teknis (coding recipes) untuk membangun fitur-fitur paket website travel Voxy (WhatsApp, Google Maps, Admin Panel Supabase, Animasi, Smooth Scroll, Midtrans). Gunakan saat mendevelop project klien.
+description: Skill berisi panduan teknis (coding recipes) & PRD untuk membangun paket website travel Voxy (WhatsApp, Google Maps, Admin Panel Supabase, Midtrans). 
 ---
 
 # Voxy Travel Features Implementation Guide
 
-Skill ini adalah "Buku Resep" rahasia untuk Voxy.dev. Saat Anda (Rizky) mendapatkan klien pembuatan website travel, gunakan panduan ini untuk membangun fitur-fitur yang dijanjikan di paket Essential, Professional, maupun Enterprise menggunakan stack **Next.js + Tailwind + Framer Motion + Supabase**.
+Panduan ini mengatur pembuatan website Biro Travel/Umroh menggunakan standar Voxy (Next.js + Tailwind + Supabase). Panduan ini telah diperbarui untuk mengakomodasi integrasi fitur tingkat lanjut (seperti Midtrans) secara spesifik.
+
+## 0. Protokol AI Handoff (Workflow)
+Penting! Kenali siapa dirimu saat ini:
+- Jika kamu **Claude Opus 4.6**, fokus pada Pembuatan Skema Database Supabase (`travel_packages`, `bookings`, RLS) dan *Setup Midtrans Route API* (Bagian 3). Jika sudah selesai, suruh user beralih ke Gemini 3.1.
+- Jika kamu **Gemini 3.1**, fokus pada UI/UX, Lenis Smooth Scroll, integrasi Web3Forms, Framer Motion, dan merakit antarmuka popup Midtrans (Bagian 2 & PRD). Jika UI/Desain selesai, suruh user memanggil skill `voxy-design-reviewer`.
 
 ---
 
-## 📦 ESSENTIAL PLAN FEATURES
+## 1. STANDARD PRD: STRUKTUR HALAMAN WEB TRAVEL
 
-### 1. Tombol WhatsApp Terintegrasi
-Jangan buat tombol manual. Selalu gunakan komponen *Floating WA* di kanan bawah.
-**Resep:**
-Buat komponen `FloatingWA` dengan `fixed bottom-8 right-8 z-50`. Gunakan SVG ikon WhatsApp. 
-Format link WA: `https://wa.me/628XXX?text=Halo%20saya%20tertarik%20dengan%20paket%20travel%20Anda`.
-
-### 2. Formulir Kontak Tanpa Backend (Web3Forms)
-Untuk paket murah, hindari membuat sistem *database* khusus untuk pesan masuk.
-**Resep:**
-Gunakan **Web3Forms** (https://web3forms.com/). Cukup buat form HTML standar `<form action="https://api.web3forms.com/submit" method="POST">`, masukkan Access Key, dan pesan klien akan langsung terkirim ke email bos travel secara gratis tanpa repot membuat *backend*.
-
-### 3. Integrasi Google Maps
-**Resep:**
-Minta *link* Google Maps dari lokasi kantor travel klien. Gunakan fitur "Share -> Embed a map".
-Ambil tag `<iframe>` dan pasang di halaman Kontak dengan class Tailwind: `w-full h-64 md:h-96 rounded-xl border-0`.
+Struktur standar untuk *Landing Page* biro travel (misalnya Al-Hijrah Travel):
+1. **Hero Section:** Judul utama penarik perhatian (misal: "Ibadah Khusyuk, Fasilitas Nyaman"), CTA "Lihat Paket Umroh", *background* premium Ka'bah/Mekkah beresolusi tinggi.
+2. **Why Choose Us:** Poin *trust* (Berizin Kemenag, Pembimbing Tersertifikasi).
+3. **Katalog Paket:** Tampilkan minimal 3 paket menggunakan data dari Supabase (misal: Umroh Reguler, Umroh Plus Turki). Tampilkan harga, durasi, dan CTA "Pesan Sekarang".
+4. **Testimoni:** Carousel *review* jamaah. Sangat krusial untuk *trust*.
+5. **Galeri & FAQ:** Foto jamaah di Tanah Suci dan tanya-jawab operasional.
+6. **Footer & Floating WA:** Akses kontak Web3Forms dan *Floating Icon WhatsApp* di sudut layar (wajib).
+*(Catatan: Terapkan prinsip "Anti-Vibe Code". Gunakan font Serif berkelas untuk judul dan hindari komponen standar murahan).*
 
 ---
 
-## 🚀 PROFESSIONAL PLAN FEATURES
+## 2. Resep Frontend (Untuk Gemini 3.1)
 
-### 1. Desain Premium dengan Animasi (Framer Motion)
-Website harga 3 Juta tidak boleh terlihat kaku.
-**Resep:**
-Selalu bungkus elemen utama dengan `<motion.div>` dari `framer-motion`.
-Gunakan efek *Fade-in Up*:
-`initial={{ opacity: 0, y: 20 }}`
-`whileInView={{ opacity: 1, y: 0 }}`
-`viewport={{ once: true }}`
+### A. WhatsApp & Web3Forms (Essential Plan)
+- **Floating WA:** Buat komponen *fixed* di `bottom-8 right-8 z-50` menggunakan SVG icon.
+- **Web3Forms:** Gunakan *fetch API* ke endpoint Web3Forms untuk form *leads* cepat tanpa backend.
 
-### 2. Navigasi Mulus (Smooth Scroll Lenis)
-Wajib dipasang agar membedakan website Voxy dari website WordPress murahan.
-**Resep:**
-Install `@studio-freight/react-lenis`. Buat `SmoothScrollProvider` yang membungkus `children` di `layout.tsx`.
-
-### 3. Sistem Admin: Kelola Harga & Paket Sendiri
-Ini adalah fitur bintang untuk membenarkan harga 3 Juta.
-**Resep Supabase:**
-1. Buat tabel `travel_packages` di Supabase (kolom: id, title, price, description, image_url, created_at).
-2. Gunakan **Supabase Auth** untuk halaman `/admin/login`.
-3. Buat halaman `/admin/dashboard` yang melakukan operasi CRUD (Create, Read, Update, Delete) ke tabel `travel_packages`.
-4. Di *landing page* utama, *fetch* data dari Supabase ini untuk menampilkan paket-paket promo.
-
-### 4. Optimasi SEO Dasar
-**Resep:**
-Di `layout.tsx` Next.js, pastikan untuk mengisi *Metadata* secara dinamis. Masukkan *Title*, *Description*, dan *OpenGraph* (gambar yang muncul saat link di-share ke WA) sesuai dengan nama *brand* travel klien.
+### B. Lenis & Framer Motion (Professional Plan)
+- **Smooth Scroll:** Wajib menggunakan `@studio-freight/react-lenis`.
+- **Reveal Animasi:** Gunakan `framer-motion` dengan *Fade-in Up* (`opacity: 0, y: 20`) pada setiap section agar website harga 3 Juta tidak terlihat kaku.
 
 ---
 
-## 👑 ENTERPRISE PLAN FEATURES
+## 3. Resep Backend (Untuk Claude Opus 4.6)
 
-### 1. Sistem Booking Online Terintegrasi
-Klien bisa langsung memesan paket umroh dari website.
-**Resep:**
-Buat tabel `bookings` di Supabase (kolom: nama, email, no_wa, package_id, tanggal_keberangkatan, status).
-Buat form di halaman detail paket yang langsung melakukan `supabase.from('bookings').insert()`.
+### A. Supabase Database Schema
+Skema dasar yang **WAJIB** dibuat:
+1. **Tabel `travel_packages`**: `id` (uuid), `title` (text), `price` (numeric), `description` (text), `image_url` (text), `created_at` (timestamptz).
+2. **Tabel `bookings`**: `id` (uuid), `package_id` (uuid, fk), `customer_name` (text), `email` (text), `phone` (text), `status` (text: 'PENDING', 'PAID'), `created_at` (timestamptz).
+- **RLS Policy:** `travel_packages` bebas dibaca (*public SELECT*). Transaksi insert ke `bookings` bisa dilakukan oleh anonim, tapi *update/delete* hanya oleh *Service Role* / Admin. 
 
-### 2. Pembayaran Otomatis (Payment Gateway)
-Tidak perlu transfer manual lewat WA.
-**Resep:**
-Gunakan **Midtrans** (Snap API). 
-Saat data `bookings` berhasil masuk ke Supabase, panggil *Route API* Next.js (`/api/tokenize`) yang berkomunikasi dengan Midtrans untuk menghasilkan *Token Transaksi*. Tampilkan *popup* Midtrans agar jamaah bisa bayar pakai QRIS, Virtual Account, atau Kartu Kredit. Update status `bookings` menjadi 'PAID' via *Webhook* Midtrans.
-
----
-
-**Aturan Emas Saat Mengerjakan Proyek:**
-Jika Rizky meminta Anda (Claude/Antigravity) membuatkan salah satu fitur di atas, **selalu prioritaskan kode yang paling simpel, modular, dan bersih** menggunakan Tailwind CSS dan TypeScript.
+### B. Integrasi Midtrans (Enterprise Plan)
+Panduan spesifik agar sistem *Booking Online* berfungsi nyata:
+1. **Pendaftaran Booking:** Saat user *submit* form di UI, lakukan `supabase.from('bookings').insert()`.
+2. **Route API Tokenize (`/api/tokenize`):**
+   Buat API Route Next.js yang menerima `booking_id`, `price`, dan data pelanggan.
+   Panggil API Midtrans (Snap) dari sisi server (gunakan Server Key Midtrans).
+   Kembalikan `token` transaksi ke Frontend.
+3. **Trigger Popup (Frontend Handoff):**
+   Berikan instruksi ke Gemini bahwa pada bagian Frontend, ia harus me-load script Midtrans (`https://app.sandbox.midtrans.com/snap/snap.js`) dan memanggil `window.snap.pay(token)`.
+4. **Webhook:** Buat endpoint `/api/webhook/midtrans` untuk menerima notifikasi dari server Midtrans dan mengubah status tabel `bookings` di Supabase menjadi `'PAID'`.

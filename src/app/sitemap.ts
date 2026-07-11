@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
  
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Ganti URL ini dengan domain asli Anda saat sudah live (contoh: https://voxy-travel-premium.com)
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://voxy-travel-premium.com'
+  // Base URL resmi Voxy Web Studio
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://byvoxy.com'
   
   return [
     {

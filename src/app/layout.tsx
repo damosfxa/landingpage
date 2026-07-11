@@ -81,6 +81,29 @@ export default function RootLayout({
   return (
     <html lang="id" className="h-full antialiased">
       <body className={`min-h-full flex flex-col font-sans ${inter.variable} ${playfair.variable}`}>
+        {/* Suntikan JSON-LD Schema (KTP Digital Voxy untuk Google & AI) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "Voxy Web Studio",
+              "image": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1200&auto=format&fit=crop",
+              "description": "Jasa Pembuatan Website Travel Premium & Profesional, spesialis B2B Biro Umroh dan Haji.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jakarta",
+                "addressCountry": "ID"
+              },
+              "url": "https://byvoxy.com",
+              "telephone": "+6285111601910",
+              "priceRange": "$$$",
+              "areaServed": "Indonesia",
+              "knowsAbout": ["Website Travel", "SEO Umroh", "Web Development", "B2B Marketing"]
+            })
+          }}
+        />
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>

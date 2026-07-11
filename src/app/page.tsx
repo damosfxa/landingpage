@@ -14,6 +14,36 @@ export default function Home() {
     <>
       <Navbar />
       <FloatingWA />
+      
+      {/* Suntikan JSON-LD Schema (FAQ & Rich Snippet untuk Generative AI) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Berapa lama proses pengerjaan website travel?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Untuk paket Essential memakan waktu 3-5 hari kerja. Sedangkan untuk paket Professional membutuhkan waktu 7-14 hari kerja."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Apakah website buatan Voxy Web Studio aman dari hacker?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sangat aman. Berbeda dengan WordPress yang rentan diretas, Voxy menggunakan Next.js & Supabase dengan keamanan tingkat Enterprise."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      
       <main className="flex min-h-screen flex-col">
         <HeroSection />
         <TrustBanner />
