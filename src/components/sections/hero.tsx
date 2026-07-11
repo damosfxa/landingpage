@@ -31,7 +31,7 @@ export function HeroSection() {
       <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-primary/10 blur-[160px] rounded-full z-0" />
 
       <div
-        className="relative z-10 text-center max-w-3xl space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000"
+        className="relative z-10 text-center max-w-3xl space-y-8"
       >
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-5 py-2 text-sm font-medium text-primary">
@@ -74,7 +74,7 @@ export function HeroSection() {
       </div>
 
       <div
-        className="relative z-10 grid grid-cols-1 md:grid-cols-3 mt-20 w-full max-w-4xl gap-6 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500 fill-mode-both"
+        className="relative z-10 grid grid-cols-1 md:grid-cols-3 mt-20 w-full max-w-4xl gap-6"
       >
         {[
           { iconSrc: "/icons/globe.svg", title: "Desain Mewah & Responsif" },
