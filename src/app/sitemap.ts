@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 import { targetCities, targetNiches } from '@/lib/data/seo-data'
  
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Base URL resmi Voxy Web Studio
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://byvoxy.com'
+  // Hardcode Base URL resmi Voxy Web Studio agar tidak bentrok dengan Env Vercel
+  const baseUrl = 'https://byvoxy.com'
   
   // Halaman Utama
   const staticPaths: MetadataRoute.Sitemap = [
