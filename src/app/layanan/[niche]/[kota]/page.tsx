@@ -18,7 +18,11 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
   const nicheData = targetNiches.find(n => n.slug === resolvedParams.niche) || targetNiches[0]
-  const kotaFormatted = resolvedParams.kota.charAt(0).toUpperCase() + resolvedParams.kota.slice(1).toLowerCase()
+  
+  // Handle undefined safely just in case
+  const kotaStr = resolvedParams.kota || 'Indonesia';
+  const kotaFormatted = kotaStr.charAt(0).toUpperCase() + kotaStr.slice(1).toLowerCase()
+  
   const title = `Jasa Pembuatan Website ${nicheData.name} di ${kotaFormatted} | Voxy Web Studio`
   const description = `Voxy Web Studio: Spesialis Jasa Pembuatan Website ${nicheData.name} Profesional di ${kotaFormatted}. Tingkatkan kredibilitas & omzet bisnis Anda sekarang.`
 
@@ -28,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url: `https://byvoxy.com/jasa-pembuatan-website-${resolvedParams.niche}-di-${resolvedParams.kota.toLowerCase()}`,
+      url: `https://byvoxy.com/layanan/${resolvedParams.niche}/${kotaStr.toLowerCase()}`,
     }
   }
 }
@@ -51,7 +55,9 @@ export function generateStaticParams() {
 export default async function ProgrammaticSEOPage({ params }: Props) {
   const resolvedParams = await params;
   const nicheData = targetNiches.find(n => n.slug === resolvedParams.niche) || targetNiches[0]
-  const kotaFormatted = resolvedParams.kota.charAt(0).toUpperCase() + resolvedParams.kota.slice(1).toLowerCase()
+  
+  const kotaStr = resolvedParams.kota || 'Indonesia';
+  const kotaFormatted = kotaStr.charAt(0).toUpperCase() + kotaStr.slice(1).toLowerCase()
 
   return (
     <>
@@ -80,9 +86,6 @@ export default async function ProgrammaticSEOPage({ params }: Props) {
       />
       
       <main className="flex min-h-screen flex-col">
-        {/* We reuse the generic sections, but ideally HeroSection would accept props. 
-            For now, we let the generic hero render, but the H1 is handled by the metadata and SEO.
-            To make it even better, we could pass the custom title to HeroSection if it supported props. */}
         <HeroSection />
         
         {/* Dynamic SEO Block for Content Injection */}

@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   targetNiches.forEach(niche => {
     targetCities.forEach(kota => {
       dynamicPaths.push({
-        url: `${baseUrl}/jasa-pembuatan-website-${niche.slug}-di-${kota.toLowerCase()}`,
+        url: `${baseUrl}/layanan/${niche.slug}/${kota.toLowerCase()}`,
         lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: 0.8,
