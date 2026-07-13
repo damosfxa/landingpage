@@ -31,15 +31,15 @@ export function GuaranteeSection() {
             </p>
             
             <div className="grid sm:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
-              <div className="bg-primary-foreground/10 rounded-2xl p-6 backdrop-blur-sm border border-primary-foreground/20">
-                <RefreshCw className="w-8 h-8 mb-4 text-primary-foreground" />
-                <h3 className="font-bold text-xl mb-2">Revisi Tanpa Batas</h3>
-                <p className="text-primary-foreground/90 text-sm">Sampai desain benar-benar mencerminkan standar kemewahan brand travel Anda.</p>
+              <div className="flex flex-col items-start gap-2">
+                <RefreshCw className="w-8 h-8 mb-2 text-primary-foreground" />
+                <h3 className="font-bold text-xl">Revisi Tanpa Batas</h3>
+                <p className="text-primary-foreground/90 text-sm leading-relaxed max-w-xs">Sampai desain benar-benar mencerminkan standar kemewahan brand travel Anda.</p>
               </div>
-              <div className="bg-primary-foreground/10 rounded-2xl p-6 backdrop-blur-sm border border-primary-foreground/20">
-                <HeartHandshake className="w-8 h-8 mb-4 text-primary-foreground" />
-                <h3 className="font-bold text-xl mb-2">Bebas Risiko</h3>
-                <p className="text-primary-foreground/90 text-sm">Tidak ada biaya tersembunyi. Dedikasi penuh dari saya, langsung tanpa perantara.</p>
+              <div className="flex flex-col items-start gap-2">
+                <HeartHandshake className="w-8 h-8 mb-2 text-primary-foreground" />
+                <h3 className="font-bold text-xl">Bebas Risiko</h3>
+                <p className="text-primary-foreground/90 text-sm leading-relaxed max-w-xs">Tidak ada biaya tersembunyi. Dedikasi penuh dari saya, langsung tanpa perantara.</p>
               </div>
             </div>
           </div>

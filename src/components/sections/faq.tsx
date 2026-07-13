@@ -69,7 +69,7 @@ export function FAQSection() {
                   openIndex === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <p className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                <p className="px-6 pb-6 text-muted-foreground leading-relaxed max-w-prose">
                   {faq.a}
                 </p>
               </div>

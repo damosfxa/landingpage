@@ -41,16 +41,16 @@ export function HeroSection() {
         </div>
 
         <h1
-          className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-foreground"
+          className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-foreground"
         >
-          Kesan Pertama yang Membuat Tamu Anda <br />
+          Kesan Pertama yang Membuat Tamu Anda <br className="hidden md:block" />
           <span className="text-primary italic">Yakin Sejak Detik Pertama.</span>
         </h1>
 
         <p
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+          className="text-lg text-muted-foreground max-w-prose mx-auto leading-relaxed"
         >
-          Website bukan sekadar brosur digital, melainkan <strong>Mesin Sales 24 Jam</strong> untuk Biro Umroh Anda. Berhenti membuang uang untuk Google Ads hanya karena website Anda tidak muncul secara organik. Kami membangun website travel dengan <strong>Skor SEO 100/100</strong>, elegan, dan siap mengubah pengunjung menjadi jamaah.
+          Website bukan sekadar brosur digital, melainkan <strong>Mesin Sales 24 Jam</strong>. Berhenti bakar uang di Ads karena website Anda tidak muncul secara organik. Kami bangun web travel dengan <strong>Skor SEO 100/100</strong> yang langsung menghasilkan konversi.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">

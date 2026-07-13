@@ -25,9 +25,9 @@ export function TechAdvantageSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg text-muted-foreground"
+            className="text-lg text-muted-foreground max-w-prose mx-auto"
           >
-            Pengusaha tidak peduli bahasa pemrograman, mereka peduli Traffic dan Order. Inilah alasan teknis mengapa website murahan gagal mendatangkan klien, dan bagaimana Voxy mengatasinya.
+            Pengusaha tidak peduli bahasa pemrograman, mereka peduli Traffic dan Order. Inilah alasan teknis mengapa website murah gagal mendatangkan klien.
           </motion.p>
         </div>
 
