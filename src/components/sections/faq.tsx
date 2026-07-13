@@ -41,7 +41,7 @@ export function FAQSection() {
     <section className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">Tanya Jawab</p>
+          <span className="block text-sm font-semibold uppercase tracking-widest text-primary mb-4">Tanya Jawab</span>
           <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-foreground md:text-5xl">
             Pertanyaan yang Sering Diajukan
           </h2>

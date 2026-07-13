@@ -82,7 +82,7 @@ export function PricingSection() {
     <section id="harga" className="bg-secondary py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">Transparansi Harga</p>
+          <span className="block text-sm font-semibold uppercase tracking-widest text-primary mb-4">Transparansi Harga</span>
           <h2 className="mt-4 font-serif text-4xl font-bold leading-tight text-foreground md:text-5xl">
             Pilih Paket yang Sesuai <br className="hidden md:block" />
             <span className="italic text-primary">dengan Skala Bisnis Anda</span>
@@ -119,19 +119,19 @@ export function PricingSection() {
               className={`relative flex flex-col rounded-3xl border ${plan.popular ? 'border-2 border-primary bg-card shadow-xl shadow-primary/10' : 'border-border bg-card shadow-sm'} p-8`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-foreground">
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-foreground">
                   <Star className="h-3 w-3 fill-current" /> Pilihan Eksekutif
-                </div>
+                </span>
               )}
               
-              <h3 className="font-serif text-2xl font-bold text-foreground">{plan.name}</h3>
-              <p className="mt-4 text-sm text-muted-foreground">{plan.desc}</p>
+              <h2 className="font-serif text-2xl font-bold text-foreground">{plan.name}</h2>
+              <span className="mt-4 text-sm text-muted-foreground">{plan.desc}</span>
               
               <div className="mt-8 flex items-baseline gap-2">
                 <span className="text-xl font-semibold text-muted-foreground line-through decoration-destructive/50">Rp {plan.originalPrice}</span>
               </div>
               <div className="mt-1 flex items-baseline gap-x-1">
-                <span className="text-3xl font-bold tracking-tight text-foreground">Rp {plan.price}</span>
+                <h2 className="text-2xl font-bold font-serif text-foreground mb-2">Rp {plan.price}</h2>
               </div>
               
               <a

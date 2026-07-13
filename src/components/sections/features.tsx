@@ -25,7 +25,7 @@ export function FeaturesSection() {
     <section id="kelebihan" className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">Standar Baru Website Travel</p>
+          <span className="block text-sm font-semibold uppercase tracking-widest text-primary mb-4">Standar Baru Website Travel</span>
           <h2 className="mt-4 font-serif text-4xl font-bold leading-tight text-foreground md:text-5xl">
             Lebih dari Sekadar Kartu Nama Digital. <span className="italic text-primary">Ini Etalase Bisnis Anda.</span>
           </h2>

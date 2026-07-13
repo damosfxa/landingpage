@@ -33,9 +33,9 @@ export function AboutSection() {
         >
           {/* Text Content */}
           <div>
-            <motion.p variants={itemVariants} className="text-sm font-semibold uppercase tracking-widest text-primary">
+            <motion.span variants={itemVariants} className="block text-sm font-semibold uppercase tracking-widest text-primary">
               Tentang Kami
-            </motion.p>
+            </motion.span>
             <motion.h2 variants={itemVariants} className="mt-4 font-serif text-3xl font-bold leading-tight text-foreground md:text-5xl">
               Lebih Dekat dengan <span className="italic text-primary">Voxy.dev</span>
             </motion.h2>
