@@ -3,7 +3,7 @@ import { targetCities, targetNiches } from '@/lib/data/seo-data'
  
 export default function sitemap(): MetadataRoute.Sitemap {
   // Hardcode Base URL resmi Voxy Web Studio agar tidak bentrok dengan Env Vercel
-  const baseUrl = 'https://byvoxy.com'
+  const baseUrl = 'https://www.byvoxy.com'
   
   // Halaman Utama
   const staticPaths: MetadataRoute.Sitemap = [
