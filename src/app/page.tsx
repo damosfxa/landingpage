@@ -115,7 +115,7 @@ export default async function Home() {
                {["Jakarta", "Surabaya", "Bandung", "Medan", "Makassar", "Semarang", "Balikpapan", "Palembang", "Denpasar", "Yogyakarta"].map((kota) => (
                  <a 
                    key={kota} 
-                   href={`/layanan/travel-umroh/${kota.toLowerCase()}`}
+                   href={`/layanan/tour-travel/${kota.toLowerCase()}`}
                    className="text-xs hover:text-primary transition-colors bg-white/5 px-3 py-1.5 rounded-full"
                  >
                    {kota}
