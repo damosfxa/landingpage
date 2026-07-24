@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import { ShieldCheck, RefreshCw, HeartHandshake } from "lucide-react"
+import { ShieldCheck, RefreshCw, Award } from "lucide-react"
 
 export function GuaranteeSection() {
   const itemVariants = {
@@ -37,7 +37,7 @@ export function GuaranteeSection() {
                 <p className="text-primary-foreground/90 text-sm leading-relaxed max-w-xs">Sampai desain benar-benar mencerminkan standar kemewahan brand travel Anda.</p>
               </div>
               <div className="flex flex-col items-start gap-2">
-                <HeartHandshake className="w-8 h-8 mb-2 text-primary-foreground" />
+                <Award className="w-8 h-8 mb-2 text-primary-foreground" />
                 <h3 className="font-bold text-xl">Bebas Risiko</h3>
                 <p className="text-primary-foreground/90 text-sm leading-relaxed max-w-xs">Tidak ada biaya tersembunyi. Dedikasi penuh dari saya, langsung tanpa perantara.</p>
               </div>

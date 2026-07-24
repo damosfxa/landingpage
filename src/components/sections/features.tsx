@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import { Zap, ShieldCheck, Rocket, Headset } from "lucide-react"
+import { Gauge, ShieldCheck, LineChart, Headset } from "lucide-react"
 
 export function FeaturesSection() {
   const containerVariants = {
@@ -43,7 +43,7 @@ export function FeaturesSection() {
         >
           {[
             {
-              icon: Zap,
+              icon: Gauge,
               title: "Skor SEO & Performa 100/100",
               desc: "Website dioptimalkan penuh untuk Google. Kecepatan muat kilat memastikan calon jamaah tidak kabur ke kompetitor.",
               color: "text-blue-600",
@@ -57,7 +57,7 @@ export function FeaturesSection() {
               bg: "bg-emerald-100",
             },
             {
-              icon: Rocket,
+              icon: LineChart,
               title: "Mesin Sales 24/7 (WA & CRM)",
               desc: "Setiap pengunjung langsung diarahkan ke WhatsApp Admin Anda. Website ini bukan brosur, tapi mesin closing otomatis.",
               color: "text-rose-600",

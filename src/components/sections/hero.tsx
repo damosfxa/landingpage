@@ -1,7 +1,6 @@
 "use client"
 
-import { ArrowRight, MessageCircle, MapPin } from "lucide-react"
-import Image from "next/image"
+import { ArrowRight, MessageCircle, MapPin, MonitorSmartphone, Settings2, BarChart3 } from "lucide-react"
 
 export function HeroSection() {
   const containerVariants = {
@@ -77,13 +76,13 @@ export function HeroSection() {
         className="relative z-10 grid grid-cols-1 md:grid-cols-3 mt-20 w-full max-w-4xl gap-6"
       >
         {[
-          { iconSrc: "/icons/globe.svg", title: "Desain Mewah & Responsif" },
-          { iconSrc: "/icons/check-circle.svg", title: "Kelola Konten Super Mudah" },
-          { iconSrc: "/icons/sparkles.svg", title: "Skor SEO 100/100 (Gacor)" },
+          { icon: <MonitorSmartphone className="h-8 w-8 text-primary" />, title: "Desain Mewah & Responsif" },
+          { icon: <Settings2 className="h-8 w-8 text-primary" />, title: "Kelola Konten Super Mudah" },
+          { icon: <BarChart3 className="h-8 w-8 text-primary" />, title: "Skor SEO 100/100 (Gacor)" },
         ].map((feat, i) => (
           <div key={i} className="group flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md hover:border-primary/20">
-            <div className="flex items-center justify-center h-14 w-14 mb-4 rounded-xl bg-transparent transition-transform group-hover:scale-110">
-              <Image src={feat.iconSrc} alt={feat.title} width={56} height={56} className="h-full w-full object-contain" />
+            <div className="flex items-center justify-center h-14 w-14 mb-4 rounded-xl bg-primary/10 transition-transform group-hover:scale-110">
+              {feat.icon}
             </div>
             <h2 className="font-serif text-base font-semibold text-foreground text-center">
               {feat.title}

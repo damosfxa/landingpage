@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { CheckCircle2, XCircle, Zap, Search, Globe, TrendingUp } from "lucide-react"
+import { CheckCircle2, XCircle, Gauge, Search, Globe, TrendingUp } from "lucide-react"
 
 export function TechAdvantageSection() {
   return (
@@ -89,7 +89,7 @@ export function TechAdvantageSection() {
 
             <ul className="space-y-4 mt-auto">
               {[
-                { icon: <Zap className="w-5 h-5 text-primary" />, text: "Loading instan super cepat (Skor 100/100)." },
+                { icon: <Gauge className="w-5 h-5 text-primary" />, text: "Loading instan super cepat (Skor 100/100)." },
                 { icon: <Search className="w-5 h-5 text-primary" />, text: "HTML utuh, Google Bot langsung mengenali konten." },
                 { icon: <Globe className="w-5 h-5 text-primary" />, text: "SEO Maksimal untuk menguasai Halaman 1 Google." },
                 { icon: <TrendingUp className="w-5 h-5 text-primary" />, text: "Konversi tinggi dari pengunjung menjadi pembeli." },

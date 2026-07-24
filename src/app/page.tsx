@@ -8,8 +8,18 @@ import { PricingSection } from "@/components/sections/pricing"
 import { FAQSection } from "@/components/sections/faq"
 import { FloatingWA } from "@/components/floating-wa"
 import { TechAdvantageSection } from "@/components/sections/tech-advantage"
+import { LeadForm } from "@/components/lead-form"
+import { Clock, Handshake } from "lucide-react"
+import { PortfolioSection } from "@/components/sections/portfolio"
+import { createClient } from "@/utils/supabase/server"
 
-export default function Home() {
+export default async function Home() {
+  const supabase = await createClient()
+  const { data: projects } = await supabase
+    .from("projects")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(4)
   return (
     <>
       <Navbar />
@@ -52,23 +62,48 @@ export default function Home() {
         </section>
         <FeaturesSection />
         <TechAdvantageSection />
+        
+        {/* Showcase Portofolio */}
+        <PortfolioSection projects={projects || []} />
+        
         <GuaranteeSection />
         <PricingSection />
         <FAQSection />
         
         {/* Contact CTA */}
-        <section id="kontak" className="bg-foreground py-24 text-background">
-          <div className="mx-auto max-w-2xl text-center px-6">
-            <h2 className="font-serif text-3xl font-bold md:text-5xl">Siap Meningkatkan Standar Brand Travel Anda?</h2>
-            <p className="mt-6 text-lg text-muted">Diskusikan visi bisnis Anda langsung dengan saya. Tanpa perantara, tanpa birokrasi agensi yang rumit.</p>
-            <a
-              href="https://wa.me/6285111601910?text=Halo%2C%20saya%20melihat%20iklan%20di%20FB%2FIG.%20Saya%20ingin%20konsultasi%20pembuatan%20website%20travel%20premium."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex items-center justify-center rounded-xl bg-primary px-8 py-4 text-base font-bold text-primary-foreground transition-all hover:bg-primary/90 hover:scale-[1.02]"
-            >
-              Jadwalkan Konsultasi Gratis (Via WhatsApp)
-            </a>
+        <section id="kontak" className="bg-slate-950 py-24 text-slate-200 relative overflow-hidden">
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+          
+          <div className="mx-auto max-w-6xl px-6 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="font-serif text-4xl font-bold md:text-6xl text-white leading-tight">
+                  Siap Meningkatkan Standar Brand Travel Anda?
+                </h2>
+                <p className="mt-6 text-xl text-slate-400">
+                  Isi formulir di samping untuk mendapatkan sesi konsultasi gratis. Kami akan membedah strategi digital biro travel Anda secara eksklusif.
+                </p>
+                
+                <div className="mt-10 space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                      <Clock className="h-6 w-6 text-primary" />
+                    </div>
+                    <p className="text-slate-300">Respon cepat dalam hitungan jam.</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                      <Handshake className="h-6 w-6 text-primary" />
+                    </div>
+                    <p className="text-slate-300">Konsultasi langsung tanpa perantara sales/agensi.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="lg:pl-10">
+                <LeadForm />
+              </div>
+            </div>
           </div>
         </section>
 
