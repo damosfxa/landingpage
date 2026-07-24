@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { Toaster } from "sonner";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
@@ -81,6 +82,24 @@ export default function RootLayout({
   return (
     <html lang="id" className="h-full antialiased">
       <body className={`min-h-full flex flex-col font-sans ${inter.variable} ${playfair.variable}`}>
+        {/* Google Analytics (Hanya aktif jika NEXT_PUBLIC_GA_ID diisi di Vercel) */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){window.dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+              `}
+            </Script>
+          </>
+        )}
+
         {/* Suntikan JSON-LD Schema (KTP Digital Voxy untuk Google & AI) */}
         <script
           type="application/ld+json"

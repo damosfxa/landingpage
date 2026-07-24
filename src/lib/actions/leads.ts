@@ -42,6 +42,29 @@ export async function submitLead(
     };
   }
 
+  // Notifikasi Telegram Otomatis (Jika di-set di Vercel)
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+
+  if (botToken && chatId) {
+    try {
+      const text = `🚨 *KLIEN BARU MASUK!* 🚨\n\n*Nama:* ${parsed.data.name}\n*WA:* ${parsed.data.phone}\n*Perusahaan:* ${parsed.data.agency_name || "-"}\n\n_Segera hubungi melalui Dashboard Voxy Anda!_`;
+      
+      await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text,
+          parse_mode: "Markdown"
+        })
+      });
+    } catch (telegramError) {
+      console.error("Failed to send Telegram notification:", telegramError);
+      // Gagal ngirim tele tidak boleh menggagalkan form utama
+    }
+  }
+
   return {
     status: "success",
     message: "Terima kasih! Tim kami akan menghubungi Anda segera.",
