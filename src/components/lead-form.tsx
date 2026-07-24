@@ -51,7 +51,7 @@ export function LeadForm() {
               type="text" 
               required 
               autoComplete="name" 
-              placeholder="Haji Fulan"
+              placeholder="Budi Santoso"
               className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-700/50 rounded-2xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
             />
           </div>
@@ -82,7 +82,7 @@ export function LeadForm() {
 
         {/* Agency Name Input */}
         <div className="space-y-2">
-          <label htmlFor="lead-agency" className="text-sm font-medium text-slate-300 ml-1">Nama Biro Travel <span className="text-slate-500 font-normal">(Opsional)</span></label>
+          <label htmlFor="lead-agency" className="text-sm font-medium text-slate-300 ml-1">Nama Perusahaan / Bisnis <span className="text-slate-500 font-normal">(Opsional)</span></label>
           <div className="relative">
             <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
             <input 
@@ -90,7 +90,7 @@ export function LeadForm() {
               name="agency_name" 
               type="text" 
               autoComplete="organization"
-              placeholder="Al-Hijrah Tour & Travel"
+              placeholder="PT Visi Nusantara"
               className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-700/50 rounded-2xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
             />
           </div>

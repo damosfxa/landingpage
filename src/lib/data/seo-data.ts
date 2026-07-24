@@ -1,5 +1,8 @@
 export const targetNiches = [
-  { slug: "tour-travel", name: "Biro Tour & Travel", icon: "Pesawat" }
+  { slug: "tour-travel", name: "Biro Tour & Travel", icon: "Pesawat" },
+  { slug: "company-profile", name: "Company Profile Perusahaan", icon: "Gedung" },
+  { slug: "toko-online", name: "Toko Online & E-Commerce", icon: "Keranjang" },
+  { slug: "sekolah-kampus", name: "Sekolah & Kampus", icon: "Pendidikan" },
 ]
 
 export const targetCities = [

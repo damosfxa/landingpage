@@ -78,10 +78,10 @@ export default async function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="font-serif text-4xl font-bold md:text-6xl text-white leading-tight">
-                  Siap Meningkatkan Standar Brand Travel Anda?
+                  Siap Meningkatkan Standar Brand Bisnis Anda?
                 </h2>
                 <p className="mt-6 text-xl text-slate-400">
-                  Isi formulir di samping untuk mendapatkan sesi konsultasi gratis. Kami akan membedah strategi digital biro travel Anda secara eksklusif.
+                  Isi formulir di samping untuk mendapatkan sesi konsultasi gratis. Kami akan membedah strategi digital bisnis Anda secara eksklusif.
                 </p>
                 
                 <div className="mt-10 space-y-6">
