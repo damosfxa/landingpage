@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import type { Database } from "@/lib/types/database";
 
 type Project = Database["public"]["Tables"]["projects"]["Row"];
@@ -41,154 +42,155 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="portofolio" className="border-b border-border bg-background py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="max-w-2xl">
-          <h2 className="font-serif text-3xl font-semibold leading-tight text-foreground md:text-4xl">
+    <section id="portofolio" className="bg-slate-50 py-24 lg:py-32 border-t border-b border-border">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <span className="block text-sm font-semibold uppercase tracking-widest text-primary mb-4">
+            Portofolio
+          </span>
+          <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-foreground md:text-5xl">
             Contoh tampilan yang kami buat
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
             Sebagian di antaranya masih berupa konsep desain buatan sendiri, dan kami tandai
             supaya jelas mana yang sudah berjalan sebagai proyek klien.
           </p>
         </div>
 
-        <ul className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {displayProjects.map((project) => (
-            <li key={project.id}>
-              <button
-                type="button"
-                onClick={() => setSelectedProject(project)}
-                className="group flex h-full w-full flex-col border border-border bg-card text-left transition-colors hover:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <div className="relative h-[220px] w-full overflow-hidden border-b border-border bg-secondary">
-                  {project.image_url ? (
-                    <Image
-                      src={project.image_url}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                    />
-                  ) : (
-                    <span className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground">
-                      Tidak ada gambar
-                    </span>
-                  )}
-                  {isMockup(project) && (
-                    <span className="absolute left-3 top-3 bg-surface-dark px-2 py-1 text-xs font-medium text-surface-dark-foreground rounded-sm">
-                      Konsep desain
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex flex-1 flex-col p-6">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-serif text-xl font-semibold text-foreground group-hover:text-primary">
-                      {project.title}
-                    </h3>
-                    <ArrowUpRight
-                      className="mt-1 h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary"
-                      aria-hidden="true"
-                    />
-                  </div>
-
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {project.description}
-                  </p>
-
-                  {project.metrics && Object.keys(project.metrics).length > 0 && (
-                    <dl className="mt-6 grid grid-cols-2 gap-3 border-t border-border pt-4">
-                      {Object.entries(project.metrics).slice(0, 2).map(([key, value]) => (
-                        <div key={key}>
-                          <dt className="text-xs text-muted-foreground">{key}</dt>
-                          <dd className="font-serif text-lg font-semibold text-foreground">
-                            {String(value)}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
-                  )}
-                </div>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {selectedProject && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={selectedProject.title}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-        >
-          <button
-            type="button"
-            aria-label="Tutup detail proyek"
-            onClick={() => setSelectedProject(null)}
-            className="absolute inset-0 cursor-default bg-surface-dark/80"
-          />
-
-          <div className="relative z-10 flex max-h-[90vh] w-full max-w-3xl flex-col overflow-y-auto border border-surface-dark-border bg-surface-dark">
-            <button
-              type="button"
-              onClick={() => setSelectedProject(null)}
-              className="absolute right-4 top-4 z-20 border border-surface-dark-border bg-surface-dark p-2 text-surface-dark-foreground transition-colors hover:bg-surface-dark-border rounded-md"
-              aria-label="Tutup detail proyek"
+            <div
+              key={project.id}
+              onClick={() => setSelectedProject(project)}
+              className="group relative flex flex-col bg-card rounded-2xl border border-border shadow-sm overflow-hidden hover:shadow-xl transition-all duration-500 cursor-pointer"
             >
-              <X className="h-4 w-4" aria-hidden="true" />
-            </button>
-
-            {selectedProject.image_url && (
-              <div className="relative h-[30vh] w-full shrink-0 border-b border-surface-dark-border sm:h-[38vh]">
-                <Image
-                  src={selectedProject.image_url}
-                  alt={selectedProject.title}
-                  fill
-                  className="object-cover"
-                />
+              <div className="relative h-[200px] sm:h-[240px] w-full overflow-hidden bg-slate-200">
+                {project.image_url ? (
+                  <Image
+                    src={project.image_url}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground font-medium text-sm">
+                    Tidak ada gambar
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                {isMockup(project) && (
+                  <span className="absolute top-4 left-4 z-10 rounded-full bg-slate-950/80 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                    Konsep desain
+                  </span>
+                )}
               </div>
-            )}
 
-            <div className="flex flex-col p-6 sm:p-10">
-              <span className="text-xs font-semibold uppercase tracking-wide text-surface-dark-muted">
-                {isMockup(selectedProject) ? "Konsep desain" : "Proyek klien"}
-              </span>
-              <h3 className="mt-2 font-serif text-3xl font-semibold text-surface-dark-foreground">
-                {selectedProject.title}
-              </h3>
+              <div className="flex flex-col flex-1 p-6">
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="font-serif text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <div className="h-8 w-8 rounded-full border border-border flex items-center justify-center bg-background shrink-0 group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300 transform group-hover:-translate-y-1 group-hover:translate-x-1">
+                    <ArrowUpRight className="h-4 w-4" />
+                  </div>
+                </div>
 
-              <p className="mt-5 text-lg leading-relaxed text-surface-dark-muted">
-                {selectedProject.description}
-              </p>
+                <p className="text-muted-foreground leading-relaxed mb-6 flex-1 text-sm">
+                  {project.description}
+                </p>
 
-              {selectedProject.metrics && Object.keys(selectedProject.metrics).length > 0 && (
-                <dl className="mt-8 grid grid-cols-2 gap-6 border-t border-surface-dark-border pt-6 sm:grid-cols-4">
-                  {Object.entries(selectedProject.metrics).map(([key, value]) => (
-                    <div key={key}>
-                      <dt className="text-sm text-surface-dark-muted">{key}</dt>
-                      <dd className="mt-1 font-serif text-2xl font-semibold text-surface-dark-foreground">
-                        {String(value)}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              )}
-
-              <div className="mt-8 border-t border-surface-dark-border pt-6">
-                <a
-                  href="#kontak"
-                  onClick={() => setSelectedProject(null)}
-                  className="inline-flex items-center justify-center gap-2 rounded-md bg-surface-dark-foreground px-6 py-3 font-semibold text-surface-dark transition-opacity hover:opacity-90"
-                >
-                  Diskusikan desain serupa
-                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </a>
+                {project.metrics && Object.keys(project.metrics).length > 0 && (
+                  <div className="grid grid-cols-2 gap-3 pt-4 border-t border-border mt-auto">
+                    {Object.entries(project.metrics).slice(0, 2).map(([key, value]) => (
+                      <div key={key}>
+                        <div className="text-xs text-muted-foreground mb-1">{key}</div>
+                        <div className="font-serif text-lg font-bold text-foreground">{String(value)}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
-          </div>
+          ))}
         </div>
-      )}
+      </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProject(null)}
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm cursor-pointer"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-slate-950 border border-white/10 rounded-2xl shadow-2xl flex flex-col z-10"
+            >
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 z-20 p-2 bg-black/50 hover:bg-black/80 text-white rounded-full backdrop-blur-md transition-colors"
+                aria-label="Tutup detail proyek"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="relative w-full h-[30vh] sm:h-[40vh] bg-slate-900 overflow-hidden shrink-0">
+                {selectedProject.image_url && (
+                  <Image
+                    src={selectedProject.image_url}
+                    alt={selectedProject.title}
+                    fill
+                    className="object-cover"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
+              </div>
+
+              <div className="p-6 sm:p-10 flex flex-col">
+                <span className="text-primary text-xs font-bold tracking-widest uppercase mb-3">
+                  {isMockup(selectedProject) ? "Konsep desain" : "Proyek klien"}
+                </span>
+                <h3 className="font-serif text-3xl sm:text-4xl font-bold text-white mb-6">
+                  {selectedProject.title}
+                </h3>
+
+                <div className="prose prose-invert max-w-none mb-10">
+                  <p className="text-slate-300 text-lg leading-relaxed">
+                    {selectedProject.description}
+                  </p>
+                </div>
+
+                {selectedProject.metrics && Object.keys(selectedProject.metrics).length > 0 && (
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10 bg-white/5 rounded-xl p-6 border border-white/5">
+                    {Object.entries(selectedProject.metrics).map(([key, value]) => (
+                      <div key={key}>
+                        <div className="text-sm text-slate-400 mb-2">{key}</div>
+                        <div className="font-serif text-2xl font-bold text-white">{String(value)}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className="mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center gap-4">
+                  <a
+                    href="#kontak"
+                    onClick={() => setSelectedProject(null)}
+                    className="w-full sm:w-auto px-8 py-3 bg-white text-slate-950 hover:bg-slate-200 font-bold rounded-xl transition-colors flex items-center justify-center gap-2"
+                  >
+                    Diskusikan Desain Serupa <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

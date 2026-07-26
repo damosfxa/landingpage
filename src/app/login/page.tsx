@@ -15,8 +15,13 @@ export default async function LoginPage({
   const { next } = await searchParams;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-surface-dark p-4">
-      <LoginForm next={next ?? "/admin"} />
+    <main className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
+      
+      <div className="w-full relative z-10">
+        <LoginForm next={next ?? "/admin"} />
+      </div>
     </main>
   );
 }

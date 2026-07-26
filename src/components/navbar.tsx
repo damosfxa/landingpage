@@ -1,45 +1,60 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
-
-const navLinks = [
-  { name: "Tentang", href: "#tentang" },
-  { name: "Yang Anda dapatkan", href: "#kelebihan" },
-  { name: "Harga", href: "#harga" },
-]
-
-const waLink =
-  "https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20ingin%20konsultasi%20untuk%20pembuatan%20website%20travel.%20Boleh%20dibantu%3F"
+import { useLenis } from "@studio-freight/react-lenis"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const lenis = useLenis()
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20)
-    handleScroll()
-    window.addEventListener("scroll", handleScroll, { passive: true })
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const navLinks = [
+    { name: "Tentang", href: "#tentang" },
+    { name: "Yang Anda Dapatkan", href: "#kelebihan" },
+    { name: "Harga", href: "#harga" },
+  ]
+
+  const waLink = "https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20ingin%20konsultasi%20untuk%20pembuatan%20website%20travel.%20Boleh%20dibantu%3F"
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault()
+      lenis?.scrollTo(href)
+      setIsMobileMenuOpen(false)
+    }
+  }
+
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-40 bg-background transition-colors ${
-        isScrolled ? "border-b border-border" : ""
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" as const }}
+      className={`fixed top-0 left-0 right-0 z-40 transition-colors duration-300 ${
+        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          <a href="#" className="font-serif text-2xl font-semibold tracking-tight text-foreground">
+          <a href="#" aria-label="Beranda" onClick={(e) => handleNavClick(e, "#top")} className="font-serif text-2xl font-bold tracking-tight text-foreground">
             Voxy<span className="text-primary">.dev</span>
           </a>
-
+          
           <div className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.name}
@@ -49,49 +64,50 @@ export function Navbar() {
               href={waLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
             >
-              Konsultasi gratis
+              Konsultasi Gratis
             </a>
           </div>
 
           <button
-            type="button"
-            className="text-foreground md:hidden"
+            className="md:hidden text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-expanded={isMobileMenuOpen}
             aria-label={isMobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
           >
             {isMobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
         </div>
-      </nav>
+      </div>
 
-      {isMobileMenuOpen && (
-        <div className="border-b border-border bg-background md:hidden">
-          <div className="space-y-4 px-6 py-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-sm font-medium text-muted-foreground hover:text-foreground"
-              >
-                {link.name}
-              </a>
-            ))}
+      {/* Mobile Menu */}
+      <motion.div
+        initial={false}
+        animate={{ height: isMobileMenuOpen ? "auto" : 0, opacity: isMobileMenuOpen ? 1 : 0 }}
+        className="overflow-hidden bg-background md:hidden border-b border-border"
+      >
+        <div className="px-6 py-4 space-y-4">
+          {navLinks.map((link) => (
             <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block rounded-md bg-primary px-4 py-3 text-center text-sm font-semibold text-primary-foreground"
+              key={link.name}
+              href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="block text-sm font-medium text-muted-foreground hover:text-foreground"
             >
-              Konsultasi gratis
+              {link.name}
             </a>
-          </div>
+          ))}
+          <a
+            href={waLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block w-full rounded-md bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
+          >
+            Konsultasi Gratis
+          </a>
         </div>
-      )}
-    </header>
+      </motion.div>
+    </motion.nav>
   )
 }

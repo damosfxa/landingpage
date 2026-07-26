@@ -57,58 +57,61 @@ export default async function Home() {
         <PricingSection />
         <FAQSection />
 
-        <section id="kontak" className="bg-surface-dark py-24">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <h2 className="font-serif text-3xl font-semibold leading-tight text-surface-dark-foreground md:text-4xl">
-                Ceritakan dulu kebutuhan website Anda
-              </h2>
-              <p className="mt-4 text-lg leading-relaxed text-surface-dark-muted">
-                Isi formulir di samping, dan kami hubungi untuk membahas apa yang sebenarnya
-                Anda butuhkan, termasuk kalau ternyata paket yang lebih kecil sudah cukup.
-              </p>
+        <section id="kontak" className="bg-slate-950 py-24 text-slate-200 relative overflow-hidden">
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
-              <ul className="mt-10 space-y-4">
-                <li className="flex items-start gap-3">
-                  <Clock className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
-                  <span className="text-surface-dark-muted">
-                    Biasanya dibalas di hari yang sama pada jam kerja.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Handshake className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
-                  <span className="text-surface-dark-muted">
-                    Bicara langsung dengan yang mengerjakan, tanpa perantara sales.
-                  </span>
-                </li>
-              </ul>
+          <div className="mx-auto max-w-6xl px-6 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="font-serif text-4xl font-bold md:text-6xl text-white leading-tight">
+                  Ceritakan dulu kebutuhan website Anda
+                </h2>
+                <p className="mt-6 text-xl text-slate-400">
+                  Isi formulir di samping, dan kami hubungi untuk membahas apa yang sebenarnya
+                  Anda butuhkan, termasuk kalau ternyata paket yang lebih kecil sudah cukup.
+                </p>
+
+                <div className="mt-10 space-y-6">
+                  <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                      <Clock className="h-6 w-6 text-primary" />
+                    </div>
+                    <p className="text-slate-300">Biasanya dibalas di hari yang sama pada jam kerja.</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                      <Handshake className="h-6 w-6 text-primary" />
+                    </div>
+                    <p className="text-slate-300">Bicara langsung dengan yang mengerjakan, tanpa perantara sales.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:pl-10">
+                <LeadForm />
+              </div>
             </div>
-
-            <LeadForm />
           </div>
         </section>
 
-        <footer className="border-t border-surface-dark-border bg-surface-dark px-6 py-12">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="font-serif text-lg font-semibold text-surface-dark-foreground">
-              Area layanan
-            </h2>
-            <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
-              {["Jakarta", "Surabaya", "Bandung", "Medan", "Makassar", "Semarang", "Balikpapan", "Palembang", "Denpasar", "Yogyakarta"].map((kota) => (
-                <li key={kota}>
-                  <a
-                    href={`/layanan/tour-travel/${kota.toLowerCase()}`}
-                    className="text-sm text-surface-dark-muted transition-colors hover:text-surface-dark-foreground"
-                  >
-                    {kota}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-10 border-t border-surface-dark-border pt-6 text-sm text-surface-dark-muted">
-              © {new Date().getFullYear()} Voxy.dev. Jasa pembuatan website tour &amp; travel.
-            </p>
-          </div>
+        <footer className="bg-foreground border-t border-white/10 py-12 px-6 text-muted">
+           <div className="max-w-5xl mx-auto mb-10">
+             <h2 className="font-serif font-semibold text-white mb-4 text-center">Area Layanan</h2>
+             <div className="flex flex-wrap justify-center gap-3">
+               {["Jakarta", "Surabaya", "Bandung", "Medan", "Makassar", "Semarang", "Balikpapan", "Palembang", "Denpasar", "Yogyakarta"].map((kota) => (
+                 <a
+                   key={kota}
+                   href={`/layanan/tour-travel/${kota.toLowerCase()}`}
+                   className="text-xs hover:text-primary transition-colors bg-white/5 px-3 py-1.5 rounded-full"
+                 >
+                   {kota}
+                 </a>
+               ))}
+             </div>
+           </div>
+           <div className="text-center">
+             <p className="text-sm">© {new Date().getFullYear()} Voxy.dev. Jasa pembuatan website tour &amp; travel.</p>
+           </div>
         </footer>
       </main>
     </>

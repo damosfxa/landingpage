@@ -53,7 +53,7 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Sudah login tapi membuka /login, langsung ke dashboard.
+  // Sudah login tapi membuka /login → langsung ke dashboard.
   // Dibatasi ke `/login` persis agar tidak terjadi loop redirect.
   if (user && pathname === "/login") {
     const url = request.nextUrl.clone();

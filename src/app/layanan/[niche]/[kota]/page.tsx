@@ -89,7 +89,12 @@ export default async function ProgrammaticSEOPage({ params }: Props) {
 
       <main className="flex min-h-screen flex-col">
         <HeroSection
-          title={`Jasa pembuatan website ${nicheData.name.toLowerCase()} di ${kotaFormatted}`}
+          title={
+            <>
+              Jasa Pembuatan Website {nicheData.name} <br className="hidden md:block" />
+              <span className="text-primary italic">di {kotaFormatted}</span>
+            </>
+          }
           description={
             <>
               Kami mengerjakan website untuk bisnis {nicheData.name.toLowerCase()} di{" "}
@@ -110,12 +115,10 @@ export default async function ProgrammaticSEOPage({ params }: Props) {
         <PricingSection />
         <FAQSection />
 
-        <section id="kontak" className="bg-surface-dark py-24">
-          <div className="mx-auto max-w-2xl px-6">
-            <h2 className="font-serif text-3xl font-semibold leading-tight text-surface-dark-foreground md:text-4xl">
-              Mulai dari obrolan singkat
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-surface-dark-muted">
+        <section id="kontak" className="bg-foreground py-24 text-background">
+          <div className="mx-auto max-w-2xl text-center px-6">
+            <h2 className="font-serif text-3xl font-bold md:text-5xl">Mulai dari obrolan singkat</h2>
+            <p className="mt-6 text-lg text-muted">
               Ceritakan kebutuhan bisnis Anda di {kotaFormatted}. Kami bantu petakan dulu apa
               yang perlu dan apa yang belum perlu dibuat.
             </p>
@@ -123,9 +126,9 @@ export default async function ProgrammaticSEOPage({ params }: Props) {
               href={`https://wa.me/6285111601910?text=${encodeURIComponent(`Halo Voxy, saya dari ${kotaFormatted}. Saya ingin konsultasi pembuatan website ${nicheData.name}.`)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+              className="mt-10 inline-flex items-center justify-center rounded-xl bg-primary px-8 py-4 text-base font-bold text-primary-foreground transition-all hover:bg-primary/90 hover:scale-[1.02]"
             >
-              Konsultasi gratis via WhatsApp
+              Konsultasi Gratis via WhatsApp
             </a>
           </div>
         </section>

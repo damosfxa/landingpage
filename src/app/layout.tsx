@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { Toaster } from "sonner";
 import Script from "next/script";
-import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.byvoxy.com"),
@@ -63,15 +64,15 @@ export const metadata: Metadata = {
   },
 };
 
-const bodyFont = Source_Sans_3({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-inter",
   display: "swap"
 });
 
-const headingFont = Source_Serif_4({
+const jakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-heading",
+  variable: "--font-display",
   display: "swap"
 });
 
@@ -101,7 +102,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className="h-full antialiased">
-      <body className={`min-h-full flex flex-col font-sans ${bodyFont.variable} ${headingFont.variable}`}>
+      <body className={`min-h-full flex flex-col font-sans ${inter.variable} ${jakartaSans.variable}`}>
         {/* Google Analytics aktif hanya bila NEXT_PUBLIC_GA_ID di-set. */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
@@ -124,7 +125,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
-        {children}
+        <SmoothScrollProvider>
+          {children}
+        </SmoothScrollProvider>
         <Toaster richColors position="top-right" />
       </body>
     </html>

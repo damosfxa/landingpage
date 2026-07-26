@@ -49,7 +49,7 @@ export const credentialsSchema = z.object({
   password: z.string().min(6, "Password minimal 6 karakter"),
 });
 
-/** Mengubah `"Next.js, Tailwind, Supabase"` menjadi `["Next.js", "Tailwind", "Supabase"]`. */
+/** `"Next.js, Tailwind, Supabase"` → `["Next.js", "Tailwind", "Supabase"]` */
 export function parseTechStack(raw: string): string[] {
   return raw
     .split(",")
@@ -57,7 +57,7 @@ export function parseTechStack(raw: string): string[] {
     .filter(Boolean);
 }
 
-/** Mem-parse field `metrics` berformat JSON; string kosong menjadi `null`. */
+/** Mem-parse field `metrics` berformat JSON; string kosong → `null`. */
 export function parseMetrics(raw: string): Record<string, string | number> | null {
   const trimmed = raw.trim();
   if (!trimmed) return null;

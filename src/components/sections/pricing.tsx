@@ -1,126 +1,157 @@
-import { Check, ArrowRight } from "lucide-react"
-
-const plans = [
-  {
-    name: "Essential Plan",
-    price: "1.5 Jt",
-    originalPrice: "3 Jt",
-    desc: "Untuk travel agent yang baru mulai membangun kehadiran digital.",
-    features: [
-      "1 Halaman (Landing Page Panjang)",
-      "Desain Responsif (Rapi di HP & Desktop)",
-      "Gratis Domain (.com/.id) 1 Tahun",
-      "Gratis Hosting Standar 1 Tahun",
-      "Tombol WhatsApp Terintegrasi",
-      "Formulir Kontak Sederhana",
-      "Integrasi Google Maps",
-      "Keamanan SSL (HTTPS)",
-      "Revisi Desain Maksimal 2x",
-    ],
-    popular: false,
-  },
-  {
-    name: "Professional Plan",
-    price: "3 Jt",
-    originalPrice: "5.5 Jt",
-    desc: "Untuk biro travel yang perlu memperbarui paket dan harganya sendiri.",
-    features: [
-      "Website Multi-Halaman (S/d 5 Halaman)",
-      "Desain Kustom dengan Animasi Halus",
-      "Sistem Admin: Kelola Harga & Paket Sendiri",
-      "Optimasi SEO Dasar (Ramah Google)",
-      "Gratis Domain & Hosting Premium 1 Tahun",
-      "Email Perusahaan (halo@travelanda.com)",
-      "Keamanan SSL & Backup Data",
-      "Revisi Desain Maksimal 5x",
-    ],
-    popular: true,
-  },
-  {
-    name: "Enterprise Plan",
-    price: "7.5+ Jt",
-    originalPrice: "12 Jt",
-    desc: "Untuk yang butuh pemesanan dan pembayaran berjalan otomatis.",
-    features: [
-      "Jumlah Halaman Menyesuaikan Kebutuhan",
-      "Sistem Booking Online Terintegrasi",
-      "Pembayaran Otomatis (Payment Gateway)",
-      "Desain UI/UX Kustom dari Nol",
-      "Sistem Admin Lanjutan (Manajemen Peserta)",
-      "Optimasi SEO Lanjutan & Google Analytics",
-      "Server Cloud Terkelola",
-      "Prioritas Support & Maintenance",
-      "Revisi Desain Bebas Selama Masa Pengerjaan",
-    ],
-    popular: false,
-  },
-]
+"use client"
+import { motion } from "framer-motion"
+import { Check, Star, ArrowRight } from "lucide-react"
 
 export function PricingSection() {
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" as const },
+    },
+  }
+
+  const plans = [
+    {
+      name: "Essential Plan",
+      price: "1.5 Jt",
+      originalPrice: "3 Jt",
+      desc: "Untuk travel agent yang baru mulai membangun kehadiran digital.",
+      features: [
+        "1 Halaman (Landing Page Panjang)",
+        "Desain Responsif (Rapi di HP & Desktop)",
+        "Gratis Domain (.com/.id) 1 Tahun",
+        "Gratis Hosting Standar 1 Tahun",
+        "Tombol WhatsApp Terintegrasi",
+        "Formulir Kontak Sederhana",
+        "Integrasi Google Maps",
+        "Keamanan SSL (HTTPS)",
+        "Revisi Desain Maksimal 2x"
+      ],
+      popular: false,
+    },
+    {
+      name: "Professional Plan",
+      price: "3 Jt",
+      originalPrice: "5.5 Jt",
+      desc: "Untuk biro travel yang perlu memperbarui paket dan harganya sendiri.",
+      features: [
+        "Website Multi-Halaman (S/d 5 Halaman)",
+        "Desain Kustom dengan Animasi Halus",
+        "Navigasi Mulus (Smooth Scroll)",
+        "Sistem Admin: Kelola Harga & Paket Sendiri",
+        "Optimasi SEO Dasar (Ramah Google)",
+        "Gratis Domain & Hosting Premium 1 Tahun",
+        "Email Perusahaan (halo@travelanda.com)",
+        "Keamanan SSL & Backup Data",
+        "Revisi Desain Maksimal 5x"
+      ],
+      popular: true,
+    },
+    {
+      name: "Enterprise Plan",
+      price: "7.5+ Jt",
+      originalPrice: "12 Jt",
+      desc: "Untuk yang butuh pemesanan dan pembayaran berjalan otomatis.",
+      features: [
+        "Jumlah Halaman Menyesuaikan Kebutuhan",
+        "Sistem Booking Online Terintegrasi",
+        "Pembayaran Otomatis (Payment Gateway)",
+        "Desain UI/UX Kustom dari Nol",
+        "Sistem Admin Lanjutan (Manajemen Peserta)",
+        "Optimasi SEO Lanjutan & Google Analytics",
+        "Server Cloud Terkelola",
+        "Prioritas Support & Maintenance",
+        "Revisi Desain Bebas Selama Masa Pengerjaan"
+      ],
+      popular: false,
+    }
+  ]
+
   return (
-    <section id="harga" className="border-b border-border bg-secondary py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="max-w-2xl">
-          <h2 className="font-serif text-3xl font-semibold leading-tight text-foreground md:text-4xl">
+    <section id="harga" className="bg-secondary py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center mb-16">
+          <span className="block text-sm font-semibold uppercase tracking-widest text-primary mb-4">Transparansi Harga</span>
+          <h2 className="mt-4 font-serif text-4xl font-bold leading-tight text-foreground md:text-5xl">
             Pilih paket yang sesuai skala bisnis Anda
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             Harga di bawah sudah termasuk domain dan hosting tahun pertama. Kalau kebutuhan
             Anda berada di antara dua paket, kami sesuaikan penawarannya.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-px border border-border bg-border lg:grid-cols-3">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3"
+        >
           {plans.map((plan, i) => (
-            <div key={plan.name} className="flex flex-col bg-card p-8">
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="font-serif text-2xl font-semibold text-foreground">{plan.name}</h3>
-                {plan.popular && (
-                  <span className="shrink-0 border border-primary px-2 py-0.5 text-xs font-semibold text-primary rounded-sm">
-                    Paling sering dipilih
-                  </span>
-                )}
+            <motion.div
+              key={i}
+              variants={itemVariants}
+              className={`relative flex flex-col rounded-3xl border ${plan.popular ? 'border-2 border-primary bg-card shadow-xl shadow-primary/10' : 'border-border bg-card shadow-sm'} p-8`}
+            >
+              {plan.popular && (
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-foreground">
+                  <Star className="h-3 w-3 fill-current" /> Paling Sering Dipilih
+                </span>
+              )}
+
+              <h3 className="font-serif text-2xl font-bold text-foreground">{plan.name}</h3>
+              <span className="mt-4 text-sm text-muted-foreground">{plan.desc}</span>
+
+              <div className="mt-8 text-sm text-muted-foreground">
+                Harga normal <span className="line-through decoration-destructive/50">Rp {plan.originalPrice}</span>
               </div>
-
-              <p className="mt-3 text-muted-foreground">{plan.desc}</p>
-
-              <p className="mt-6 text-sm text-muted-foreground">
-                Harga normal <span className="line-through">Rp {plan.originalPrice}</span>
-              </p>
-              <p className="mt-1 font-serif text-3xl font-semibold text-foreground">
-                Rp {plan.price}
-              </p>
+              <div className="mt-1 flex items-baseline gap-x-1">
+                <span className="font-serif text-3xl font-bold text-foreground">Rp {plan.price}</span>
+              </div>
 
               <a
                 href={`https://wa.me/6285111601910?text=${encodeURIComponent(`Halo Voxy, saya tertarik dengan ${plan.name} untuk pembuatan website travel. Boleh minta info lebih lanjut?`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`mt-7 flex items-center justify-center gap-2 rounded-md px-5 py-3 font-semibold transition-colors ${
+                className={`mt-8 flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold transition-all ${
                   plan.popular
-                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                    : "border border-border text-foreground hover:bg-secondary"
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-[1.02]"
+                    : "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground"
                 }`}
               >
-                Tanya {plan.name}
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                Tanya {plan.name} <ArrowRight className="h-4 w-4" />
               </a>
 
-              <ul className="mt-8 flex-1 space-y-3 border-t border-border pt-6">
+              <ul className="mt-10 flex-1 space-y-4">
                 {i > 0 && (
-                  <li className="pb-1 text-sm font-semibold text-foreground">
+                  <li className="mb-2 pb-2 text-sm font-bold text-foreground border-b border-border/50">
                     Semua fitur di paket {i === 1 ? "Essential" : "Essential & Professional"}, ditambah:
                   </li>
                 )}
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex gap-3">
-                    <Check className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                    <span className="text-sm text-muted-foreground">{feature}</span>
+                {plan.features.map((feature, idx) => (
+                  <li key={idx} className="flex gap-4">
+                    <div className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${plan.popular ? 'bg-primary/20' : 'bg-primary/10'} text-primary`}>
+                      <Check className="h-4 w-4" />
+                    </div>
+                    <span className={`text-sm ${plan.popular ? 'text-foreground font-medium' : 'text-muted-foreground'}`}>{feature}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
