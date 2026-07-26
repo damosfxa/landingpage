@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Voxy Web Studio" }],
   creator: "Voxy Web Studio",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "id_ID",

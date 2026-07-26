@@ -1,34 +1,8 @@
 "use client"
 
-import type { ReactNode } from "react"
 import { ArrowRight, MessageCircle, MapPin, MonitorSmartphone, Settings2, BarChart3 } from "lucide-react"
 
-type HeroSectionProps = {
-  /**
-   * Halaman SEO per kota mengoper judul & deskripsinya sendiri ke sini,
-   * supaya tetap ada tepat satu h1 per halaman.
-   */
-  title?: ReactNode
-  description?: ReactNode
-}
-
-const defaultTitle = (
-  <>
-    Website Travel yang Membuat Calon Pelanggan <br className="hidden md:block" />
-    <span className="text-primary italic">Percaya Sebelum Menghubungi Anda.</span>
-  </>
-)
-
-const defaultDescription = (
-  <>
-    Kami membangun website untuk biro tour &amp; travel: tampilannya rapi, halamannya
-    terbuka cepat, dan setiap pengunjung punya jalur jelas menuju WhatsApp admin Anda.
-    Struktur SEO-nya disiapkan sejak awal, supaya paket perjalanan Anda juga ditemukan
-    lewat pencarian Google, bukan hanya lewat iklan berbayar.
-  </>
-)
-
-export function HeroSection({ title, description }: HeroSectionProps = {}) {
+export function HeroSection() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-28 overflow-hidden bg-background">
       <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-primary/20 blur-[120px] rounded-full z-0" />
@@ -43,11 +17,15 @@ export function HeroSection({ title, description }: HeroSectionProps = {}) {
         </div>
 
         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-foreground">
-          {title ?? defaultTitle}
+          Website Travel yang Membuat Calon Pelanggan <br className="hidden md:block" />
+          <span className="text-primary italic">Percaya Sebelum Menghubungi Anda.</span>
         </h1>
 
         <p className="text-lg text-muted-foreground max-w-prose mx-auto leading-relaxed">
-          {description ?? defaultDescription}
+          Kami membangun website untuk biro tour &amp; travel: tampilannya rapi, halamannya
+          terbuka cepat, dan setiap pengunjung punya jalur jelas menuju WhatsApp admin Anda.
+          Struktur SEO-nya disiapkan sejak awal, supaya paket perjalanan Anda juga ditemukan
+          lewat pencarian Google, bukan hanya lewat iklan berbayar.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">

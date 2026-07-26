@@ -7,7 +7,7 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Sengaja dibatasi ke rute auth/admin saja supaya 180 halaman SEO statis
-  // di `/layanan/*` tidak ikut jadi dinamis.
+  // Sengaja dibatasi ke rute auth/admin saja supaya halaman publik
+  // tetap statis dan tidak ikut jadi dinamis.
   matcher: ["/admin/:path*", "/login"],
 };

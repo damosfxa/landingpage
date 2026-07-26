@@ -97,17 +97,12 @@ export default async function Home() {
         <footer className="bg-foreground border-t border-white/10 py-12 px-6 text-muted">
            <div className="max-w-5xl mx-auto mb-10">
              <h2 className="font-serif font-semibold text-white mb-4 text-center">Area Layanan</h2>
-             <div className="flex flex-wrap justify-center gap-3">
-               {["Jakarta", "Surabaya", "Bandung", "Medan", "Makassar", "Semarang", "Balikpapan", "Palembang", "Denpasar", "Yogyakarta"].map((kota) => (
-                 <a
-                   key={kota}
-                   href={`/layanan/tour-travel/${kota.toLowerCase()}`}
-                   className="text-xs hover:text-primary transition-colors bg-white/5 px-3 py-1.5 rounded-full"
-                 >
-                   {kota}
-                 </a>
-               ))}
-             </div>
+             <p className="text-xs text-center max-w-2xl mx-auto leading-relaxed">
+               Kami mengerjakan proyek untuk biro travel di seluruh Indonesia, termasuk
+               Jakarta, Surabaya, Bandung, Medan, Makassar, Semarang, Balikpapan,
+               Palembang, Denpasar, dan Yogyakarta. Koordinasi berjalan jarak jauh,
+               jadi lokasi Anda tidak jadi kendala.
+             </p>
            </div>
            <div className="text-center">
              <p className="text-sm">© {new Date().getFullYear()} Voxy.dev. Jasa pembuatan website tour &amp; travel.</p>
