@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { logout } from "@/app/login/actions";
-import type { Lead } from "@/lib/types/database";
 import { createClient } from "@/utils/supabase/server";
 import { deleteLead } from "./actions";
-import { LayoutDashboard, FolderKanban, Users, LogOut, Search, MoreVertical, Trash2, CheckCircle2, MessageCircle } from "lucide-react";
+import { Users, Trash2, MessageCircle } from "lucide-react";
 import { StatusSelect } from "./status-select";
 
 export const metadata: Metadata = {
   title: "Dashboard Admin | Voxy Web Studio",
   robots: { index: false, follow: false },
 };
-
-const STATUSES: Lead["status"][] = ["NEW", "CONTACTED", "CLOSED"];
 
 export default async function AdminDashboardPage() {
   const supabase = await createClient();

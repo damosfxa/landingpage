@@ -1,8 +1,8 @@
+// Isi seluruh halaman /layanan ditulis untuk bisnis travel, jadi niche-nya
+// sengaja dibatasi satu. Menambah niche lain tanpa menyesuaikan salinannya
+// hanya menghasilkan halaman yang isinya tidak nyambung dengan judulnya.
 export const targetNiches = [
   { slug: "tour-travel", name: "Biro Tour & Travel", icon: "Pesawat" },
-  { slug: "company-profile", name: "Company Profile Perusahaan", icon: "Gedung" },
-  { slug: "toko-online", name: "Toko Online & E-Commerce", icon: "Keranjang" },
-  { slug: "sekolah-kampus", name: "Sekolah & Kampus", icon: "Pendidikan" },
 ]
 
 export const targetCities = [

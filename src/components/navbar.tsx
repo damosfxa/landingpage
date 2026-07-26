@@ -20,11 +20,11 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Tentang", href: "#tentang" },
-    { name: "Fitur Konversi", href: "#kelebihan" },
-    { name: "Paket Promo", href: "#harga" },
+    { name: "Yang Anda Dapatkan", href: "#kelebihan" },
+    { name: "Harga", href: "#harga" },
   ]
 
-  const waLink = "https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20ingin%20mengamankan%20promo%20spesial%20untuk%20pembuatan%20website%20travel.%20Boleh%20dibantu%3F"
+  const waLink = "https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20ingin%20konsultasi%20untuk%20pembuatan%20website%20travel.%20Boleh%20dibantu%3F"
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
@@ -66,7 +66,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
             >
-              Amankan Promo
+              Konsultasi Gratis
             </a>
           </div>
 
@@ -104,7 +104,7 @@ export function Navbar() {
             onClick={() => setIsMobileMenuOpen(false)}
             className="block w-full rounded-md bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
           >
-            Amankan Promo
+            Konsultasi Gratis
           </a>
         </div>
       </motion.div>

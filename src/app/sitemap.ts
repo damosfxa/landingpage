@@ -2,10 +2,9 @@ import { MetadataRoute } from 'next'
 import { targetCities, targetNiches } from '@/lib/data/seo-data'
  
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Hardcode Base URL resmi Voxy Web Studio agar tidak bentrok dengan Env Vercel
+  // Di-hardcode agar tidak ikut berubah mengikuti env Vercel.
   const baseUrl = 'https://www.byvoxy.com'
-  
-  // Halaman Utama
+
   const staticPaths: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/`,
@@ -15,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   ]
 
-  // Ratusan Halaman Programmatic SEO (Dinamis)
+  // Halaman /layanan/[niche]/[kota]
   const dynamicPaths: MetadataRoute.Sitemap = []
   
   targetNiches.forEach(niche => {

@@ -37,8 +37,8 @@ export function LeadForm() {
 
   return (
     <form action={formAction} className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 p-8 rounded-3xl shadow-2xl relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-indigo-500 opacity-50" />
-      
+      <div className="absolute top-0 left-0 w-full h-1 bg-primary opacity-60" />
+
       <div className="space-y-6">
         {/* Name Input */}
         <div className="space-y-2">
@@ -103,7 +103,7 @@ export function LeadForm() {
         <button 
           type="submit" 
           disabled={isPending}
-          className="w-full flex items-center justify-center gap-2 py-4 px-6 bg-primary hover:bg-blue-600 text-white font-bold rounded-2xl transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] disabled:opacity-70 disabled:cursor-not-allowed mt-4 group overflow-hidden relative"
+          className="w-full flex items-center justify-center gap-2 py-4 px-6 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-2xl transition-all disabled:opacity-70 disabled:cursor-not-allowed mt-4 group overflow-hidden relative"
         >
           {isPending ? (
             <>
@@ -112,9 +112,8 @@ export function LeadForm() {
             </>
           ) : (
             <>
-              <span className="relative z-10">Konsultasi Gratis Sekarang</span>
+              <span className="relative z-10">Kirim &amp; Minta Dihubungi</span>
               <Send className="h-5 w-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity" />
             </>
           )}
         </button>

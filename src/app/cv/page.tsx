@@ -29,7 +29,7 @@ export default function CVPage() {
         <section className="mb-4">
           <h2 className="text-[18px] font-bold mb-1">Singaperbangsa Karawang University | Karawang, Indonesia</h2>
           <div className="flex justify-between items-center mb-1">
-            <h3 className="text-[13px] font-bold">Bachelor's Degree of Information System</h3>
+            <h3 className="text-[13px] font-bold">Bachelor&apos;s Degree of Information System</h3>
             <span className="text-[13px] font-bold">(Aug 2022 – Present)</span>
           </div>
           <ul className="list-disc list-outside ml-6 text-[13px] leading-relaxed">

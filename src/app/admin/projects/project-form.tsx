@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { Save, AlertCircle, ImageIcon } from "lucide-react";
+import { Save, AlertCircle } from "lucide-react";
 import type { Project } from "@/lib/types/database";
 import { initialAdminFormState, type AdminFormState } from "@/lib/types/form-state";
 

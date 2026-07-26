@@ -26,10 +26,10 @@ export function PricingSection() {
       name: "Essential Plan",
       price: "1.5 Jt",
       originalPrice: "3 Jt",
-      desc: "Cocok untuk travel agent yang baru merintis kehadiran digital.",
+      desc: "Untuk travel agent yang baru mulai membangun kehadiran digital.",
       features: [
         "1 Halaman (Landing Page Panjang)",
-        "Desain Responsif (Tampil Sempurna di HP)",
+        "Desain Responsif (Rapi di HP & Desktop)",
         "Gratis Domain (.com/.id) 1 Tahun",
         "Gratis Hosting Standar 1 Tahun",
         "Tombol WhatsApp Terintegrasi",
@@ -44,10 +44,10 @@ export function PricingSection() {
       name: "Professional Plan",
       price: "3 Jt",
       originalPrice: "5.5 Jt",
-      desc: "Solusi lengkap untuk brand travel yang ingin tampil mewah.",
+      desc: "Untuk biro travel yang perlu memperbarui paket dan harganya sendiri.",
       features: [
         "Website Multi-Halaman (S/d 5 Halaman)",
-        "Desain Premium dengan Animasi Elegan",
+        "Desain Kustom dengan Animasi Halus",
         "Navigasi Mulus (Smooth Scroll)",
         "Sistem Admin: Kelola Harga & Paket Sendiri",
         "Optimasi SEO Dasar (Ramah Google)",
@@ -62,17 +62,17 @@ export function PricingSection() {
       name: "Enterprise Plan",
       price: "7.5+ Jt",
       originalPrice: "12 Jt",
-      desc: "Sistem khusus dengan fitur booking dan pembayaran otomatis.",
+      desc: "Untuk yang butuh pemesanan dan pembayaran berjalan otomatis.",
       features: [
-        "Halaman Website Tanpa Batas (Unlimited)",
+        "Jumlah Halaman Menyesuaikan Kebutuhan",
         "Sistem Booking Online Terintegrasi",
         "Pembayaran Otomatis (Payment Gateway)",
-        "Desain UI/UX Eksklusif & Kustom 100%",
-        "Sistem Admin Lanjutan (Manajemen Jamaah)",
+        "Desain UI/UX Kustom dari Nol",
+        "Sistem Admin Lanjutan (Manajemen Peserta)",
         "Optimasi SEO Lanjutan & Google Analytics",
-        "Gratis Server Cloud (Performa Maksimal)",
-        "Prioritas Support & Maintenance VIP",
-        "Garansi Revisi Tanpa Batas"
+        "Server Cloud Terkelola",
+        "Prioritas Support & Maintenance",
+        "Revisi Desain Bebas Selama Masa Pengerjaan"
       ],
       popular: false,
     }
@@ -84,25 +84,12 @@ export function PricingSection() {
         <div className="mx-auto max-w-2xl text-center mb-16">
           <span className="block text-sm font-semibold uppercase tracking-widest text-primary mb-4">Transparansi Harga</span>
           <h2 className="mt-4 font-serif text-4xl font-bold leading-tight text-foreground md:text-5xl">
-            Pilih Paket yang Sesuai <br className="hidden md:block" />
-            <span className="italic text-primary">dengan Skala Bisnis Anda</span>
+            Pilih paket yang sesuai skala bisnis Anda
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Tidak ada biaya tersembunyi. Semua paket dirancang secara personal oleh saya untuk memberikan standar kualitas terbaik bagi brand Anda.
+            Harga di bawah sudah termasuk domain dan hosting tahun pertama. Kalau kebutuhan
+            Anda berada di antara dua paket, kami sesuaikan penawarannya.
           </p>
-          
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="mt-8 inline-flex items-center gap-2 bg-destructive/10 text-destructive border border-destructive/20 rounded-full px-4 py-1.5 text-sm font-medium"
-          >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-destructive"></span>
-            </span>
-            Promo Harga Spesial Berakhir Bulan Ini
-          </motion.div>
         </div>
 
         <motion.div
@@ -113,27 +100,27 @@ export function PricingSection() {
           className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3"
         >
           {plans.map((plan, i) => (
-            <motion.div 
-              key={i} 
-              variants={itemVariants} 
+            <motion.div
+              key={i}
+              variants={itemVariants}
               className={`relative flex flex-col rounded-3xl border ${plan.popular ? 'border-2 border-primary bg-card shadow-xl shadow-primary/10' : 'border-border bg-card shadow-sm'} p-8`}
             >
               {plan.popular && (
                 <span className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-foreground">
-                  <Star className="h-3 w-3 fill-current" /> Pilihan Eksekutif
+                  <Star className="h-3 w-3 fill-current" /> Paling Sering Dipilih
                 </span>
               )}
-              
-              <h2 className="font-serif text-2xl font-bold text-foreground">{plan.name}</h2>
+
+              <h3 className="font-serif text-2xl font-bold text-foreground">{plan.name}</h3>
               <span className="mt-4 text-sm text-muted-foreground">{plan.desc}</span>
-              
-              <div className="mt-8 flex items-baseline gap-2">
-                <span className="text-xl font-semibold text-muted-foreground line-through decoration-destructive/50">Rp {plan.originalPrice}</span>
+
+              <div className="mt-8 text-sm text-muted-foreground">
+                Harga normal <span className="line-through decoration-destructive/50">Rp {plan.originalPrice}</span>
               </div>
               <div className="mt-1 flex items-baseline gap-x-1">
-                <h2 className="text-2xl font-bold font-serif text-foreground mb-2">Rp {plan.price}</h2>
+                <span className="font-serif text-3xl font-bold text-foreground">Rp {plan.price}</span>
               </div>
-              
+
               <a
                 href={`https://wa.me/6285111601910?text=${encodeURIComponent(`Halo Voxy, saya tertarik dengan ${plan.name} untuk pembuatan website travel. Boleh minta info lebih lanjut?`)}`}
                 target="_blank"
@@ -144,9 +131,9 @@ export function PricingSection() {
                     : "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground"
                 }`}
               >
-                Ambil {plan.name} <ArrowRight className="h-4 w-4" />
+                Tanya {plan.name} <ArrowRight className="h-4 w-4" />
               </a>
-              
+
               <ul className="mt-10 flex-1 space-y-4">
                 {i > 0 && (
                   <li className="mb-2 pb-2 text-sm font-bold text-foreground border-b border-border/50">

@@ -7,8 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      // Jika Anda memiliki halaman admin atau halaman yang belum selesai, Anda bisa memblokir Googlebot:
-      // disallow: '/admin/',
+      disallow: ['/admin/', '/login'],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   }

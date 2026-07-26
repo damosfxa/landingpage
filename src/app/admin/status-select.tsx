@@ -25,7 +25,7 @@ export function StatusSelect({ id, currentStatus }: Props) {
       try {
         await updateLeadStatus(formData);
         toast.success(`Status berhasil diperbarui ke ${newStatus}`);
-      } catch (error) {
+      } catch {
         toast.error("Gagal memperbarui status.");
       }
     });
