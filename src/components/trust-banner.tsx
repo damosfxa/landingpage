@@ -1,17 +1,17 @@
-const stack = ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Supabase"]
+const stack = ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "Vercel"]
 
 export function TrustBanner() {
   return (
-    <div className="w-full border-b border-border bg-card py-10 overflow-hidden flex flex-col items-center">
-      <p className="text-sm font-medium text-muted-foreground mb-8">
-        Dibangun dengan
-      </p>
-      <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 max-w-5xl px-4">
-        {stack.map((name) => (
-          <div key={name} className="text-xl md:text-2xl font-bold font-serif tracking-tight">
-            {name}
-          </div>
-        ))}
+    <div className="border-b border-border bg-secondary py-8">
+      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 sm:flex-row sm:items-center sm:gap-8">
+        <p className="shrink-0 text-sm text-muted-foreground">Dibangun dengan</p>
+        <ul className="flex flex-wrap gap-x-6 gap-y-2">
+          {stack.map((name) => (
+            <li key={name} className="text-sm font-medium text-foreground">
+              {name}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )

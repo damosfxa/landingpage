@@ -1,52 +1,26 @@
-"use client"
-import { motion } from "framer-motion"
-import { useState } from "react"
 import { ChevronDown } from "lucide-react"
 import { faqs } from "@/lib/data/faq"
 
 export function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
-
   return (
-    <section className="bg-background py-24 lg:py-32">
-      <div className="mx-auto max-w-4xl px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <span className="block text-sm font-semibold uppercase tracking-widest text-primary mb-4">Tanya Jawab</span>
-          <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-foreground md:text-5xl">
-            Pertanyaan yang Sering Diajukan
-          </h2>
-        </div>
+    <section className="border-b border-border bg-background py-24">
+      <div className="mx-auto max-w-3xl px-6">
+        <h2 className="font-serif text-3xl font-semibold leading-tight text-foreground md:text-4xl">
+          Pertanyaan yang sering diajukan
+        </h2>
 
-        <div className="space-y-4">
+        <div className="mt-12 divide-y divide-border border-t border-border">
           {faqs.map((faq, i) => (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              key={i}
-              className="border border-border rounded-2xl bg-card overflow-hidden"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                aria-expanded={openIndex === i}
-                aria-controls={`faq-answer-${i}`}
-                className="flex w-full items-start justify-between p-6 text-left focus:outline-none"
-              >
-                <span className="font-serif text-lg font-bold text-foreground pr-4">{faq.q}</span>
-                <ChevronDown className={`h-5 w-5 mt-1 flex-shrink-0 text-primary transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} />
-              </button>
-              <div
-                id={`faq-answer-${i}`}
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openIndex === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-                }`}
-              >
-                <p className="px-6 pb-6 text-muted-foreground leading-relaxed max-w-prose">
-                  {faq.a}
-                </p>
-              </div>
-            </motion.div>
+            <details key={faq.q} className="group py-5" open={i === 0}>
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-serif text-lg font-semibold text-foreground marker:hidden">
+                {faq.q}
+                <ChevronDown
+                  aria-hidden="true"
+                  className="mt-1 h-5 w-5 shrink-0 text-primary transition-transform group-open:rotate-180"
+                />
+              </summary>
+              <p className="mt-3 pr-8 leading-relaxed text-muted-foreground">{faq.a}</p>
+            </details>
           ))}
         </div>
       </div>
