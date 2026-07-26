@@ -1,4 +1,4 @@
-# Backend Setup (Supabase) — Phase 1
+# Backend Setup (Supabase): Phase 1
 
 ## 1. Terapkan migrasi
 
@@ -32,7 +32,7 @@ npm run verify:rls
 
 Skrip ini memakai anon key dan memastikan: publik **boleh** membaca `projects`
 dan submit `leads`, tapi **tidak boleh** menulis `projects` atau membaca daftar
-`leads`. Skrip menyisakan satu baris lead uji coba — hapus lewat `/admin`.
+`leads`. Skrip menyisakan satu baris lead uji coba, hapus lewat `/admin`.
 
 ## Struktur
 
@@ -41,7 +41,7 @@ dan submit `leads`, tapi **tidak boleh** menulis `projects` atau membaca daftar
 | `src/utils/supabase/client.ts` | Client Supabase untuk browser |
 | `src/utils/supabase/server.ts` | Client untuk Server Component / Action |
 | `src/utils/supabase/proxy.ts` | Refresh session + proteksi `/admin` |
-| `src/proxy.ts` | Entry proxy (Next.js 16 — dulu `middleware.ts`) |
+| `src/proxy.ts` | Entry proxy (Next.js 16, dulu `middleware.ts`) |
 | `src/app/login/actions.ts` | `login`, `logout` |
 | `src/app/admin/actions.ts` | CRUD project, upload gambar, kelola lead |
 | `src/lib/actions/leads.ts` | `submitLead` (publik, tanpa login) |

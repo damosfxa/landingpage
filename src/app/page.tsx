@@ -68,7 +68,7 @@ export default async function Home() {
                 </h2>
                 <p className="mt-6 text-xl text-slate-400">
                   Isi formulir di samping, dan kami hubungi untuk membahas apa yang sebenarnya
-                  Anda butuhkan — termasuk kalau ternyata paket yang lebih kecil sudah cukup.
+                  Anda butuhkan, termasuk kalau ternyata paket yang lebih kecil sudah cukup.
                 </p>
 
                 <div className="mt-10 space-y-6">
@@ -110,7 +110,7 @@ export default async function Home() {
              </div>
            </div>
            <div className="text-center">
-             <p className="text-sm">© {new Date().getFullYear()} Voxy.dev — Jasa pembuatan website tour &amp; travel.</p>
+             <p className="text-sm">© {new Date().getFullYear()} Voxy.dev. Jasa pembuatan website tour &amp; travel.</p>
            </div>
         </footer>
       </main>

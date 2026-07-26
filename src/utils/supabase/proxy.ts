@@ -45,7 +45,7 @@ export async function updateSession(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
 
-  // AC-1.2 — non-login yang membuka /admin dilempar ke /login.
+  // AC-1.2: non-login yang membuka /admin dilempar ke /login.
   if (!user && pathname.startsWith("/admin")) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";

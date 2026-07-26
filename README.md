@@ -1,4 +1,4 @@
-# Voxy Web Studio — Landing Page
+# Voxy Web Studio: Landing Page
 
 Landing page dan dashboard admin untuk Voxy Web Studio, jasa pembuatan website
 tour & travel. Dibangun dengan Next.js (App Router) dan Supabase.
@@ -27,12 +27,12 @@ Salin `.env.example` menjadi `.env.local`, lalu isi:
 
 ## Struktur
 
-- `src/app/page.tsx` — landing page utama
-- `src/app/layanan/[niche]/[kota]/` — halaman SEO per kota, di-generate dari `src/lib/data/seo-data.ts`
-- `src/app/admin/` — dashboard lead dan portofolio (butuh login)
-- `src/components/sections/` — section landing page
-- `src/lib/data/faq.ts` — sumber tunggal FAQ, dipakai halaman dan JSON-LD
-- `supabase/migrations/` — skema tabel `projects` dan `leads` beserta RLS
+- `src/app/page.tsx`: landing page utama
+- `src/app/layanan/[niche]/[kota]/`: halaman SEO per kota, di-generate dari `src/lib/data/seo-data.ts`
+- `src/app/admin/`: dashboard lead dan portofolio (butuh login)
+- `src/components/sections/`: section landing page
+- `src/lib/data/faq.ts`: sumber tunggal FAQ, dipakai halaman dan JSON-LD
+- `supabase/migrations/`: skema tabel `projects` dan `leads` beserta RLS
 
 ## Perintah
 

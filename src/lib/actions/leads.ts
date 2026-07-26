@@ -5,7 +5,7 @@ import { leadSchema } from "@/lib/validations/schemas";
 import { createClient } from "@/utils/supabase/server";
 
 /**
- * AC-3.1 — Submit lead dari landing page.
+ * AC-3.1: Submit lead dari landing page.
  * Publik (anon, tanpa login). Diizinkan oleh policy `leads_insert_public`.
  */
 export async function submitLead(

@@ -72,7 +72,7 @@ Jika klien membandingkan harga dengan jasa 1 jutaan atau berharap langsung insta
 **Template Balasan Anda:**
 > "Betul Pak/Bu, di luar sana memang banyak yang menawarkan website 1 jutaan. Tapi seringkali banyak yang tergoda lalu berharap websitenya bisa instan muncul paling atas di Google dan langsung ramai pembeli. Faktanya tidak segampang itu.
 > 
-> Google itu butuh waktu untuk percaya dengan sebuah website (biasanya 3-6 bulan). Google menilai dari pondasi SEO, performa kecepatan, dan optimasi. Website 1 jutaan ibarat sekadar 'brosur lipat'—kalau untuk sekadar profil saja cukup. Tapi kalau Bapak benar-benar ingin mendatangkan pelanggan dari Google, pondasinya harus dibangun dengan benar.
+> Google itu butuh waktu untuk percaya dengan sebuah website (biasanya 3-6 bulan). Google menilai dari pondasi SEO, performa kecepatan, dan optimasi. Website 1 jutaan ibarat sekadar 'brosur lipat', kalau untuk sekadar profil saja cukup. Tapi kalau Bapak benar-benar ingin mendatangkan pelanggan dari Google, pondasinya harus dibangun dengan benar.
 > 
 > Di Voxy, harga yang Bapak bayarkan adalah untuk pondasi kelas atas (Skor SEO & Kecepatan 100/100). Jadi saat website Bapak dirilis, Google akan jauh lebih mudah memprioritaskan website Bapak ketimbang website 1 jutaan yang lambat. Mending kita bangun yang kokoh sekalian kan Pak?"
 

@@ -46,12 +46,12 @@ export function FeaturesSection() {
             {
               icon: Gauge,
               title: "Cepat dibuka, mudah dibaca Google",
-              desc: "Halaman dirender di server, jadi isinya sudah lengkap sejak permintaan pertama — pengunjung tidak menunggu dan mesin pencari tidak menebak.",
+              desc: "Halaman dirender di server, jadi isinya sudah lengkap sejak permintaan pertama. Pengunjung tidak perlu menunggu dan mesin pencari tidak perlu menebak.",
             },
             {
               icon: ShieldCheck,
               title: "Ruang untuk legalitas & kredibilitas",
-              desc: "Izin usaha, sertifikat, mitra resmi, dan dokumentasi perjalanan punya tempatnya sendiri — hal pertama yang dicari calon pelanggan sebelum transfer.",
+              desc: "Izin usaha, sertifikat, mitra resmi, dan dokumentasi perjalanan punya tempatnya sendiri. Ini yang pertama dicari calon pelanggan sebelum mereka transfer.",
             },
             {
               icon: LineChart,

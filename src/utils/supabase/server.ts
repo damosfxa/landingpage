@@ -5,7 +5,7 @@ import type { Database } from "@/lib/types/database";
 
 /**
  * Supabase client untuk Server Components, Server Actions, dan Route Handlers.
- * Selalu buat client baru per-request — jangan di-share antar request.
+ * Selalu buat client baru per-request, jangan di-share antar request.
  */
 export async function createClient() {
   const cookieStore = await cookies();

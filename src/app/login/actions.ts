@@ -7,13 +7,13 @@ import type { AuthFormState } from "@/lib/types/form-state";
 import { credentialsSchema } from "@/lib/validations/schemas";
 import { createClient } from "@/utils/supabase/server";
 
-/** Hanya izinkan redirect internal — cegah open redirect lewat `?next=`. */
+/** Hanya izinkan redirect internal, cegah open redirect lewat `?next=`. */
 function safeNextPath(value: FormDataEntryValue | null): string {
   const path = typeof value === "string" ? value : "";
   return path.startsWith("/") && !path.startsWith("//") ? path : "/admin";
 }
 
-/** AC-1.1 — Login admin via email/password Supabase Auth. */
+/** AC-1.1: Login admin via email/password Supabase Auth. */
 export async function login(
   _prevState: AuthFormState,
   formData: FormData,

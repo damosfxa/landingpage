@@ -1,7 +1,7 @@
 /**
  * State bersama untuk `useActionState`.
  *
- * Sengaja dipisah dari file `"use server"` — file Server Action hanya boleh
+ * Sengaja dipisah dari file `"use server"`, karena file Server Action hanya boleh
  * mengekspor async function, sehingga konstanta seperti ini tidak bisa
  * ditaruh di sana.
  */

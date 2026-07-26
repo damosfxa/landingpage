@@ -18,7 +18,7 @@ import { createClient } from "@/utils/supabase/server";
 const BUCKET = "portfolio_images";
 
 /**
- * Server Action adalah POST ke rute tempat ia dipakai — proxy matcher bisa
+ * Server Action adalah POST ke rute tempat ia dipakai, dan proxy matcher bisa
  * berubah sewaktu-waktu, jadi auth wajib dicek ulang di dalam setiap action.
  */
 async function requireAdmin() {
@@ -33,7 +33,7 @@ async function requireAdmin() {
 }
 
 /**
- * AC-2.2 — Upload gambar ke Supabase Storage, kembalikan `publicUrl`.
+ * AC-2.2: Upload gambar ke Supabase Storage, kembalikan `publicUrl`.
  * Mengembalikan `null` bila tidak ada file yang dipilih.
  */
 export async function uploadProjectImage(file: File): Promise<string | null> {
@@ -67,7 +67,7 @@ export async function uploadProjectImage(file: File): Promise<string | null> {
   return publicUrl;
 }
 
-/** AC-2.1 — Validasi input, upload gambar (bila ada), simpan ke tabel `projects`. */
+/** AC-2.1: Validasi input, upload gambar (bila ada), simpan ke tabel `projects`. */
 export async function createProject(
   _prevState: AdminFormState,
   formData: FormData,

@@ -52,7 +52,7 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
             Contoh tampilan yang kami buat
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Sebagian di antaranya masih berupa konsep desain buatan sendiri — kami tandai
+            Sebagian di antaranya masih berupa konsep desain buatan sendiri, dan kami tandai
             supaya jelas mana yang sudah berjalan sebagai proyek klien.
           </p>
         </div>
