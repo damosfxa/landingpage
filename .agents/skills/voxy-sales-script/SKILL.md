@@ -101,7 +101,16 @@ Jika klien ragu: *"Wah, aman gak nih Mas transfer duluan?"* atau *"Kalau hasilny
 > 
 > Kita mulai dengan **DP 50% saja** sebagai tanda jadi. Sisa pelunasannya (50%) BARU Bapak bayarkan **setelah website 100% selesai dan Bapak benar-benar puas** dengan hasilnya.
 > 
-> Kalau Bapak merasa desainnya kurang cocok, saya berikan garansi **Revisi Tanpa Batas** sampai Bapak benar-benar jatuh cinta dengan desainnya. Reputasi saya sebagai *developer* pribadi yang jadi taruhannya Pak. 🤝"
+> Untuk revisi desain, sudah termasuk di paket Bapak (2x untuk Essential, 5x untuk Professional,
+> atau fleksibel selama masa pengerjaan untuk Enterprise) — jadi bukan sekali jadi langsung
+> selesai. Kalau nanti ada bug di luar revisi desain, itu saya tanggung perbaikannya gratis
+> selama 1 tahun penuh, terpisah dari jatah revisi. Reputasi saya sebagai *developer* pribadi
+> yang jadi taruhannya Pak. 🤝"
+
+> **Catatan buat AI:** jangan janjikan "revisi tanpa batas" secara blanket ke semua paket — itu
+> tidak sesuai dengan batas revisi yang tertulis di halaman harga situs, dan bisa jadi sumber
+> sengketa kalau klien pegang omongan chat ini. Sebutkan jumlah revisi sesuai paket yang
+> benar-benar diambil klien. Lihat `voxy-project-checklist` bagian 5 untuk alasan lengkapnya.
 
 ---
 
@@ -120,10 +129,13 @@ Jika klien setuju: *"Oke Mas, saya ambil paket yang 3 Juta. Harus siapkan apa sa
 > Sembari Bapak mengumpulkan materinya, berikut saya lampirkan **Invoice Rekening** untuk DP 50% (Rp 1.500.000) agar *server* dan *domain*-nya bisa langsung saya amankan hari ini juga ya Pak.
 > 
 > Pembayaran bisa ditransfer ke salah satu rekening berikut:
-> 🏦 **BLU BCA:** 005445751060 (a.n. RIZKY RHAMADANI)
-> 🏦 **SEABANK:** 901051372630 (a.n. EKA KURNIA WATI)
+> 🏦 **[Nomor rekening — lihat `payment-info.local.md` di folder skill ini]**
 > 
 > Mohon lampirkan bukti transfernya jika sudah ya Pak. 🙏"
+>
+> **Catatan buat AI:** nomor rekening asli sengaja tidak ditulis di file ini karena repo publik
+> di GitHub. Baca dari `payment-info.local.md` (file lokal, tidak ikut ke Git) di folder yang
+> sama untuk nomor sebenarnya saat menyusun invoice.
 
 ---
 
