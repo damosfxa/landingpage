@@ -20,7 +20,7 @@ Salin `.env.example` menjadi `.env.local`, lalu isi:
 | --- | --- | --- |
 | `NEXT_PUBLIC_SUPABASE_URL` | ya | URL project Supabase |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | ya | Anon key Supabase |
-| `SUPABASE_SERVICE_ROLE_KEY` | ya | Dipakai script verifikasi RLS |
+| `SUPABASE_SERVICE_ROLE_KEY` | tidak | Belum dipakai script mana pun saat ini; disiapkan untuk operasi admin sisi server nanti. `scripts/verify-rls.mjs` sengaja hanya pakai anon key, supaya benar-benar mensimulasikan akses publik |
 | `NEXT_PUBLIC_GA_ID` | tidak | Google Analytics 4; tag hanya dimuat bila diisi |
 | `TELEGRAM_BOT_TOKEN` | tidak | Notifikasi lead baru; dilewati bila kosong |
 | `TELEGRAM_CHAT_ID` | tidak | Pasangan dari `TELEGRAM_BOT_TOKEN` |
@@ -28,7 +28,6 @@ Salin `.env.example` menjadi `.env.local`, lalu isi:
 ## Struktur
 
 - `src/app/page.tsx`: landing page utama
-- `src/app/layanan/[niche]/[kota]/`: halaman SEO per kota, di-generate dari `src/lib/data/seo-data.ts`
 - `src/app/admin/`: dashboard lead dan portofolio (butuh login)
 - `src/components/sections/`: section landing page
 - `src/lib/data/faq.ts`: sumber tunggal FAQ, dipakai halaman dan JSON-LD
