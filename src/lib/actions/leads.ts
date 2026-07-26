@@ -12,6 +12,15 @@ export async function submitLead(
   _prevState: LeadFormState,
   formData: FormData,
 ): Promise<LeadFormState> {
+  // Bot terjebak honeypot: pura-pura sukses tanpa benar-benar menyimpan,
+  // supaya botnya tidak tahu ditolak dan tidak mengubah strategi.
+  if (formData.get("website")) {
+    return {
+      status: "success",
+      message: "Terima kasih! Tim kami akan menghubungi Anda segera.",
+    };
+  }
+
   const parsed = leadSchema.safeParse({
     name: formData.get("name"),
     phone: formData.get("phone"),
