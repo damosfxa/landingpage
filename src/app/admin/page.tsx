@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { createClient } from "@/utils/supabase/server";
 import { deleteLead } from "./actions";
-import { Users, Trash2, MessageCircle } from "lucide-react";
+import { Users, MessageCircle } from "lucide-react";
 import { StatusSelect } from "./status-select";
+import { BRAND_NAME } from "@/lib/constants";
+import { DeleteButton } from "./delete-button";
 
 export const metadata: Metadata = {
   title: "Dashboard Admin | Voxy Web Studio",
@@ -75,7 +77,7 @@ export default async function AdminDashboardPage() {
                           <div className="flex items-center gap-3">
                             <span>{lead.phone}</span>
                             <a 
-                              href={`https://wa.me/${lead.phone.startsWith('0') ? '62' + lead.phone.slice(1) : lead.phone}?text=${encodeURIComponent(`Halo Pak/Bu ${lead.name}, saya Rizky dari Voxy.dev. Saya menerima permintaan konsultasi pembuatan website travel Anda. Boleh kita jadwalkan waktu untuk diskusi lebih detail?`)}`}
+                              href={`https://wa.me/${lead.phone.startsWith('0') ? '62' + lead.phone.slice(1) : lead.phone}?text=${encodeURIComponent(`Halo Pak/Bu ${lead.name}, saya Rizky dari ${BRAND_NAME}. Saya menerima permintaan konsultasi pembuatan website travel Anda. Boleh kita jadwalkan waktu untuk diskusi lebih detail?`)}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-emerald-500 hover:text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 p-1.5 rounded-md transition-colors"
@@ -92,9 +94,10 @@ export default async function AdminDashboardPage() {
                         <td className="p-5 text-right">
                           <form action={deleteLead}>
                             <input type="hidden" name="id" value={lead.id} />
-                            <button type="submit" className="p-2 text-slate-500 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors">
-                              <Trash2 className="h-4 w-4" />
-                            </button>
+                            <DeleteButton
+                              label={lead.name}
+                              srLabel={`Hapus lead ${lead.name}`}
+                            />
                           </form>
                         </td>
                       </tr>

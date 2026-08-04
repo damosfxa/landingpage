@@ -7,6 +7,13 @@
  *   2. INSERT projects  → DITOLAK
  *   3. INSERT leads     → BOLEH
  *   4. SELECT leads     → tidak mengembalikan data
+ *   5. signup mandiri   → DITOLAK
+ *   6. kalau signup ternyata terbuka: user baru itu tetap tidak boleh baca leads
+ *
+ * Tes 5 dan 6 menutup celah yang tidak terlihat dari sisi tabel: anon key bersifat
+ * publik, jadi `POST /auth/v1/signup` bisa dipanggil langsung tanpa lewat aplikasi.
+ * Kalau signup terbuka DAN policy masih memakai `to authenticated using (true)`,
+ * siapa pun bisa mendaftar lalu membaca seluruh daftar prospek.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -91,10 +98,62 @@ let insertedLead = null;
   report(blocked, "anon SELECT leads tidak mengembalikan data", `HTTP ${res.status}, ${rows.length} baris`);
 }
 
-if (insertedLead) {
-  console.log(`\nCatatan: lead uji coba "RLS Probe" tertinggal di database. Hapus lewat /admin.`);
+// 5. Publik tidak boleh mendaftarkan akun sendiri.
+const probeEmail = `rls-probe-${Date.now()}@example.com`;
+const probePassword = `Probe-${crypto.randomUUID()}`;
+let probeAccessToken = null;
+{
+  const res = await fetch(`${URL_BASE}/auth/v1/signup`, {
+    method: "POST",
+    headers: { apikey: ANON_KEY, "Content-Type": "application/json" },
+    body: JSON.stringify({ email: probeEmail, password: probePassword }),
+  });
+  const body = res.ok ? await res.json() : null;
+  probeAccessToken = body?.access_token ?? null;
+
+  report(
+    !res.ok,
+    "anon tidak bisa mendaftarkan akun sendiri",
+    res.ok
+      ? `HTTP ${res.status} — signup TERBUKA, matikan di Dashboard > Authentication > Providers > Email`
+      : `HTTP ${res.status}`,
+  );
+}
+
+// 6. Kalaupun signup terbuka, user non-admin tetap tidak boleh membaca leads.
+//    Inilah lapisan yang dijaga `public.is_admin()`; tanpa itu tes ini akan gagal.
+if (probeAccessToken) {
+  const res = await fetch(`${URL_BASE}/rest/v1/leads?select=id&limit=5`, {
+    headers: {
+      apikey: ANON_KEY,
+      Authorization: `Bearer ${probeAccessToken}`,
+      "Content-Type": "application/json",
+    },
+  });
+  const rows = res.ok ? await res.json() : [];
+  const blocked = !res.ok || rows.length === 0;
+  report(
+    blocked,
+    "user login non-admin tidak bisa membaca leads",
+    `HTTP ${res.status}, ${rows.length} baris`,
+  );
 } else {
-  console.log("\nCatatan: tidak ada baris uji coba yang tertinggal.");
+  console.log("SKIP  user login non-admin tidak bisa membaca leads — signup ditolak, tidak ada sesi uji");
+}
+
+const leftovers = [];
+if (insertedLead) leftovers.push('lead "RLS Probe" di tabel leads (hapus lewat /admin)');
+if (probeAccessToken) {
+  leftovers.push(
+    `akun ${probeEmail} di Authentication > Users (hapus manual, dan matikan signup)`,
+  );
+}
+
+if (leftovers.length > 0) {
+  console.log("\nCatatan, ada sisa uji coba yang perlu dibersihkan:");
+  for (const item of leftovers) console.log(`  - ${item}`);
+} else {
+  console.log("\nCatatan: tidak ada sisa uji coba yang tertinggal.");
 }
 
 console.log(failures === 0 ? "\nSemua pemeriksaan RLS lolos." : `\n${failures} pemeriksaan gagal.`);

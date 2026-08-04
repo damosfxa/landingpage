@@ -3,7 +3,8 @@ import Link from "next/link";
 
 import { deleteProject } from "@/app/admin/actions";
 import { createClient } from "@/utils/supabase/server";
-import { FolderKanban, Plus, Image as ImageIcon, Trash2, Edit } from "lucide-react";
+import { FolderKanban, Plus, Image as ImageIcon, Edit } from "lucide-react";
+import { DeleteButton } from "@/app/admin/delete-button";
 
 export const metadata: Metadata = {
   title: "Kelola Portofolio",
@@ -93,20 +94,18 @@ export default async function AdminProjectsPage() {
                       </td>
                       <td className="p-5 text-right space-x-2">
                         <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Link 
-                            href={`/admin/projects/${project.id}`} 
+                          <Link
+                            href={`/admin/projects/${project.id}/edit`}
                             className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
                           >
                             <Edit className="w-4 h-4" />
                           </Link>
                           <form action={deleteProject}>
                             <input type="hidden" name="id" value={project.id} />
-                            <button 
-                              type="submit" 
-                              className="p-2 text-slate-400 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-colors"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
+                            <DeleteButton
+                              label={project.title}
+                              srLabel={`Hapus project ${project.title}`}
+                            />
                           </form>
                         </div>
                       </td>

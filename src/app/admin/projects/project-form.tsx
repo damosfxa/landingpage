@@ -45,7 +45,7 @@ export function ProjectForm({ action, project, submitLabel }: ProjectFormProps) 
           className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-400 placeholder-slate-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm"
           placeholder="contoh: al-hijrah-premium"
         />
-        <p className="text-xs text-slate-500">Hanya huruf kecil, angka, dan tanda hubung (-)</p>
+        <p className="text-xs text-slate-400">Hanya huruf kecil, angka, dan tanda hubung (-)</p>
       </div>
 
       <div className="space-y-2">
@@ -83,7 +83,7 @@ export function ProjectForm({ action, project, submitLabel }: ProjectFormProps) 
           placeholder='{"Peningkatan Konversi": "150%", "Kecepatan Muat": "0.8s"}'
           defaultValue={project?.metrics ? JSON.stringify(project.metrics) : ""}
         />
-        <p className="text-xs text-slate-500">Format JSON Valid. Digunakan untuk menampilkan angka pencapaian.</p>
+        <p className="text-xs text-slate-400">Format JSON Valid. Digunakan untuk menampilkan angka pencapaian.</p>
       </div>
 
       <div className="space-y-2">
