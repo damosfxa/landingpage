@@ -12,7 +12,15 @@ export type FormState = {
   fieldErrors?: Record<string, string[]>;
 };
 
-export type LeadFormState = FormState;
+export type LeadFormState = FormState & {
+  /**
+   * `true` hanya kalau lead sungguhan tersimpan ke database. Honeypot juga
+   * mengembalikan `status: "success"` (supaya bot tidak tahu ditolak), tapi
+   * dengan ini `false`/`undefined` -- tanpa penanda ini, event konversi GA4
+   * akan ikut menghitung submission bot sebagai lead asli.
+   */
+  leadCaptured?: boolean;
+};
 export type AdminFormState = FormState;
 export type AuthFormState = FormState;
 

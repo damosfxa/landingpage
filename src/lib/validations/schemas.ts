@@ -22,10 +22,11 @@ export const leadSchema = z.object({
     .max(120)
     .optional()
     .transform((value) => (value ? value : null)),
-  // Honeypot: field tersembunyi dari manusia lewat CSS, tapi bot yang isi
-  // semua field form biasanya ikut mengisi ini. Kalau terisi, kemungkinan
-  // besar bukan pengunjung asli.
-  website: z.string().max(0, "Bukan pengunjung asli").optional(),
+  // Catatan: field honeypot `website` sengaja TIDAK ada di skema ini.
+  // Pengecekannya dilakukan lebih awal di `submitLead` (lihat lib/actions/leads.ts)
+  // supaya bot bisa dibalas "sukses" palsu tanpa pernah menyentuh validasi --
+  // sebelumnya field itu didefinisikan di sini juga tapi tidak pernah di-parse,
+  // jadi ada dua sumber kebenaran dan salah satunya mati.
 });
 
 export type LeadInput = z.input<typeof leadSchema>;
