@@ -1,19 +1,38 @@
-# Database Schema (Future Proofing)
+# Database Schema
 
-*Catatan: Saat ini proyek Voxy Web Studio berstatus Landing Page Statis (Tanpa DB).*
-*Dokumen ini adalah cetak biru (Blueprint) jika kelak sistem diubah menjadi Fullstack (Supabase).*
+Supabase sudah aktif. **Sumber kebenaran skema adalah file migrasi di
+`supabase/migrations/`**, bukan dokumen ini -- kalau keduanya berbeda, migrasi
+yang benar.
 
-## 1. Tabel: `Leads`
-Tujuan: Menyimpan data calon klien yang mengisi form selain WhatsApp.
-- `id` (UUID, Primary Key)
-- `name` (String, Not Null)
-- `phone_number` (String, Not Null) - *WA Number*
-- `agency_name` (String, Nullable)
-- `status` (Enum: `NEW`, `CONTACTED`, `NEGOTIATION`, `CLOSED`, `LOST`) - *Default: NEW*
-- `created_at` (Timestamp, Default Now)
+## 1. Tabel: `leads` (aktif)
+Menyimpan data calon klien yang mengisi form di landing page.
+- `id` (uuid, primary key, default `gen_random_uuid()`)
+- `name` (text, not null)
+- `phone` (text, not null) - *nomor WhatsApp*
+- `agency_name` (text, nullable)
+- `status` (text, check: `NEW` | `CONTACTED` | `CLOSED`) - *default `NEW`*
+- `created_at` (timestamptz, default `now()`)
 
-## 2. Tabel: `Travel_Packages` (Untuk Demo Klien)
-Tujuan: Jika web ini digunakan sebagai *template* untuk klien biro travel.
+RLS: publik (`anon`) hanya boleh **INSERT**. Membaca, mengubah, dan menghapus
+butuh `public.is_admin()`.
+
+## 1b. Tabel: `projects` (aktif)
+Portofolio yang tampil di landing page, dikelola lewat `/admin/projects`.
+- `id` (uuid, primary key) · `title` · `slug` (unique) · `description`
+- `image_url` (nullable) · `tech_stack` (text[]) · `metrics` (jsonb, nullable)
+- `created_at` (timestamptz)
+
+RLS: publik boleh **SELECT**; tulis butuh `public.is_admin()`.
+
+## 1c. Tabel: `admins` (aktif)
+Daftar user yang benar-benar admin. Tanpa baris di sini, akun Supabase yang
+login tidak punya akses tulis apa pun.
+- `user_id` (uuid, primary key, referensi `auth.users`)
+- `created_at` (timestamptz)
+
+## 2. Tabel: `Travel_Packages` (BELUM ADA, rencana)
+Blueprint kalau web ini kelak dipakai sebagai *template* untuk klien biro travel.
+Belum ada migrasinya.
 - `id` (UUID, Primary Key)
 - `package_name` (String, Not Null) - *Contoh: Umroh Reguler 9 Hari*
 - `price` (Decimal, Not Null)

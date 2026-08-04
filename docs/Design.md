@@ -4,11 +4,20 @@
 "Premium, Elegan, dan Dapat Dipercaya." 
 Desain tidak boleh terlihat seperti *template* murah atau hasil *generate* AI generik (AI Slop). Setiap elemen harus memancarkan *Vibe* agensi elit.
 
-## 2. Palet Warna (Tailwind Config)
-- **Background Utama:** Slate gelap / Navy (`#0f172a` atau `bg-background`).
-- **Warna Teks Utama:** Putih kontras tinggi (`text-foreground`).
-- **Warna Aksen (Primary):** Biru elektrik (`#3b82f6` atau `text-primary`). Digunakan khusus untuk titik penekanan, CTA, dan elemen penting.
-- **Warna Muted:** Abu-abu terang (`text-muted-foreground`) untuk teks pendukung agar hierarki visual terjaga.
+## 2. Palet Warna
+Token didefinisikan di `src/app/globals.css` lewat `@theme` (Tailwind v4 --
+**tidak ada `tailwind.config.ts`** di proyek ini). Kalau dokumen ini berbeda
+dengan `globals.css`, file CSS yang benar.
+
+Landing page publik memakai **tema terang**:
+- **Background Utama:** Putih (`#FFFFFF`, `bg-background`).
+- **Warna Teks Utama:** Hampir hitam (`#09090B`, `text-foreground`) -- kontras tinggi.
+- **Warna Aksen (Primary):** Biru (`#0044CC`, `text-primary`). 7,8:1 di atas putih, lolos WCAG AAA. Khusus untuk CTA dan titik penekanan.
+- **Warna Muted:** `#3F3F46` (`text-muted-foreground`), 10,4:1 -- untuk teks pendukung.
+
+Area `/admin` dan `/login` memakai skala `slate` gelap, sengaja dibedakan dari
+halaman publik. Untuk teks pendukung di atas latar gelap, pakai `slate-400` ke
+atas: `slate-500` dan `slate-600` gagal kontras AA.
 
 ## 3. Tipografi
 Kita menggunakan kombinasi dua *font* Google untuk menjaga dinamika desain:

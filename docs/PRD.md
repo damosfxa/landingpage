@@ -4,10 +4,11 @@
 **Primary Goal**: Lead Generation (Mendapatkan kontak WhatsApp calon klien)
 
 ## 1. Scope Project & MVP (Minimum Viable Product)
-Fokus MVP saat ini adalah halaman statis profil bisnis (Landing Page) yang sangat teroptimasi untuk konversi B2B.
-- **TIDAK ADA** sistem login/register untuk klien.
+Fokus MVP saat ini adalah halaman profil bisnis (Landing Page) yang sangat teroptimasi untuk konversi B2B.
+- **TIDAK ADA** sistem login/register untuk klien. (Ada login **admin** di `/login`
+  untuk mengelola lead dan portofolio, tapi itu internal, bukan untuk pengunjung.)
 - **TIDAK ADA** integrasi payment gateway.
-- Semua form konversi akan diarahkan langsung ke WhatsApp.
+- Konversi lewat dua jalur: tombol WhatsApp, dan form lead yang tersimpan ke database.
 
 ## 2. Fitur Utama (Core Features)
 - **Hero Section**: Headline yang menyerang pain point (brosur kuno vs web modern) dengan Call-to-Action (CTA) langsung.

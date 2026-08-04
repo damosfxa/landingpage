@@ -12,7 +12,7 @@ Dokumen ini adalah **HUKUM MUTLAK** bagi semua kontributor (termasuk Agen AI) ya
 
 ## 3. Styling Rules (Tailwind)
 - **Grid Overflow Prevention**: Saat menggunakan CSS Grid `auto-fit`, DILARANG *hardcode* `minmax(250px, 1fr)`. Selalu gunakan `minmax(min(100%, 250px), 1fr)` untuk mencegah tampilan hancur/tumpah di layar HP sekecil iPhone SE.
-- **Konsistensi UI**: Gunakan palet warna yang sudah dideklarasikan di `tailwind.config.ts`. Dilarang mencampur kode hex acak di tengah kode (misal: `bg-[#ff0000]`), gunakan token desain seperti `bg-destructive`.
+- **Konsistensi UI**: Gunakan palet warna yang sudah dideklarasikan di `@theme` pada `src/app/globals.css` (Tailwind v4; proyek ini tidak punya `tailwind.config.ts`). Dilarang mencampur kode hex acak di tengah kode (misal: `bg-[#ff0000]`), gunakan token desain seperti `bg-destructive`.
 
 ## 4. Component Structure
 - Buat komponen sekecil mungkin (*Modular*). Jika sebuah *file* melebihi 250 baris kode, itu pertanda bahwa komponen tersebut harus dipecah menjadi sub-komponen.

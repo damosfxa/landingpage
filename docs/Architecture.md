@@ -7,20 +7,41 @@
 - **Deployment:** Vercel (CI/CD otomatis dari GitHub `main` branch)
 - **Icons:** Lucide React & Custom SVG (Voxy Logo di `src/app/icon.svg`)
 
-## 2. Folder Structure (Monolith Frontend)
+- **Backend:** Supabase (Postgres + Auth + Storage), diakses lewat RLS
+- **Testing:** Playwright + axe-core untuk regression aksesibilitas
+
+## 2. Folder Structure
 ```text
 /src
   /app           -> App Router (pages, layout, globals.css, icon.svg)
+    /admin       -> Dashboard lead & portofolio (butuh login)
+    /login       -> Halaman login admin
+    /privasi     -> Kebijakan privasi
   /components
     /sections    -> Komponen modular per blok Landing Page (Hero, FAQ, Pricing, dll)
-    ...          -> Komponen global (Navbar, Footer, TrustBanner)
+    ...          -> Komponen global (Navbar, TrustBanner, LeadForm)
+  /lib           -> Konstanta, analytics, validasi, data statis
+  /utils/supabase-> Client Supabase per konteks (server, proxy, public)
 /docs            -> Dokumentasi Proyek Standar (PRD, Architecture, Rules)
-/public          -> Aset statis (Gambar OG, Icon fallback)
+/public          -> Aset statis (og-image, mockup portofolio)
+/supabase        -> Migrasi SQL (skema + RLS)
+/tests           -> Regression aksesibilitas (Playwright + axe)
 ```
 
 ## 3. Data Flow & State Management
-Karena ini adalah MVP (Landing Page murni), kita sepenuhnya mengandalkan **Static Site Generation (SSG)**.
-- **Tidak ada Server-Side Rendering (SSR)** yang dinamis saat ini untuk menghemat *cost* server dan memaksimalkan kecepatan halaman.
+Rendering dipisah sesuai kebutuhan tiap rute:
+
+| Rute | Mode | Alasan |
+|---|---|---|
+| `/`, `/privasi` | **Statis + ISR** (`revalidate = 3600`) | Halaman publik harus cepat dan bisa di-cache CDN |
+| `/admin/*`, `/login` | **Dinamis** | Butuh sesi user, jadi wajib dirender per request |
+
+Homepage tetap statis meski membaca `projects` dari Supabase, karena memakai
+`createPublicClient()` (`src/utils/supabase/public.ts`) yang **tidak** menyentuh
+`cookies()`. Memanggil `cookies()` di Server Component akan memaksa seluruh rute
+jadi dinamis -- itu pernah terjadi dan membuat homepage kehilangan status statis
+tanpa disadari.
+
 - **Tidak ada Redux/Zustand** karena *state* hanya terbatas pada UI level (seperti `isOpen` pada Mobile Menu atau *accordion* FAQ), cukup menggunakan React `useState`.
 
 ## 4. Technical Decisions
