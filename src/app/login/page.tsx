@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import { LoginForm } from "./login-form";
 
 export const metadata: Metadata = {
-  title: "Login Admin | Voxy Web Studio",
+  // Cuma "Login Admin": root layout sudah menambahkan "| Voxy Web Studio" lewat
+  // title template, jadi menulis brand-nya lagi di sini membuatnya dobel.
+  title: "Login Admin",
   robots: { index: false, follow: false },
 };
 

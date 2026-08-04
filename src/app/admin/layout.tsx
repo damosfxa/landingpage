@@ -4,7 +4,9 @@ import { logout } from "@/app/login/actions";
 import { LayoutDashboard, FolderKanban, LogOut } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Dashboard Admin | Voxy Web Studio",
+  // Cuma "Dashboard Admin": root layout sudah menambahkan "| Voxy Web Studio"
+  // lewat title template, jadi menulis brand-nya lagi di sini membuatnya dobel.
+  title: "Dashboard Admin",
   robots: { index: false, follow: false },
 };
 
