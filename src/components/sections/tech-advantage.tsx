@@ -5,7 +5,7 @@ import { CheckCircle2, XCircle, Gauge, Search, Globe, TrendingUp } from "lucide-
 
 export function TechAdvantageSection() {
   return (
-    <section id="teknologi" className="py-24 bg-background relative overflow-hidden">
+    <section id="teknologi" className="scroll-mt-24 py-24 bg-background relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -79,7 +79,7 @@ export function TechAdvantageSection() {
               <div className="p-3 rounded-full bg-primary/10 text-primary">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-foreground">Website Voxy.dev</h3>
+              <h3 className="text-xl font-bold text-foreground">Website Voxy Web Studio</h3>
             </div>
 
             <p className="text-muted-foreground mb-8">

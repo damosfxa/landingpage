@@ -36,10 +36,10 @@ export function AboutSection() {
               Tentang Kami
             </motion.span>
             <motion.h2 variants={itemVariants} className="mt-4 font-serif text-3xl font-bold leading-tight text-foreground md:text-5xl">
-              Lebih Dekat dengan Voxy.dev
+              Lebih Dekat dengan Voxy Web Studio
             </motion.h2>
             <motion.p variants={itemVariants} className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Voxy.dev mengerjakan website untuk biro tour &amp; travel di Indonesia. Kami
+              Voxy Web Studio mengerjakan website untuk biro tour &amp; travel di Indonesia. Kami
               memilih fokus di satu bidang karena kebutuhannya cukup khas: paket yang sering
               berubah, harga yang perlu diperbarui sendiri, dan calon pelanggan yang menilai
               kredibilitas dari tampilan halaman sebelum menghubungi.

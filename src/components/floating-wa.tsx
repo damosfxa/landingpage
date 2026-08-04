@@ -1,14 +1,19 @@
 "use client"
 import { MessageCircle } from "lucide-react"
+import { trackWhatsAppClick } from "@/lib/analytics"
+import { waLink } from "@/lib/constants"
 
 export function FloatingWA() {
-  const waLink = "https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20tertarik%20konsultasi%20untuk%20pembuatan%20website%20travel%20premium.%20Bisa%20dibantu%3F"
-  
+  const href = waLink(
+    "Halo Voxy, saya tertarik konsultasi untuk pembuatan website travel premium. Bisa dibantu?",
+  )
+
   return (
     <a
-      href={waLink}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackWhatsAppClick("floating")}
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#075E54] text-white shadow-lg shadow-black/20 transition-transform hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#075E54]/50"
       aria-label="Chat WhatsApp"
     >

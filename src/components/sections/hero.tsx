@@ -1,8 +1,13 @@
 "use client"
 
 import { ArrowRight, MessageCircle, MapPin, MonitorSmartphone, Settings2, BarChart3 } from "lucide-react"
+import { useSectionScroll } from "@/lib/use-section-scroll"
+import { trackWhatsAppClick } from "@/lib/analytics"
+import { waLink } from "@/lib/constants"
 
 export function HeroSection() {
+  const scrollToSection = useSectionScroll()
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-28 overflow-hidden bg-background">
       <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-primary/20 blur-[120px] rounded-full z-0" />
@@ -30,9 +35,12 @@ export function HeroSection() {
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
           <a
-            href="https://wa.me/6285111601910?text=Halo%20Voxy%2C%20saya%20tertarik%20konsultasi%20untuk%20pembuatan%20website%20travel.%20Bisa%20dibantu%3F"
+            href={waLink(
+              "Halo Voxy, saya tertarik konsultasi untuk pembuatan website travel. Bisa dibantu?",
+            )}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick("hero")}
             className="inline-flex items-center justify-center gap-2 rounded-md bg-foreground px-8 py-4 text-base font-semibold text-background transition-colors hover:bg-foreground/90"
           >
             <MessageCircle className="h-5 w-5" />
@@ -40,6 +48,7 @@ export function HeroSection() {
           </a>
           <a
             href="#harga"
+            onClick={(e) => scrollToSection(e, "#harga")}
             className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-background px-8 py-4 text-base font-semibold text-foreground transition-colors hover:bg-secondary"
           >
             Lihat Pilihan Paket

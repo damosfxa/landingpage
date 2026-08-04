@@ -1,11 +1,13 @@
 "use client";
 
 import { useActionState, useEffect } from "react";
+import Link from "next/link";
 import { submitLead } from "@/lib/actions/leads";
 import { initialLeadFormState } from "@/lib/types/form-state";
 import { Loader2, Send, CheckCircle2, User, Phone, Building2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
+import { trackLeadSubmit } from "@/lib/analytics";
 
 export function LeadForm() {
   const [state, formAction, isPending] = useActionState(submitLead, initialLeadFormState);
@@ -14,6 +16,10 @@ export function LeadForm() {
   useEffect(() => {
     if (state.status === "success") {
       toast.success(state.message);
+      // Honeypot juga mengembalikan "success" supaya bot tidak tahu ditolak --
+      // leadCaptured membedakan lead asli dari itu, supaya GA4 tidak menghitung
+      // submission bot sebagai konversi.
+      if (state.leadCaptured) trackLeadSubmit();
     } else if (state.status === "error") {
       toast.error(state.message);
     }
@@ -65,7 +71,7 @@ export function LeadForm() {
               required 
               autoComplete="name" 
               placeholder="Budi Santoso"
-              className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-700/50 rounded-2xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+              className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-700/50 rounded-2xl text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
             />
           </div>
           {state.fieldErrors?.name && (
@@ -85,7 +91,7 @@ export function LeadForm() {
               required 
               autoComplete="tel"
               placeholder="081234567890"
-              className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-700/50 rounded-2xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+              className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-700/50 rounded-2xl text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
             />
           </div>
           {state.fieldErrors?.phone && (
@@ -95,7 +101,7 @@ export function LeadForm() {
 
         {/* Agency Name Input */}
         <div className="space-y-2">
-          <label htmlFor="lead-agency" className="text-sm font-medium text-slate-300 ml-1">Nama Perusahaan / Bisnis <span className="text-slate-500 font-normal">(Opsional)</span></label>
+          <label htmlFor="lead-agency" className="text-sm font-medium text-slate-300 ml-1">Nama Perusahaan / Bisnis <span className="text-slate-400 font-normal">(Opsional)</span></label>
           <div className="relative">
             <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
             <input 
@@ -104,7 +110,7 @@ export function LeadForm() {
               type="text" 
               autoComplete="organization"
               placeholder="PT Visi Nusantara"
-              className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-700/50 rounded-2xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+              className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-700/50 rounded-2xl text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
             />
           </div>
           {state.fieldErrors?.agency_name && (
@@ -130,6 +136,15 @@ export function LeadForm() {
             </>
           )}
         </button>
+
+        <p className="text-xs text-center text-slate-400">
+          Dengan mengirim formulir ini, Anda menyetujui data Anda dipakai untuk
+          dihubungi kembali sesuai{" "}
+          <Link href="/privasi" className="underline underline-offset-2 hover:text-slate-300">
+            Kebijakan Privasi
+          </Link>{" "}
+          kami.
+        </p>
 
         <AnimatePresence>
           {state.status === "error" && (

@@ -1,6 +1,8 @@
 "use client"
 import { motion } from "framer-motion"
 import { Check, Star, ArrowRight } from "lucide-react"
+import { trackWhatsAppClick } from "@/lib/analytics"
+import { BRAND_NAME, waLink } from "@/lib/constants"
 
 export function PricingSection() {
   const containerVariants = {
@@ -25,6 +27,7 @@ export function PricingSection() {
     {
       name: "Essential Plan",
       price: "1.5 Jt",
+      priceIDR: 1_500_000,
       originalPrice: "3 Jt",
       desc: "Untuk travel agent yang baru mulai membangun kehadiran digital.",
       features: [
@@ -43,6 +46,7 @@ export function PricingSection() {
     {
       name: "Professional Plan",
       price: "3 Jt",
+      priceIDR: 3_000_000,
       originalPrice: "5.5 Jt",
       desc: "Untuk biro travel yang perlu memperbarui paket dan harganya sendiri.",
       features: [
@@ -61,6 +65,8 @@ export function PricingSection() {
     {
       name: "Enterprise Plan",
       price: "7.5+ Jt",
+      // Harga mulai dari, bukan harga tetap -- lihat pricingJsonLd di bawah.
+      priceIDR: 7_500_000,
       originalPrice: "12 Jt",
       desc: "Untuk yang butuh pemesanan dan pembayaran berjalan otomatis.",
       features: [
@@ -78,8 +84,39 @@ export function PricingSection() {
     }
   ]
 
+  // Structured data untuk paket harga. `priceIDR` numerik dipakai di sini,
+  // terpisah dari `price` (string tampilan seperti "7.5+ Jt") supaya JSON-LD
+  // tidak bergantung pada parsing teks yang gampang meleset.
+  const pricingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Jasa Pembuatan Website Tour & Travel",
+    provider: {
+      "@type": "Organization",
+      name: BRAND_NAME,
+    },
+    areaServed: "Indonesia",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Paket Website Voxy",
+      itemListElement: plans.map((plan) => ({
+        "@type": "Offer",
+        name: plan.name,
+        description: plan.desc,
+        price: String(plan.priceIDR),
+        priceCurrency: "IDR",
+      })),
+    },
+  }
+
   return (
-    <section id="harga" className="bg-secondary py-24 lg:py-32">
+    <section id="harga" className="scroll-mt-24 bg-secondary py-24 lg:py-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricingJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <span className="block text-sm font-semibold uppercase tracking-widest text-primary mb-4">Transparansi Harga</span>
@@ -122,9 +159,12 @@ export function PricingSection() {
               </div>
 
               <a
-                href={`https://wa.me/6285111601910?text=${encodeURIComponent(`Halo Voxy, saya tertarik dengan ${plan.name} untuk pembuatan website travel. Boleh minta info lebih lanjut?`)}`}
+                href={waLink(
+                  `Halo Voxy, saya tertarik dengan ${plan.name} untuk pembuatan website travel. Boleh minta info lebih lanjut?`,
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick(`pricing_${plan.name}`)}
                 className={`mt-8 flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold transition-all ${
                   plan.popular
                     ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-[1.02]"

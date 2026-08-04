@@ -31,13 +31,19 @@ export function FAQSection() {
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 aria-expanded={openIndex === i}
                 aria-controls={`faq-answer-${i}`}
-                className="flex w-full items-start justify-between p-6 text-left focus:outline-none"
+                className="flex w-full items-start justify-between p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
               >
                 <span className="font-serif text-lg font-bold text-foreground pr-4">{faq.q}</span>
                 <ChevronDown className={`h-5 w-5 mt-1 flex-shrink-0 text-primary transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} />
               </button>
               <div
                 id={`faq-answer-${i}`}
+                // Jawaban yang tertutup hanya disembunyikan lewat max-height dan
+                // opacity, jadi teksnya tetap ada di DOM dan tetap diumumkan
+                // pembaca layar berurutan seolah semua akordion terbuka.
+                // `inert` mencabutnya dari accessibility tree tanpa mengganggu
+                // transisi, dan tidak menghalangi Google membaca isinya.
+                inert={openIndex !== i}
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
                   openIndex === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                 }`}

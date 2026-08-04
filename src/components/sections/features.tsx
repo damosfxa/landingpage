@@ -22,7 +22,7 @@ export function FeaturesSection() {
   }
 
   return (
-    <section id="kelebihan" className="bg-background py-24 lg:py-32">
+    <section id="kelebihan" className="scroll-mt-24 bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <span className="block text-sm font-semibold uppercase tracking-widest text-primary mb-4">Yang Anda Dapatkan</span>
