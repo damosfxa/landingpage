@@ -7,16 +7,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "verify:rls": "node scripts/verify-rls.mjs"
+    "verify:rls": "node scripts/verify-rls.mjs",
+    "test:a11y": "playwright test"
   },
   "dependencies": {
-    "@studio-freight/react-lenis": "^0.0.47",
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.109.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.42.2",
+    "lenis": "^1.3.25",
     "lucide-react": "^1.22.0",
-    "next": "^16.2.12",
+    "next": "^16.3.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-hook-form": "^7.80.0",
@@ -33,7 +34,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.9",
+    "eslint-config-next": "^16.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

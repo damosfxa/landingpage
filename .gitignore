@@ -1,7 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+# Tanpa garis miring di depan, supaya berlaku di semua kedalaman -- pola lama
+# `/node_modules` hanya mengunci root, sehingga `tools/maps-scraper/node_modules`
+# ikut ter-commit (4.480 file).
+node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -12,6 +15,11 @@
 
 # testing
 /coverage
+# Artefak run Playwright (trace, screenshot, error-context) -- regenerate tiap
+# `npm run test:a11y`, tidak ada gunanya masuk repo.
+/test-results
+/playwright-report
+/blob-report
 
 # next.js
 /.next/
@@ -35,6 +43,12 @@ yarn-error.log*
 
 # Data pribadi/finansial yang tidak boleh ikut ke Git (repo ini publik).
 *.local.md
+
+# Hasil scraping berisi kontak pihak ketiga: nama bisnis, nomor telepon, link Maps.
+# Aturan di atas sudah ada sejak awal tapi tidak menyebut format ini, sehingga
+# `tools/maps-scraper/leads-voxy-seo-master.csv` lolos ke repo publik.
+tools/**/*.csv
+tools/**/*.html
 
 # vercel
 .vercel
