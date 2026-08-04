@@ -32,6 +32,8 @@ Salin `.env.example` menjadi `.env.local`, lalu isi:
 - `src/components/sections/`: section landing page
 - `src/lib/data/faq.ts`: sumber tunggal FAQ, dipakai halaman dan JSON-LD
 - `supabase/migrations/`: skema tabel `projects` dan `leads` beserta RLS
+- `tests/a11y.spec.ts`: regression aksesibilitas (pemindaian axe WCAG A/AA,
+  navigasi keyboard, `prefers-reduced-motion`)
 
 ## Perintah
 
@@ -40,4 +42,5 @@ npm run dev
 npm run build
 npm run lint
 npm run verify:rls
+npm run test:a11y
 ```
