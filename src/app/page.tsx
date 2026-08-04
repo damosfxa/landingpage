@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/sections/hero"
 import { TrustBanner } from "@/components/trust-banner"
@@ -10,9 +11,14 @@ import { FloatingWA } from "@/components/floating-wa"
 import { TechAdvantageSection } from "@/components/sections/tech-advantage"
 import { LeadForm } from "@/components/lead-form"
 import { Clock, Handshake } from "lucide-react"
-import { PortfolioSection } from "@/components/sections/portfolio"
-import { createClient } from "@/utils/supabase/server"
+import { MIN_CLIENT_PROJECTS, PortfolioSection } from "@/components/sections/portfolio"
+import { createPublicClient } from "@/utils/supabase/public"
 import { faqs } from "@/lib/data/faq"
+
+// Portofolio berubah jarang (lewat /admin), jadi cukup regenerasi setiap jam.
+// Wajib disetel: tanpa ini, halaman tetap statis di build pertama tapi tidak
+// pernah menyerap project baru sampai deploy ulang.
+export const revalidate = 3600
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -28,12 +34,14 @@ const faqJsonLd = {
 }
 
 export default async function Home() {
-  const supabase = await createClient()
+  const supabase = createPublicClient()
   const { data: projects } = await supabase
     .from("projects")
     .select("*")
     .order("created_at", { ascending: false })
-    .limit(4)
+    // Harus di atas ambang mockup, kalau tidak PortfolioSection tidak akan pernah
+    // melihat cukup proyek untuk berhenti menampilkan contoh desain.
+    .limit(MIN_CLIENT_PROJECTS + 1)
   return (
     <>
       <Navbar />
@@ -41,13 +49,13 @@ export default async function Home() {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
       />
 
-      <main className="flex min-h-screen flex-col">
+      <main id="konten-utama" className="flex min-h-screen flex-col">
         <HeroSection />
         <TrustBanner />
-        <section id="tentang">
+        <section id="tentang" className="scroll-mt-24">
           <AboutSection />
         </section>
         <FeaturesSection />
@@ -57,7 +65,7 @@ export default async function Home() {
         <PricingSection />
         <FAQSection />
 
-        <section id="kontak" className="bg-slate-950 py-24 text-slate-200 relative overflow-hidden">
+        <section id="kontak" className="scroll-mt-24 bg-slate-950 py-24 text-slate-200 relative overflow-hidden">
           <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
           <div className="mx-auto max-w-6xl px-6 relative z-10">
@@ -94,7 +102,11 @@ export default async function Home() {
           </div>
         </section>
 
-        <footer className="bg-foreground border-t border-white/10 py-12 px-6 text-muted">
+      </main>
+
+      {/* Footer situs adalah saudara <main>, bukan anaknya: isinya berlaku untuk
+          seluruh halaman, bukan bagian dari konten utama. */}
+      <footer className="bg-foreground border-t border-white/10 py-12 px-6 text-muted">
            <div className="max-w-5xl mx-auto mb-10">
              <h2 className="font-serif font-semibold text-white mb-4 text-center">Area Layanan</h2>
              <p className="text-xs text-center max-w-2xl mx-auto leading-relaxed">
@@ -105,10 +117,16 @@ export default async function Home() {
              </p>
            </div>
            <div className="text-center">
-             <p className="text-sm">© {new Date().getFullYear()} Voxy.dev. Jasa pembuatan website tour &amp; travel.</p>
+             {/* Aman dengan `revalidate` di atas: Next menjalankan ulang komponen
+                 ini (jadi `getFullYear()` ikut terhitung ulang) begitu ada
+                 request setelah jendela revalidate lewat -- bukan cuma sekali
+                 saat build. */}
+             <p className="text-sm">© {new Date().getFullYear()} Voxy Web Studio. Jasa pembuatan website tour &amp; travel.</p>
+             <Link href="/privasi" className="mt-2 inline-block text-xs text-muted hover:text-white transition-colors">
+               Kebijakan Privasi
+             </Link>
            </div>
-        </footer>
-      </main>
+      </footer>
     </>
   )
 }

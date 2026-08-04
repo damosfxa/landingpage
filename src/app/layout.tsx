@@ -4,12 +4,13 @@ import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { Toaster } from "sonner";
 import Script from "next/script";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { BRAND_NAME, SITE_URL, WA_NUMBER } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.byvoxy.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Voxy Web Studio | Jasa Pembuatan Website Tour & Travel",
-    template: "%s | Voxy Web Studio"
+    default: `${BRAND_NAME} | Jasa Pembuatan Website Tour & Travel`,
+    template: `%s | ${BRAND_NAME}`
   },
   description:
     "Jasa pembuatan website untuk biro tour & travel: desain kustom, halaman yang cepat dibuka, dan struktur SEO yang tertata. Domain dan hosting tahun pertama sudah termasuk.",
@@ -22,31 +23,31 @@ export const metadata: Metadata = {
     "jasa seo website travel",
     "voxy web studio",
   ],
-  authors: [{ name: "Voxy Web Studio" }],
-  creator: "Voxy Web Studio",
+  authors: [{ name: BRAND_NAME }],
+  creator: BRAND_NAME,
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://www.byvoxy.com",
-    title: "Voxy Web Studio | Jasa Pembuatan Website Tour & Travel",
+    url: SITE_URL,
+    title: `${BRAND_NAME} | Jasa Pembuatan Website Tour & Travel`,
     description:
       "Website untuk biro tour & travel: desain kustom, cepat dibuka, dan siap ditemukan lewat pencarian Google.",
-    siteName: "Voxy Web Studio",
+    siteName: BRAND_NAME,
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Voxy Web Studio, jasa pembuatan website tour & travel",
+        alt: `${BRAND_NAME}, jasa pembuatan website tour & travel`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Voxy Web Studio | Jasa Pembuatan Website Tour & Travel",
+    title: `${BRAND_NAME} | Jasa Pembuatan Website Tour & Travel`,
     description:
       "Website untuk biro tour & travel: desain kustom, cepat dibuka, dan siap ditemukan lewat pencarian Google.",
     images: ["/og-image.jpg"],
@@ -79,11 +80,15 @@ const jakartaSans = Plus_Jakarta_Sans({
   display: "swap"
 });
 
+// "Organization", bukan "ProfessionalService" (subtipe LocalBusiness): bisnis
+// ini beroperasi jarak jauh tanpa kantor walk-in (lihat footer), jadi tidak
+// punya alamat jalan lengkap yang disyaratkan Google untuk LocalBusiness yang
+// valid. Detail harga per paket ada di JSON-LD Service/Offer, lihat pricing.tsx.
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Voxy Web Studio",
-  image: "https://www.byvoxy.com/og-image.jpg",
+  "@type": "Organization",
+  name: BRAND_NAME,
+  image: `${SITE_URL}/og-image.jpg`,
   description:
     "Jasa pembuatan website untuk biro tour & travel di Indonesia.",
   address: {
@@ -91,9 +96,8 @@ const organizationJsonLd = {
     addressLocality: "Jakarta",
     addressCountry: "ID",
   },
-  url: "https://www.byvoxy.com",
-  telephone: "+6285111601910",
-  priceRange: "Rp 1.500.000 - Rp 7.500.000",
+  url: SITE_URL,
+  telephone: `+${WA_NUMBER}`,
   areaServed: "Indonesia",
   knowsAbout: ["Website Tour & Travel", "Web Development", "SEO"],
 };
@@ -126,8 +130,22 @@ export default function RootLayout({
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          // Escape `<` per rekomendasi resmi Next.js: JSON.stringify tidak
+          // sanitasi string, dan tanpa ini JSON-LD bisa keluar dari konteks
+          // <script> kalau kontennya nanti memuat "</script>".
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
         />
+        {/* Navbar fixed selalu jadi stop Tab pertama di setiap kunjungan, jadi
+            pengguna keyboard butuh jalan pintas melewatinya. Tersembunyi sampai
+            difokus. */}
+        <a
+          href="#konten-utama"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:font-semibold"
+        >
+          Lewati ke konten utama
+        </a>
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>

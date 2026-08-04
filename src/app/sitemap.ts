@@ -1,8 +1,11 @@
 import { MetadataRoute } from 'next'
 
+import { SITE_URL } from '@/lib/constants'
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Di-hardcode agar tidak ikut berubah mengikuti env Vercel.
-  const baseUrl = 'https://www.byvoxy.com'
+  // Dari konstanta bersama, bukan env Vercel, supaya tidak ikut berubah
+  // mengikuti URL preview deployment.
+  const baseUrl = SITE_URL
 
   return [
     {
@@ -12,6 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/privasi`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.3,
     },
   ]
 }
