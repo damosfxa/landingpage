@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import { CheckCircle2 } from "lucide-react"
+import { ImageWithSkeleton } from "@/components/image-with-skeleton"
 
 export function AboutSection() {
   const containerVariants = {
@@ -45,31 +45,33 @@ export function AboutSection() {
               kredibilitas dari tampilan halaman sebelum menghubungi.
             </motion.p>
 
-            <motion.ul variants={itemVariants} className="mt-8 space-y-4">
+            <motion.ul variants={itemVariants} className="mt-8 space-y-3 border-l-2 border-border">
               {[
                 "Fokus di satu bidang: website tour & travel",
                 "Desain dibuat dari nol mengikuti brand Anda",
                 "Halaman ringan dan struktur SEO yang tertata",
                 "Dukungan teknis dan garansi revisi sesuai paket",
               ].map((item, i) => (
-                <li key={i} className="flex gap-x-3 text-muted-foreground">
-                  <CheckCircle2 className="h-6 w-6 flex-none text-primary" aria-hidden="true" />
-                  <span>{item}</span>
+                <li key={i} className="pl-4 text-muted-foreground">
+                  {item}
                 </li>
               ))}
             </motion.ul>
           </div>
 
-          <motion.div variants={itemVariants} className="relative rounded-3xl bg-secondary p-8 md:p-12 border border-border overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent z-0" />
-            <div className="relative z-10 flex flex-col items-center justify-center text-center space-y-6">
-               <h3 className="text-2xl font-serif font-bold text-foreground">Cara Kami Bekerja</h3>
-               <p className="text-muted-foreground leading-relaxed">
-                 Kami mulai dari pertanyaan yang sama di setiap proyek: siapa yang akan membuka
-                 halaman ini, dan apa yang mereka cari sebelum memutuskan. Desain, struktur
-                 halaman, dan penempatan tombol kontak menyusul dari jawaban itu.
-               </p>
+          <motion.div variants={itemVariants} className="relative">
+            <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-xl border border-border shadow-xl">
+              <ImageWithSkeleton
+                src="/images/about-workspace.jpg"
+                alt="Developer sedang membangun halaman website di laptop"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
+            {/* Bingkai offset -- pengganti panel gradient dekoratif, tanpa
+                berpura-pura jadi foto kedua. */}
+            <div className="absolute -bottom-6 -right-6 z-0 hidden h-full w-full rounded-xl border-2 border-primary md:block" />
           </motion.div>
         </motion.div>
       </div>

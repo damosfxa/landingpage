@@ -3,7 +3,7 @@ import "./globals.css";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { Toaster } from "sonner";
 import Script from "next/script";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Domine, Public_Sans } from "next/font/google";
 import { BRAND_NAME, SITE_URL, WA_NUMBER } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -68,15 +68,15 @@ export const metadata: Metadata = {
   },
 };
 
-const inter = Inter({
+const publicSans = Public_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
   display: "swap"
 });
 
-const jakartaSans = Plus_Jakarta_Sans({
+const domine = Domine({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-headline",
   display: "swap"
 });
 
@@ -109,7 +109,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className="h-full antialiased">
-      <body className={`min-h-full flex flex-col font-sans ${inter.variable} ${jakartaSans.variable}`}>
+      <body className={`min-h-full flex flex-col font-sans ${publicSans.variable} ${domine.variable}`}>
         {/* Google Analytics aktif hanya bila NEXT_PUBLIC_GA_ID di-set. */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>

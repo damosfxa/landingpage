@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { ImageWithSkeleton } from "@/components/image-with-skeleton";
 import { ArrowUpRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLenis } from "lenis/react";
@@ -26,7 +26,7 @@ const mockupProjects: Project[] = [
     title: "Al-Hijrah Premium Umrah",
     slug: "al-hijrah",
     description:
-      "Konsep tampilan untuk biro umrah: daftar paket, jadwal keberangkatan, dan halaman legalitas dalam satu alur baca.",
+      "Konsep tampilan untuk biro umrah premium: detail paket yang konkret (hotel, tanggal keberangkatan, harga) langsung di halaman utama, bukan janji generik.",
     image_url: "/mockups/al-hijrah.jpg",
     tech_stack: ["Next.js", "Tailwind", "Supabase"],
     metrics: {},
@@ -34,10 +34,10 @@ const mockupProjects: Project[] = [
   },
   {
     id: "mockup-2",
-    title: "ZamZam Tour Experience",
+    title: "ZamZam Tour",
     slug: "zamzam-tour",
     description:
-      "Konsep tampilan untuk paket tur rombongan, dengan galeri dokumentasi perjalanan dan formulir pendaftaran per keberangkatan.",
+      "Konsep tampilan untuk tur rombongan domestik: jadwal keberangkatan, sisa kuota, dan rincian harga per paket ditampilkan jelas sejak awal.",
     image_url: "/mockups/zamzam.jpg",
     tech_stack: ["React", "Framer Motion", "PostgreSQL"],
     metrics: {},
@@ -141,27 +141,37 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="block text-sm font-semibold uppercase tracking-widest text-primary mb-4">
-            Portofolio
-          </span>
-          <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-foreground md:text-5xl">
+          <h2 className="font-serif text-3xl font-bold leading-tight text-foreground md:text-4xl">
             Contoh tampilan yang kami buat
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
             Sebagian di antaranya masih berupa konsep desain buatan sendiri, dan kami tandai
-            supaya jelas mana yang sudah berjalan sebagai proyek klien.
+            dengan jelas supaya tidak tertukar dengan proyek klien yang sudah berjalan.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {displayProjects.map((project) => (
+          {displayProjects.map((project) => {
+            const mockup = isMockup(project);
+            return (
             <article
               key={project.id}
-              className="group relative flex flex-col bg-card rounded-2xl border border-border shadow-sm overflow-hidden hover:shadow-xl transition-all duration-500 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+              className={`group relative flex flex-col bg-card overflow-hidden transition-all duration-500 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 ${
+                mockup
+                  ? "rounded-lg border-2 border-dashed border-border"
+                  : "rounded-lg border-t-4 border-primary shadow-sm hover:shadow-xl"
+              }`}
             >
-              <div className="relative h-[200px] sm:h-[240px] w-full overflow-hidden bg-slate-200">
+              <div className={`relative h-[200px] w-full overflow-hidden bg-muted sm:h-[240px] ${mockup ? "grayscale transition-all duration-500 group-hover:grayscale-0" : ""}`}>
+                <span
+                  className={`absolute top-4 right-4 z-10 rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm ${
+                    mockup ? "bg-foreground/70 text-background" : "bg-primary/80 text-primary-foreground"
+                  }`}
+                >
+                  {mockup ? "Konsep desain" : "Proyek klien"}
+                </span>
                 {project.image_url ? (
-                  <Image
+                  <ImageWithSkeleton
                     src={project.image_url}
                     alt={project.title}
                     fill
@@ -172,12 +182,6 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
                   <div className="absolute inset-0 flex items-center justify-center text-muted-foreground font-medium text-sm">
                     Tidak ada gambar
                   </div>
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-                {isMockup(project) && (
-                  <span className="absolute top-4 left-4 z-10 rounded-full bg-slate-950/80 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                    Konsep desain
-                  </span>
                 )}
               </div>
 
@@ -197,9 +201,7 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
                       {project.title}
                     </button>
                   </h3>
-                  <div className="h-8 w-8 rounded-full border border-border flex items-center justify-center bg-background shrink-0 group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300 transform group-hover:-translate-y-1 group-hover:translate-x-1">
-                    <ArrowUpRight className="h-4 w-4" />
-                  </div>
+                  <ArrowUpRight className="h-5 w-5 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
                 </div>
 
                 <p className="text-muted-foreground leading-relaxed mb-6 flex-1 text-sm">
@@ -218,7 +220,8 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
                 )}
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -230,7 +233,7 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeProject}
-              className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm cursor-pointer"
+              className="absolute inset-0 bg-foreground/60 cursor-pointer"
             />
 
             <motion.div
@@ -243,19 +246,19 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               data-lenis-prevent="true"
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-slate-950 border border-white/10 rounded-2xl shadow-2xl flex flex-col z-10 focus:outline-none"
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-card border border-border rounded-xl shadow-2xl flex flex-col z-10 focus:outline-none"
             >
               <button
                 onClick={closeProject}
-                className="absolute top-4 right-4 z-20 p-2 bg-black/50 hover:bg-black/80 text-white rounded-full backdrop-blur-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="absolute top-4 right-4 z-20 p-2 bg-foreground/60 hover:bg-foreground/80 text-background rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background"
                 aria-label="Tutup detail proyek"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="relative w-full h-[30vh] sm:h-[40vh] bg-slate-900 overflow-hidden shrink-0">
+              <div className="relative w-full h-[30vh] sm:h-[40vh] bg-muted overflow-hidden shrink-0">
                 {selectedProject.image_url && (
-                  <Image
+                  <ImageWithSkeleton
                     src={selectedProject.image_url}
                     alt={selectedProject.title}
                     fill
@@ -263,35 +266,34 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
                     className="object-cover"
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
               </div>
 
               <div className="p-6 sm:p-10 flex flex-col">
                 <span className="text-primary text-xs font-bold tracking-widest uppercase mb-3">
-                  {isMockup(selectedProject) ? "Konsep desain" : "Proyek klien"}
+                  {isMockup(selectedProject) ? "Konsep Desain" : "Proyek Klien"}
                 </span>
-                <h3 id="project-dialog-title" className="font-serif text-3xl sm:text-4xl font-bold text-white mb-6">
+                <h3 id="project-dialog-title" className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-6">
                   {selectedProject.title}
                 </h3>
 
-                <div className="prose prose-invert max-w-none mb-10">
-                  <p className="text-slate-300 text-lg leading-relaxed">
+                <div className="max-w-none mb-10">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     {selectedProject.description}
                   </p>
                 </div>
 
                 {selectedProject.metrics && Object.keys(selectedProject.metrics).length > 0 && (
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10 bg-white/5 rounded-xl p-6 border border-white/5">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10 bg-muted rounded-xl p-6 border border-border">
                     {Object.entries(selectedProject.metrics).map(([key, value]) => (
                       <div key={key}>
-                        <div className="text-sm text-slate-400 mb-2">{key}</div>
-                        <div className="font-serif text-2xl font-bold text-white">{String(value)}</div>
+                        <div className="text-sm text-muted-foreground mb-2">{key}</div>
+                        <div className="font-serif text-2xl font-bold text-foreground">{String(value)}</div>
                       </div>
                     ))}
                   </div>
                 )}
 
-                <div className="mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center gap-4">
+                <div className="mt-auto pt-8 border-t border-border flex flex-col sm:flex-row items-center gap-4">
                   <a
                     href="#kontak"
                     onClick={(e) => {
@@ -307,7 +309,7 @@ export function PortfolioSection({ projects }: { projects: Project[] }) {
                       lenis?.start();
                       scrollToSection(e, "#kontak");
                     }}
-                    className="w-full sm:w-auto px-8 py-3 bg-white text-slate-950 hover:bg-slate-200 font-bold rounded-xl transition-colors flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90 font-bold rounded-md transition-colors flex items-center justify-center gap-2"
                   >
                     Diskusikan Desain Serupa <ArrowUpRight className="w-4 h-4" />
                   </a>

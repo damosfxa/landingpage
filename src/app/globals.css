@@ -3,26 +3,34 @@
 @plugin "tailwindcss-animate";
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #09090B; /* Crisp, high-contrast dark text */
+  /* Palet "Voxy Editorial Teal": teal + terracotta, diturunkan dari design
+     system yang sama yang dipakai generasi desain di Stitch, supaya token
+     CSS ini dan hasil desainnya tetap satu sumber warna. Menggantikan biru
+     generik sebelumnya yang tidak merepresentasikan brand apa pun. */
+  --background: #F6FAF7;
+  --foreground: #2A3532; /* Hijau-abu gelap, bukan hitam pekat -- lebih hangat */
   --card: #FFFFFF;
-  --card-foreground: #09090B;
+  --card-foreground: #2A3532;
   --popover: #FFFFFF;
-  --popover-foreground: #09090B;
-  --primary: #0044CC; /* Darker modern tech blue for strict WCAG AA/AAA contrast ratio */
-  --primary-foreground: #FFFFFF;
-  --secondary: #F4F4F5; /* Crisp light gray for alternating sections */
-  --secondary-foreground: #09090B;
-  --muted: #F4F4F5;
-  --muted-foreground: #3F3F46; /* Even darker gray (Zinc-700) for strict WCAG AA/AAA contrast ratio */
-  --accent: #EFF6FF; /* Very light blue for hover states */
-  --accent-foreground: #0055FF;
-  --destructive: #B91C1C; /* Dark red for strict WCAG AA/AAA contrast ratio */
-  --destructive-foreground: #FAFAFA;
-  --border: #E4E4E7;
-  --input: #E4E4E7;
-  --ring: #0055FF;
-  --radius: 0.75rem;
+  --popover-foreground: #2A3532;
+  --primary: #226A5D; /* Teal dalam, identitas utama brand */
+  --primary-foreground: #E3FFF7;
+  --primary-container: #AAF0E0; /* Latar highlight untuk paket "Direkomendasikan" */
+  --primary-container-foreground: #0C5C50;
+  --secondary: #EEF5F2; /* Latar section berselang, pengganti abu netral */
+  --secondary-foreground: #2A3532;
+  --muted: #E7F0EC;
+  --muted-foreground: #57615E;
+  --accent: #EEF5F2;
+  --accent-foreground: #226A5D;
+  --tertiary: #C1652F; /* Terracotta hangat, aksen CTA sekunder (form kontak) */
+  --tertiary-foreground: #FFFFFF;
+  --destructive: #A83836;
+  --destructive-foreground: #FFF7F6;
+  --border: #DCE5E1;
+  --input: #DCE5E1;
+  --ring: #226A5D;
+  --radius: 0.5rem; /* Sedikit lebih tegas dari sebelumnya, kesan editorial bukan bubbly-SaaS */
 }
 
 @theme inline {
@@ -34,12 +42,16 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-container: var(--primary-container);
+  --color-primary-container-foreground: var(--primary-container-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -48,11 +60,12 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  /* Dipakai lewat class `font-serif` untuk heading. Fontnya Plus Jakarta Sans,
-     jadi fallback-nya ikut sans-serif, bukan Georgia. */
-  --font-serif: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  /* Dipakai lewat class `font-serif` untuk heading. Domine adalah serif
+     sungguhan (beda dari sebelumnya, Plus Jakarta Sans yang dipaksa jadi
+     "font-serif" padahal sans-serif), jadi fallback-nya ikut serif. */
+  --font-serif: var(--font-headline), ui-serif, Georgia, serif;
 }
 
 @layer base {

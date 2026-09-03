@@ -21,8 +21,9 @@ export function Navbar() {
   }, [])
 
   const navLinks = [
-    { name: "Tentang", href: "#tentang" },
+    { name: "Cerita Kami", href: "#tentang" },
     { name: "Yang Anda Dapatkan", href: "#kelebihan" },
+    { name: "Portofolio", href: "#portofolio" },
     { name: "Harga", href: "#harga" },
   ]
 

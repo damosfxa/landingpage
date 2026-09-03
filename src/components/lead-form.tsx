@@ -4,7 +4,7 @@ import { useActionState, useEffect } from "react";
 import Link from "next/link";
 import { submitLead } from "@/lib/actions/leads";
 import { initialLeadFormState } from "@/lib/types/form-state";
-import { Loader2, Send, CheckCircle2, User, Phone, Building2 } from "lucide-react";
+import { Loader2, Send, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { trackLeadSubmit } from "@/lib/analytics";
@@ -27,23 +27,20 @@ export function LeadForm() {
 
   if (state.status === "success") {
     return (
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center justify-center p-8 bg-emerald-500/10 border border-emerald-500/20 rounded-3xl text-center"
+        className="flex flex-col items-center justify-center p-8 bg-card border border-border rounded-xl text-center"
       >
-        <div className="h-16 w-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-4">
-          <CheckCircle2 className="h-8 w-8 text-emerald-500" />
-        </div>
-        <h3 className="text-xl font-bold text-white mb-2">Terima Kasih!</h3>
-        <p className="text-slate-300">{state.message}</p>
+        <Check className="h-10 w-10 text-primary mb-4" strokeWidth={1.5} />
+        <h3 className="text-xl font-bold text-foreground mb-2">Terima Kasih!</h3>
+        <p className="text-muted-foreground">{state.message}</p>
       </motion.div>
     );
   }
 
   return (
-    <form action={formAction} className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 p-8 rounded-3xl shadow-2xl relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-1 bg-primary opacity-60" />
+    <form action={formAction} className="bg-card border-t-4 border-tertiary p-8 rounded-xl shadow-lg relative">
 
       <div className="space-y-6">
         {/* Honeypot: disembunyikan dari manusia lewat CSS, bukan cuma
@@ -61,60 +58,51 @@ export function LeadForm() {
 
         {/* Name Input */}
         <div className="space-y-2">
-          <label htmlFor="lead-name" className="text-sm font-medium text-slate-300 ml-1">Nama Lengkap</label>
-          <div className="relative">
-            <User className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
-            <input 
-              id="lead-name" 
-              name="name" 
-              type="text" 
-              required 
-              autoComplete="name" 
-              placeholder="Budi Santoso"
-              className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-700/50 rounded-2xl text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-            />
-          </div>
+          <label htmlFor="lead-name" className="text-sm font-medium text-muted-foreground ml-1">Nama Lengkap</label>
+          <input
+            id="lead-name"
+            name="name"
+            type="text"
+            required
+            autoComplete="name"
+            placeholder="Budi Santoso"
+            className="w-full px-4 py-3.5 bg-background border border-input rounded-md text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+          />
           {state.fieldErrors?.name && (
-            <p className="text-sm text-red-400 ml-1">{state.fieldErrors.name.join(", ")}</p>
+            <p className="text-sm text-destructive ml-1">{state.fieldErrors.name.join(", ")}</p>
           )}
         </div>
 
         {/* Phone Input */}
         <div className="space-y-2">
-          <label htmlFor="lead-phone" className="text-sm font-medium text-slate-300 ml-1">No. WhatsApp</label>
-          <div className="relative">
-            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
-            <input 
-              id="lead-phone" 
-              name="phone" 
-              type="tel" 
-              required 
-              autoComplete="tel"
-              placeholder="081234567890"
-              className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-700/50 rounded-2xl text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-            />
-          </div>
+          <label htmlFor="lead-phone" className="text-sm font-medium text-muted-foreground ml-1">No. WhatsApp</label>
+          <input
+            id="lead-phone"
+            name="phone"
+            type="tel"
+            required
+            autoComplete="tel"
+            placeholder="081234567890"
+            className="w-full px-4 py-3.5 bg-background border border-input rounded-md text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+          />
           {state.fieldErrors?.phone && (
-            <p className="text-sm text-red-400 ml-1">{state.fieldErrors.phone.join(", ")}</p>
+            <p className="text-sm text-destructive ml-1">{state.fieldErrors.phone.join(", ")}</p>
           )}
         </div>
 
         {/* Agency Name Input */}
         <div className="space-y-2">
-          <label htmlFor="lead-agency" className="text-sm font-medium text-slate-300 ml-1">Nama Perusahaan / Bisnis <span className="text-slate-400 font-normal">(Opsional)</span></label>
-          <div className="relative">
-            <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500" />
-            <input 
-              id="lead-agency" 
-              name="agency_name" 
-              type="text" 
-              autoComplete="organization"
-              placeholder="PT Visi Nusantara"
-              className="w-full pl-12 pr-4 py-3.5 bg-slate-950/50 border border-slate-700/50 rounded-2xl text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-            />
-          </div>
+          <label htmlFor="lead-agency" className="text-sm font-medium text-muted-foreground ml-1">Nama Perusahaan / Bisnis <span className="text-muted-foreground font-normal">(Opsional)</span></label>
+          <input
+            id="lead-agency"
+            name="agency_name"
+            type="text"
+            autoComplete="organization"
+            placeholder="PT Visi Nusantara"
+            className="w-full px-4 py-3.5 bg-background border border-input rounded-md text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+          />
           {state.fieldErrors?.agency_name && (
-            <p className="text-sm text-red-400 ml-1">{state.fieldErrors.agency_name.join(", ")}</p>
+            <p className="text-sm text-destructive ml-1">{state.fieldErrors.agency_name.join(", ")}</p>
           )}
         </div>
 
@@ -122,7 +110,7 @@ export function LeadForm() {
         <button 
           type="submit" 
           disabled={isPending}
-          className="w-full flex items-center justify-center gap-2 py-4 px-6 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-2xl transition-all disabled:opacity-70 disabled:cursor-not-allowed mt-4 group overflow-hidden relative"
+          className="w-full flex items-center justify-center gap-2 py-4 px-6 bg-tertiary hover:bg-tertiary/90 text-tertiary-foreground font-bold rounded-md transition-all disabled:opacity-70 disabled:cursor-not-allowed mt-4 group overflow-hidden relative"
         >
           {isPending ? (
             <>
@@ -137,10 +125,10 @@ export function LeadForm() {
           )}
         </button>
 
-        <p className="text-xs text-center text-slate-400">
+        <p className="text-xs text-center text-muted-foreground">
           Dengan mengirim formulir ini, Anda menyetujui data Anda dipakai untuk
           dihubungi kembali sesuai{" "}
-          <Link href="/privasi" className="underline underline-offset-2 hover:text-slate-300">
+          <Link href="/privasi" className="underline underline-offset-2 hover:text-foreground">
             Kebijakan Privasi
           </Link>{" "}
           kami.
@@ -148,11 +136,11 @@ export function LeadForm() {
 
         <AnimatePresence>
           {state.status === "error" && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="p-4 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl text-sm text-center"
+              className="p-4 bg-destructive/10 border border-destructive/20 text-destructive rounded-md text-sm text-center"
             >
               Gagal mengirim pesan. Silakan cek form Anda dan coba lagi.
             </motion.div>

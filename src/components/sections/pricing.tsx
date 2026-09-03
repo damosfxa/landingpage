@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import { Check, Star, ArrowRight } from "lucide-react"
+import { Check, ArrowRight } from "lucide-react"
 import { trackWhatsAppClick } from "@/lib/analytics"
 import { BRAND_NAME, waLink } from "@/lib/constants"
 
@@ -28,7 +28,6 @@ export function PricingSection() {
       name: "Essential Plan",
       price: "1.5 Jt",
       priceIDR: 1_500_000,
-      originalPrice: "3 Jt",
       desc: "Untuk travel agent yang baru mulai membangun kehadiran digital.",
       features: [
         "1 Halaman (Landing Page Panjang)",
@@ -47,7 +46,6 @@ export function PricingSection() {
       name: "Professional Plan",
       price: "3 Jt",
       priceIDR: 3_000_000,
-      originalPrice: "5.5 Jt",
       desc: "Untuk biro travel yang perlu memperbarui paket dan harganya sendiri.",
       features: [
         "Website Multi-Halaman (S/d 5 Halaman)",
@@ -67,7 +65,6 @@ export function PricingSection() {
       price: "7.5+ Jt",
       // Harga mulai dari, bukan harga tetap -- lihat pricingJsonLd di bawah.
       priceIDR: 7_500_000,
-      originalPrice: "12 Jt",
       desc: "Untuk yang butuh pemesanan dan pembayaran berjalan otomatis.",
       features: [
         "Jumlah Halaman Menyesuaikan Kebutuhan",
@@ -140,22 +137,23 @@ export function PricingSection() {
             <motion.div
               key={i}
               variants={itemVariants}
-              className={`relative flex flex-col rounded-3xl border ${plan.popular ? 'border-2 border-primary bg-card shadow-xl shadow-primary/10' : 'border-border bg-card shadow-sm'} p-8`}
+              className={`relative flex flex-col rounded-xl p-8 ${
+                plan.popular
+                  ? "border-2 border-primary bg-primary-container text-primary-container-foreground shadow-lg md:-translate-y-4"
+                  : "border border-border bg-card shadow-sm"
+              }`}
             >
               {plan.popular && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-foreground">
-                  <Star className="h-3 w-3 fill-current" /> Paling Sering Dipilih
+                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase tracking-widest text-primary-foreground">
+                  Direkomendasikan
                 </span>
               )}
 
-              <h3 className="font-serif text-2xl font-bold text-foreground">{plan.name}</h3>
-              <span className="mt-4 text-sm text-muted-foreground">{plan.desc}</span>
+              <h3 className="font-serif text-2xl font-bold">{plan.name}</h3>
+              <span className={`mt-4 text-sm ${plan.popular ? "opacity-90" : "text-muted-foreground"}`}>{plan.desc}</span>
 
-              <div className="mt-8 text-sm text-muted-foreground">
-                Harga normal <span className="line-through decoration-destructive/50">Rp {plan.originalPrice}</span>
-              </div>
-              <div className="mt-1 flex items-baseline gap-x-1">
-                <span className="font-serif text-3xl font-bold text-foreground">Rp {plan.price}</span>
+              <div className="mt-8">
+                <span className="font-serif text-3xl font-bold">Rp {plan.price}</span>
               </div>
 
               <a
@@ -165,9 +163,9 @@ export function PricingSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick(`pricing_${plan.name}`)}
-                className={`mt-8 flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold transition-all ${
+                className={`mt-8 flex items-center justify-center gap-2 rounded-md px-6 py-4 text-base font-semibold transition-all ${
                   plan.popular
-                    ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-[1.02]"
+                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
                     : "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground"
                 }`}
               >
@@ -176,16 +174,14 @@ export function PricingSection() {
 
               <ul className="mt-10 flex-1 space-y-4">
                 {i > 0 && (
-                  <li className="mb-2 pb-2 text-sm font-bold text-foreground border-b border-border/50">
+                  <li className={`mb-2 border-b pb-2 text-sm font-bold ${plan.popular ? "border-primary/20" : "border-border/50 text-foreground"}`}>
                     Semua fitur di paket {i === 1 ? "Essential" : "Essential & Professional"}, ditambah:
                   </li>
                 )}
                 {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex gap-4">
-                    <div className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${plan.popular ? 'bg-primary/20' : 'bg-primary/10'} text-primary`}>
-                      <Check className="h-4 w-4" />
-                    </div>
-                    <span className={`text-sm ${plan.popular ? 'text-foreground font-medium' : 'text-muted-foreground'}`}>{feature}</span>
+                  <li key={idx} className="flex gap-3">
+                    <Check className="h-5 w-5 shrink-0 text-primary" strokeWidth={2} />
+                    <span className={`text-sm ${plan.popular ? "font-medium" : "text-muted-foreground"}`}>{feature}</span>
                   </li>
                 ))}
               </ul>

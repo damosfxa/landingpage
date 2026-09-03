@@ -1,14 +1,13 @@
 import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/sections/hero"
-import { TrustBanner } from "@/components/trust-banner"
+import { CredibilityStrip } from "@/components/credibility-strip"
 import { AboutSection } from "@/components/sections/about"
 import { FeaturesSection } from "@/components/sections/features"
 import { GuaranteeSection } from "@/components/sections/guarantee"
 import { PricingSection } from "@/components/sections/pricing"
 import { FAQSection } from "@/components/sections/faq"
 import { FloatingWA } from "@/components/floating-wa"
-import { TechAdvantageSection } from "@/components/sections/tech-advantage"
 import { LeadForm } from "@/components/lead-form"
 import { Clock, Handshake } from "lucide-react"
 import { MIN_CLIENT_PROJECTS, PortfolioSection } from "@/components/sections/portfolio"
@@ -54,43 +53,36 @@ export default async function Home() {
 
       <main id="konten-utama" className="flex min-h-screen flex-col">
         <HeroSection />
-        <TrustBanner />
+        <CredibilityStrip />
         <section id="tentang" className="scroll-mt-24">
           <AboutSection />
         </section>
         <FeaturesSection />
-        <TechAdvantageSection />
         <PortfolioSection projects={projects || []} />
         <GuaranteeSection />
         <PricingSection />
         <FAQSection />
 
-        <section id="kontak" className="scroll-mt-24 bg-slate-950 py-24 text-slate-200 relative overflow-hidden">
-          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-
-          <div className="mx-auto max-w-6xl px-6 relative z-10">
+        <section id="kontak" className="scroll-mt-24 bg-primary py-24 text-primary-foreground">
+          <div className="mx-auto max-w-6xl px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="font-serif text-4xl font-bold md:text-6xl text-white leading-tight">
+                <h2 className="font-serif text-4xl font-bold md:text-6xl leading-tight">
                   Ceritakan dulu kebutuhan website Anda
                 </h2>
-                <p className="mt-6 text-xl text-slate-400">
+                <p className="mt-6 text-xl opacity-90">
                   Isi formulir di samping, dan kami hubungi untuk membahas apa yang sebenarnya
                   Anda butuhkan, termasuk kalau ternyata paket yang lebih kecil sudah cukup.
                 </p>
 
-                <div className="mt-10 space-y-6">
+                <div className="mt-10 space-y-4">
                   <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
-                      <Clock className="h-6 w-6 text-primary" />
-                    </div>
-                    <p className="text-slate-300">Biasanya dibalas di hari yang sama pada jam kerja.</p>
+                    <Clock className="h-6 w-6 shrink-0 text-tertiary" />
+                    <p>Biasanya dibalas di hari yang sama pada jam kerja.</p>
                   </div>
                   <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
-                      <Handshake className="h-6 w-6 text-primary" />
-                    </div>
-                    <p className="text-slate-300">Bicara langsung dengan yang mengerjakan, tanpa perantara sales.</p>
+                    <Handshake className="h-6 w-6 shrink-0 text-tertiary" />
+                    <p>Bicara langsung dengan yang mengerjakan, tanpa perantara sales.</p>
                   </div>
                 </div>
               </div>
